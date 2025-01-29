@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.first-section {
+    background-image: url('/images/mainpage/mot_ljungdalen.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 35%;
+    height: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+#welcome-lbl {
+    margin-top: 150px;
+}
