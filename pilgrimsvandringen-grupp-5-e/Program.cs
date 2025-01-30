@@ -1,9 +1,15 @@
+using pilgrimsvandringen_grupp_5_e.Services;
+using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ITrailInformationService, FakeTrailInformationService>();
+
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
