@@ -17,3 +17,14 @@
 #welcome-lbl {
     margin-top: 150px;
 }
+
+
+article {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.general-info {
+    padding: 5px;
+}
