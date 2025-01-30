@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>pilgrimsvandringen_grupp_5_e</RootNamespace>
+    <UserSecretsId>599e8bf0-d0ae-4579-a2dc-f4a973649e83</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
