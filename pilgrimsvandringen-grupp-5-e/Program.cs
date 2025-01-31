@@ -1,11 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using pilgrimsvandringen_grupp_5_e.Data;
 using pilgrimsvandringen_grupp_5_e.Services;
 using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITrailInformationService, FakeTrailInformationService>();
+
+var config = new ConfigurationBuilder()
+.AddUserSecrets<Program>()
+.Build();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(config.GetConnectionString("DefaultConnection")),
+                ServiceLifetime.Scoped
+                );
 
 
 var app = builder.Build();
