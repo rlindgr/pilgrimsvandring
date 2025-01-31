@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\mainpage\" />
+    <Folder Include="wwwroot\images\MapImages\" />
   </ItemGroup>
 
   <ItemGroup>
