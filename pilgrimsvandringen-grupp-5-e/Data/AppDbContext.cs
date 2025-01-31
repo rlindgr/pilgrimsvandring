@@ -7,6 +7,7 @@ namespace pilgrimsvandringen_grupp_5_e.Data
     {
         public DbSet<Trail> Trails { get; set; }
         public DbSet<Stage> Stages { get; set; }
+        public DbSet<PointOfInterest> PointsOfInterests { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     }
