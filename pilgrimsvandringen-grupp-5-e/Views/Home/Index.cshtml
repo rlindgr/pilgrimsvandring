@@ -2,47 +2,176 @@
     ViewData["Title"] = "Home Page";
 }
 <link rel="stylesheet" href="~/css/mainpage.css"/>
+<div class="backdrop"></div>
+<div class="page-container">
+
 
 <section class="first-section">
     
     <div id="welcome-lbl">
         <h1>
-            Välkommen till Pilgrimsvandring i Sydöstra Jämtland
+            PILGRIM
         </h1>
-        <h2>
-            En resa genom natur, historia och andlighet
-        </h2>
+        <img src="~/images/mainpage/trailsmap.png" alt="Alternate Text" />
+    </div>
+    <div class="route-cards-container">
+        <div class="cards-item">
+            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
+			<h2>Kårböleleden</h2>
+            <div class="circle-item yellow-circle"></div>
+        </div>
+        <div class="cards-item">
+            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
+            <h2>Jämt-Norgevägen</h2>
+            <div class="circle-item green-circle"></div>
+        </div>
+        <div class="cards-item">
+            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
+            <h2>St:Olovsleden</h2>
+            <div class="circle-item red-circle"></div>
+        </div>
+        <div class="cards-item">
+            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
+            <h2>Indalsleden</h2>
+            <div class="circle-item blue-circle"></div>
+        </div>
     </div>
 </section>
+        
 
 <section>
     <article>
-        <img alt="Placeholder" src="/images/mainpage/mot_ljungdalen.jpg" />
-        <div class="general-info">
-            <h2>Att vara pilgrim</h2>
-            <p>
-                Bryt upp från vardagen och gå till ett heligt mål
-                Fler och fler människor i vår tid vandrar som pilgrimer. Det handlar om människor
-                som vill bryta upp från vardagen för kortare eller längre tid. De vill vandra till ett mål. Under medeltiden var det angeläget att vandringen mynnade ut i ett så kallat heligt mål, en plats
-                där Jesus levt, eller någon av Jesu lärjungar eller något helgon. Så kan det vara fortfarande.
-            </p>
-        </div>
-    </article>
-    <article>
-        <img alt="Placeholder" src="/images/mainpage/mot_ljungdalen.jpg" />
-        <div class="general-info">
-            <h2>Inför vandringen</h2>
-            <p>
-                För att kunna genomföra vandringen på ett säkert sätt är det viktigt att vara förberedd.
-                <ul>
-                    <li>Testa utrustningen hemma</li>
-                    <li>Lämmna färdmeddelande</li>
-                    <li>Följ markerade leder</li>
-                    <li>Håll koll på väderprognosen</li>
-                </ul>
-                <a class="btn btn-outline-primary" asp-area="" asp-controller="Home" asp-action="Index">Läs mer</a>
-
-            </p>
-        </div>
+        <img class="map-continer" alt="Placeholder" src="/images/mainpage/mot_ljungdalen.jpg" />
     </article>
 </section>
+
+<section class="safety-container">
+    <div class="safety-item">
+        <img src="/icons/mainpage/exclimation.png" alt="Utropstecken" />
+		<h3>Säkerhet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
+            get magna volutpat iaculis.  </p>
+    </div>
+    <div class="safety-item">
+        <img src="/icons/mainpage/backpack (1).png" alt="Utropstecken" />
+        <h3>Utrustning</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
+            get magna volutpat iaculis.
+        </p>
+    </div>
+    <div class="safety-item">
+        <img src="/icons/mainpage/checklist.png" alt="Utropstecken" />
+        <h3>Förberedelser</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
+            get magna.
+        </p>
+    </div>
+</section>
+
+<section class="trail-cards-container">
+    <article class="trail-card-item">
+        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+        <div class="trail-info-container">
+			<h3>Kårböleleden</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+            </p>
+            <div class="trail-stats-container">
+                <div class="stats-length-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>10km</p>
+                </div>
+                <div class="stats-height-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>500m</p>
+                </div>
+                <div class="stats-difficulty-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>Medel</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="trail-card-item">
+        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+        <div class="trail-info-container">
+            <h3>Jämt-Norgevägen</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+            </p>
+            <div class="trail-stats-container">
+                <div class="stats-length-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>10km</p>
+                </div>
+                <div class="stats-height-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>500m</p>
+                </div>
+                <div class="stats-difficulty-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>Medel</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="trail-card-item">
+        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+        <div class="trail-info-container">
+            <h3>St:Olovsleden</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+            </p>
+            <div class="trail-stats-container">
+                <div class="stats-length-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>10km</p>
+                </div>
+                <div class="stats-height-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>500m</p>
+                </div>
+                <div class="stats-difficulty-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>Medel</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="trail-card-item">
+        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+        <div class="trail-info-container">
+            <h3>Indalsleden</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+            </p>
+            <div class="trail-stats-container">
+                <div class="stats-length-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>10km</p>
+                </div>
+                <div class="stats-height-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>500m</p>
+                </div>
+                <div class="stats-difficulty-container stats-container">
+                    <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                    <p>Medel</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+
+</section>
+
+</div>
