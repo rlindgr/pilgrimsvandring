@@ -29,6 +29,10 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -37,15 +41,11 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Longitud")
+                    b.Property<string>("Longitude")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("text");
 

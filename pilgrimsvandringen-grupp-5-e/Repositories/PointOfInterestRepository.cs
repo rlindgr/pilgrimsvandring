@@ -16,10 +16,11 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
         public async Task<PointOfInterest> GetPointOfInterestAsync(int id)
         {
             return await GetByIdAsync(id);
-            
         }
-        
 
-
+        public async Task<IEnumerable<PointOfInterest>> GetAllPointsOfInterestsAsync()
+        {
+            return await GetAllAsync();
+        }
     }
 }

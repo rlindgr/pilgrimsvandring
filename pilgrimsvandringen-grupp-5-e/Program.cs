@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using pilgrimsvandringen_grupp_5_e.Data;
+using pilgrimsvandringen_grupp_5_e.Repositories;
+using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
 using pilgrimsvandringen_grupp_5_e.Services;
 using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
 using System;
@@ -9,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITrailInformationService, FakeTrailInformationService>();
+builder.Services.AddScoped<IPointOfinterestService, PointOfInterestService>();
+builder.Services.AddScoped<IPointOfInterestRepository, PointOfInterestRepository>();
 
 var config = new ConfigurationBuilder()
 .AddUserSecrets<Program>()
