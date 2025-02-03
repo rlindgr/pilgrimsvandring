@@ -14,19 +14,38 @@ namespace pilgrimsvandringen_grupp_5_e.Services
         }
         public async Task<PointOfInterestDto> GetPointOfInterest(int id)
         {
-            var getPoint = await _pointOfInterestRepository.GetPointOfInterestAsync(id);
+            var point = await _pointOfInterestRepository.GetPointOfInterestAsync(id);
             var dto = new PointOfInterestDto
             {
-                Name = getPoint.Name,
-                Description = getPoint.Description,
-                Longitude = getPoint.Longitude,
-                Latitude = getPoint.Latitude,
-                Category = getPoint.Category,
+                Id = point.Id,
+                Name = point.Name,
+                Description = point.Description,
+                Longitude = point.Longitude,
+                Latitude = point.Latitude,
+                Category = point.Category,
             };
             
             return dto;
-         
-            
+        }
+        public async Task<IEnumerable<PointOfInterestDto>> GetAllPointsOfInterests()
+        {
+            var points = await _pointOfInterestRepository.GetAllPointsOfInterestsAsync();
+            List<PointOfInterestDto> pointOfInterestDtos = new List<PointOfInterestDto>();
+            foreach (var point in points)
+            {
+                var dto = new PointOfInterestDto
+                {
+                    Id = point.Id,
+                    Name = point.Name,
+                    Description = point.Description,
+                    Longitude = point.Longitude,
+                    Latitude = point.Latitude,
+                    Category = point.Category
+                };
+                pointOfInterestDtos.Add(dto);
+                
+            }
+            return pointOfInterestDtos;
         }
     }
 }
