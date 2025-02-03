@@ -18,8 +18,12 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             var dto = new PointOfInterestDto
             {
                 Name = getPoint.Name,
+                Description = getPoint.Description,
+                Longitude = getPoint.Longitude,
+                Latitude = getPoint.Latitude,
+                Category = getPoint.Category,
             };
-
+            
             return dto;
          
             
