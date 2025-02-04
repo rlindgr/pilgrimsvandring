@@ -157,8 +157,7 @@ article {
     border-radius: 5px;
     background: rgba(64, 64, 64, 0.7);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(11.5px);
-    -webkit-backdrop-filter: blur(11.5px);
+  
     color: white; 
 }
 .trail-image {
@@ -213,7 +212,7 @@ article {
         padding: 0px; 
         margin: 0px; 
         height: 100px; 
-        width: 60%; 
+        width: 80%; 
     }
 
     .cards-item {
@@ -240,17 +239,6 @@ article {
 }
 
 @media all and (max-width:600px) {
-
-    .safety-item p {
-        display: none;  
-    }
-
-    .safety-item {
-        padding: 10px 0px; 
-    }
-}
-
-@media all and (max-width:600px) {
     .safety-container {
         flex-direction: column; 
         gap: 10px; 
@@ -263,6 +251,14 @@ article {
 
     .stats-container p {
         line-height: 1.5;  
+    }
+
+    .safety-item p {
+        display: none;
+    }
+
+    .safety-item {
+        padding: 10px 0px;
     }
 
     
