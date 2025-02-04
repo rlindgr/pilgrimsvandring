@@ -86,14 +86,43 @@ async function fetchAndDisplayRoute() {
         }).addTo(map);
 
         // Add markers at the start and end points
-        L.marker([startCoordinates[1], startCoordinates[0]], { icon: greenIcon }).addTo(map).bindPopup('Start of the route');
-        L.marker([endCoordinates[1], endCoordinates[0]], { icon: redIcon }).addTo(map).bindPopup('End of the route');
+        L.marker([startCoordinates[1], startCoordinates[0]], { icon: greenIcon }).addTo(map).bindPopup('Start: Jämt-norge-leden');
+        L.marker([endCoordinates[1], endCoordinates[0]], { icon: redIcon }).addTo(map).bindPopup('Slut: Jämt-norge-leden');
 
     } catch (error) {
         console.error('Error loading or displaying the route:', error);
         alert('Could not load the route.');
     }
 }
+
+async function fetchAndDisplayGPXRoute() { //add popup for icons
+    try {
+        const gpxLayer = new L.GPX('/js/Maps/Gpx/st-olavsleden-hiking-2022.gpx', {
+            async: true,
+            marker_options: {
+                startIconUrl: '../images/MapImages/leaf-green.png',
+                endIconUrl: '../images/MapImages/leaf-red.png',
+                shadowUrl: '../images/MapImages/leaf-shadow.png'
+            },
+            polyline_options: {
+                color: 'red',
+                weight: 4
+            }
+        });
+
+        gpxLayer.addTo(map);
+
+        // Adjust map view to fit GPX route bounds
+        gpxLayer.on('loaded', function (e) {
+            map.fitBounds(e.target.getBounds());
+        });
+
+    } catch (error) {
+        console.error('Error loading or displaying the GPX route:', error);
+        alert('Could not load the GPX route.');
+    }
+}
+
 
 // Calculate distances using (Haversine-formel)
 function getDistance(coord1, coord2) {
@@ -163,4 +192,5 @@ function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
 // Fetch and display the user's location and the route
 addUserLocation();
 fetchAndDisplayRoute();
+fetchAndDisplayGPXRoute();
 
