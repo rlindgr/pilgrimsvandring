@@ -12,6 +12,5 @@
     @foreach (var point in Model)
     {
         <a class="nav-link text-dark" asp-area="" asp-controller="PointsOfInterests" asp-action="InformationPointOfInterest" asp-route-id="@point.Id">@point.Name</a>
-    }
-    <p>@Model[1].Name @Model[1].Description @Model[0].Category @Model[1].Longitude @Model[1].Latitude</p>
+    }    
 </div>

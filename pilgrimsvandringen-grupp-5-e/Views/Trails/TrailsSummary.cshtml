@@ -1,5 +1,4 @@
-﻿@model pilgrimsvandringen_grupp_5_e.ViewModels.TrailsViewModel
-@*
+﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -10,6 +9,9 @@
 
 <div class="text-center">
     <h1 class="display-4">Trails</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <h5 class="card-title">@Model.Name </h5>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>    
+    @foreach (var trail in Model)
+    {
+        <a class="nav-link text-dark" asp-area="" asp-controller="Trails" asp-action="TrailDetails" asp-route-id="@trail.Id">@trail.Name</a>
+    }
 </div>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using pilgrimsvandringen_grupp_5_e.Services;
 using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
 
 namespace pilgrimsvandringen_grupp_5_e.Controllers
@@ -14,30 +15,16 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         }
         public IActionResult TrailsSummary()
         {
-            var model = _trailInformationService.GetTrailInformation();
+            var model = _trailInformationService.GetAllTrails();
             return View(model);
         }
+
+        public IActionResult TrailDetails(int id)
+        {
+            var model = _trailInformationService.GetTrailInformation();
+            return View("~/Views/Trails/TrailDetails.cshtml", model);
+        }
+       
     }
 }
-
-        //public IActionResult TrailGreen()
-        //{
-        //    return View();
-        //}
-
-        //public IActionResult TrailRed()
-        //{
-        //    return View();
-        //}
-
-        //public IActionResult TrailBlue()
-        //{
-        //    return View();
-        //}
-
-        //public IActionResult TrailYellow()
-        //{
-        ////    return View();
-        //}
-//    }
-//}
+        
