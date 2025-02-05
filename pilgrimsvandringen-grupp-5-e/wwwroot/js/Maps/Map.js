@@ -4,6 +4,11 @@ import { redIcon } from "../Maps/Markers.js";
 import { orangeIcon } from "../Maps/Markers.js";
 
 
+let test = [
+    { name: 'Indalsleden', color: 'blue' },
+    { name: 'Karboleleden', color: 'yellow' },
+    { name: 'st-olavsleden-hiking-2022', color: 'red' }
+];
 const map = L.map('map').setView([62.9, 13.53], 8);
 
 // Add OpenStreetMap tiles
@@ -58,7 +63,7 @@ async function fetchAndDisplayRoute() {
                 coordinates: feature.geometry.coordinates
             }));
 
-        // Define the start and end coordinates
+        
         const startCoordinates = [14.9847101, 62.864618];
         const endCoordinates = [12.0746285, 62.9024744];
 
@@ -80,20 +85,49 @@ async function fetchAndDisplayRoute() {
             }
         };
 
-        // Display the route on the map
+        
         L.geoJSON(lineStringFeature, {
             style: { color: 'Green', weight: 4 }
         }).addTo(map);
 
-        // Add markers at the start and end points
-        L.marker([startCoordinates[1], startCoordinates[0]], { icon: greenIcon }).addTo(map).bindPopup('Start of the route');
-        L.marker([endCoordinates[1], endCoordinates[0]], { icon: redIcon }).addTo(map).bindPopup('End of the route');
+        
+        L.marker([startCoordinates[1], startCoordinates[0]], { icon: greenIcon }).addTo(map).bindPopup('Start: Jämt-norge-leden');
+        L.marker([endCoordinates[1], endCoordinates[0]], { icon: redIcon }).addTo(map).bindPopup('Slut: Jämt-norge-leden');
 
     } catch (error) {
         console.error('Error loading or displaying the route:', error);
         alert('Could not load the route.');
     }
 }
+
+async function fetchAndDisplayGPXRoute(trailName, trailColor ) { //FIX: add popup for icons
+    try {
+        const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
+            async: true,
+            marker_options: {
+                startIconUrl: '../images/MapImages/leaf-green.png',
+                endIconUrl: '../images/MapImages/leaf-red.png',
+                shadowUrl: '../images/MapImages/leaf-shadow.png'
+            },
+            polyline_options: {
+                color: `${trailColor}`,
+                weight: 4
+            }
+        });
+
+        gpxLayer.addTo(map);
+
+        
+        gpxLayer.on('loaded', function (e) {
+            map.fitBounds(e.target.getBounds());
+        });
+
+    } catch (error) {
+        console.error('Error loading or displaying the GPX route:', error);
+        alert('Could not load the GPX route.');
+    }
+}
+
 
 // Calculate distances using (Haversine-formel)
 function getDistance(coord1, coord2) {
@@ -160,7 +194,13 @@ function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
     return orderedRoute.map(node => node.coordinates);
 }
 
-// Fetch and display the user's location and the route
+
+function addAllTrails() {
+    test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color));
+}
+
+
 addUserLocation();
 fetchAndDisplayRoute();
+addAllTrails();
 
