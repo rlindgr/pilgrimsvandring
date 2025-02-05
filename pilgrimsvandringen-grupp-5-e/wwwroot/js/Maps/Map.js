@@ -97,7 +97,7 @@ async function fetchAndDisplayRoute() {
 
 async function fetchAndDisplayGPXRoute() { //add popup for icons
     try {
-        const gpxLayer = new L.GPX('/js/Maps/Gpx/st-olavsleden-hiking-2022.gpx', {
+        const gpxLayer = new L.GPX('/js/Maps/Gpx/Indalsleden.gpx', {
             async: true,
             marker_options: {
                 startIconUrl: '../images/MapImages/leaf-green.png',
