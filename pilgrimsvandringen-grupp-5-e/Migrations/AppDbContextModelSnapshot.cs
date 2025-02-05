@@ -100,7 +100,12 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("TrailId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TrailId");
 
                     b.ToTable("Stages");
                 });
@@ -154,6 +159,17 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Trails");
+                });
+
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Stage", b =>
+                {
+                    b.HasOne("pilgrimsvandringen_grupp_5_e.Models.Trail", "Trail")
+                        .WithMany()
+                        .HasForeignKey("TrailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Trail");
                 });
 #pragma warning restore 612, 618
         }
