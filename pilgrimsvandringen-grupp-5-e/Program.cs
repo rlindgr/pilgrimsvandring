@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ITrailInformationService, FakeTrailInformationService>();
+builder.Services.AddScoped<ITrailInformationService, TrailInformationService>();
+builder.Services.AddScoped<ITrailRepository, TrailRepository>();
 builder.Services.AddScoped<IPointOfinterestService, PointOfInterestService>();
 builder.Services.AddScoped<IPointOfInterestRepository, PointOfInterestRepository>();
 

@@ -8,9 +8,8 @@
 }
 <div class="text-center">
     <h1 class="display-4">Information</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     @foreach (var point in Model)
     {
-        <a class="nav-link text-dark" asp-area="" asp-controller="PointsOfInterests" asp-action="InformationPointOfInterest" asp-route-id="@point.Id">@point.Name</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="PointsOfInterests" asp-action="InformationPointOfInterest" asp-route-id="@point.Id">@point.Name, Typ av anläggning: @point.Category</a>
     }    
 </div>
