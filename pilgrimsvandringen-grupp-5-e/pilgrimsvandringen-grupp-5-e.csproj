@@ -11,7 +11,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\MapImages\" />
     <Folder Include="wwwroot\js\Maps\Geojson\" />
-    <Folder Include="wwwroot\js\Maps\Gpx\" />
   </ItemGroup>
 
   <ItemGroup>
