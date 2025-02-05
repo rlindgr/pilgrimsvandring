@@ -11,6 +11,6 @@
     <h1 class="display-4">Leder</h1>       
     @foreach (var trail in Model)
     {
-        <a class="nav-link text-dark" asp-area="" asp-controller="Trails" asp-action="TrailDetails" asp-route-id="@trail.Id">@trail.Name</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Trails" asp-action="TrailDetails" asp-route-id="@trail.Id">@trail.Name,  Längd: @trail.Length Km, Ledfärg: @trail.Color</a>
     }    
 </div>
