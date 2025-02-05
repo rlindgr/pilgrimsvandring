@@ -1,0 +1,63 @@
+﻿body {
+    background-color:#292F15;
+    color: white;
+    
+}
+
+.trail-page {
+    margin: 0 10%;
+}
+
+.stage-image-container {
+    display:flex;
+    justify-content: center;
+}
+
+.trail-info-container {
+    display: flex;
+   margin: 50px 0;
+    gap: 20px;
+}
+
+.trail-name-container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    gap: 20px;
+    background-color: #181C0C;
+    padding: 40px;
+    border-radius: 16px;
+}
+
+
+
+
+.circle-item {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin: 0px;
+}
+
+.trail-stats-container {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    width: 20%;
+}
+
+.trail-stats-item {
+    padding: 13px;
+    display: flex;
+    align-items: center;
+    background-color: #181C0C;
+    border-radius:16px;
+}
+
+.trail-stats-item img {
+   width: 30px;
+} 
+
+p {
+    margin:0;
+}

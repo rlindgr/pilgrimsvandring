@@ -1,11 +1,86 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
-<div>
-    <p>
-        Hej hej Här är vi nu
-        @Model.Name, @Model.Description
-    </p>
+<link rel="stylesheet" href="~/css/traildetails.css" />
+
+<div class="trail-page">
+<div class="stage-image-container">
+<img src="~/images/mainpage/trailsmap.png" alt="" />
+</div>
+
+<div class="trail-info-container">
+    <div class="trail-name-container">
+        <h1>@Model.Name</h1>
+        <div class="circle-item" style="background-color:@Model.Color"></div>
+    </div>
+    <div class="trail-stats-container">
+        <div class="trail-stats-item">
+            <img src="~/icons/mainpage/exclimation.png" alt="Statistik ikon" />
+            <p>@Model.Length km</p>
+        </div>
+        <div class="trail-stats-item">
+            <img src="~/icons/mainpage/exclimation.png" alt="Statistik ikon" />
+            <p>@Model.Height m</p>
+        </div>
+        <div class="trail-stats-item">
+            <img src="~/icons/mainpage/exclimation.png" alt="Statistik ikon" />
+            <p>@Model.Terrain</p>
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class="trail-description-container">
+    <h2>Beskrivning</h2>
+    <p>@Model.Description</p>
+</div>
+
+<section class="safety-container">
+    <div class="safety-item">
+        <img src="/icons/mainpage/exclimation.png" alt="Utropstecken" />
+        <h3>Säkerhet</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
+            get magna volutpat iaculis.
+        </p>
+    </div>
+    <div class="safety-item">
+        <img src="/icons/mainpage/backpack (1).png" alt="Utropstecken" />
+        <h3>Utrustning</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
+            get magna volutpat iaculis.
+        </p>
+    </div>
+    <div class="safety-item">
+        <img src="/icons/mainpage/checklist.png" alt="Utropstecken" />
+        <h3>Förberedelser</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
+            get magna.
+        </p>
+    </div>
+</section>
+
+<div class="trail-stages-container">
+  
+    <button class="button-container" id="back-button">
+        <img src="~/icons/mainpage/exclimation.png" alt="back-button">
+    </button>
+    <div id="flex-container-stages">
+        <div class="stage-item">
+            <img src="~/images/mainpage/mot_ljungdalen.jpg" alt="Etapp" class="stage-image">
+            <h4 class="stage-title">Etapp 1</h4>
+         <p class="stage-length">2km</p>
+        </div>
+    </div>
+    <button class="button-container" id="forward-button">
+        <img src="~/icons/mainpage/exclimation.png" alt="forward-button" class="forward-button">
+    </button>
+</div>
 </div>
