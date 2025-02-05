@@ -21,8 +21,8 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
 
         public IActionResult TrailDetails(int id)
         {
-            var model = _trailInformationService.GetTrailInformation();
-            return View("~/Views/Trails/TrailDetails.cshtml", model);
+            var model = _trailInformationService.GetTrailInformation(id);
+            return View("~/Views/Trails/TrailDetails.cshtml", model.Result);
         }
        
     }

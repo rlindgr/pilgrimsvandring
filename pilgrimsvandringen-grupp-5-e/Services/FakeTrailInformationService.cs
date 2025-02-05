@@ -6,11 +6,11 @@ namespace pilgrimsvandringen_grupp_5_e.Services
     public class FakeTrailInformationService : ITrailInformationService
     {
 
-        public TrailsViewModel GetTrailInformation()
+        public async Task<TrailsViewModel> GetTrailInformation(int id = 1)
         {
-            return new TrailsViewModel
+            var trailVm = new TrailsViewModel
             {
-                Id = 1,
+                Id = id,
                 Name = "Kårböleleden",
                 Description = "Fin led i Jämtland",
                 StartPoint = "Revsund",
@@ -21,8 +21,9 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 Length = 13.3,
                 Height = 7.3,
                 Surface = "hårt underlag",
-
             };
+
+            return trailVm;
                 
         }
 

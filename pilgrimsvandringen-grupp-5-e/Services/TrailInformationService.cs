@@ -41,9 +41,25 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             return trailsViewModels;
         }
 
-        public TrailsViewModel GetTrailInformation()
+        public async Task<TrailsViewModel> GetTrailInformation(int id)
         {
-            throw new NotImplementedException();
+            var trail = await _trailRepository.GetTrailAsync(id);
+            var trailVm = new TrailsViewModel
+            {
+                Id = trail.Id,
+                Name = trail.Name,
+                Description = trail.Description,
+                StartPoint = trail.StartPoint,
+                EndPoint = trail.EndPoint,
+                Terrain = trail.Terrain,
+                Difficulty = trail.Difficulty,
+                Color = trail.Color,
+                Length = trail.Length,
+                Height = trail.Height,
+                Surface = trail.Surface,
+            };
+
+            return trailVm;
         }
     }
 }
