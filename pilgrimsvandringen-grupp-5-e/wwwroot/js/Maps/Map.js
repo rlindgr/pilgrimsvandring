@@ -4,6 +4,11 @@ import { redIcon } from "../Maps/Markers.js";
 import { orangeIcon } from "../Maps/Markers.js";
 
 
+let test = [
+    { name: 'Indalsleden', color: 'blue' },
+    { name: 'Karboleleden', color: 'yellow' },
+    { name: 'st-olavsleden-hiking-2022', color: 'red' }
+];
 const map = L.map('map').setView([62.9, 13.53], 8);
 
 // Add OpenStreetMap tiles
@@ -95,9 +100,9 @@ async function fetchAndDisplayRoute() {
     }
 }
 
-async function fetchAndDisplayGPXRoute() { //add popup for icons
+async function fetchAndDisplayGPXRoute(trailName, trailColor ) { //add popup for icons
     try {
-        const gpxLayer = new L.GPX('/js/Maps/Gpx/Indalsleden.gpx', {
+        const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
             marker_options: {
                 startIconUrl: '../images/MapImages/leaf-green.png',
@@ -105,7 +110,7 @@ async function fetchAndDisplayGPXRoute() { //add popup for icons
                 shadowUrl: '../images/MapImages/leaf-shadow.png'
             },
             polyline_options: {
-                color: 'red',
+                color: `${trailColor}`,
                 weight: 4
             }
         });
@@ -189,8 +194,13 @@ function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
     return orderedRoute.map(node => node.coordinates);
 }
 
+
+function addAllTrails() {
+    test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color));
+}
+
 // Fetch and display the user's location and the route
 addUserLocation();
 fetchAndDisplayRoute();
-fetchAndDisplayGPXRoute();
+addAllTrails();
 
