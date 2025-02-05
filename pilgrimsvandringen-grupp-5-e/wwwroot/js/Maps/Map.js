@@ -63,7 +63,7 @@ async function fetchAndDisplayRoute() {
                 coordinates: feature.geometry.coordinates
             }));
 
-        // Define the start and end coordinates
+        
         const startCoordinates = [14.9847101, 62.864618];
         const endCoordinates = [12.0746285, 62.9024744];
 
@@ -85,12 +85,12 @@ async function fetchAndDisplayRoute() {
             }
         };
 
-        // Display the route on the map
+        
         L.geoJSON(lineStringFeature, {
             style: { color: 'Green', weight: 4 }
         }).addTo(map);
 
-        // Add markers at the start and end points
+        
         L.marker([startCoordinates[1], startCoordinates[0]], { icon: greenIcon }).addTo(map).bindPopup('Start: Jämt-norge-leden');
         L.marker([endCoordinates[1], endCoordinates[0]], { icon: redIcon }).addTo(map).bindPopup('Slut: Jämt-norge-leden');
 
@@ -100,7 +100,7 @@ async function fetchAndDisplayRoute() {
     }
 }
 
-async function fetchAndDisplayGPXRoute(trailName, trailColor ) { //add popup for icons
+async function fetchAndDisplayGPXRoute(trailName, trailColor ) { //FIX: add popup for icons
     try {
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
@@ -117,7 +117,7 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor ) { //add popup for
 
         gpxLayer.addTo(map);
 
-        // Adjust map view to fit GPX route bounds
+        
         gpxLayer.on('loaded', function (e) {
             map.fitBounds(e.target.getBounds());
         });
@@ -199,7 +199,7 @@ function addAllTrails() {
     test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color));
 }
 
-// Fetch and display the user's location and the route
+
 addUserLocation();
 fetchAndDisplayRoute();
 addAllTrails();
