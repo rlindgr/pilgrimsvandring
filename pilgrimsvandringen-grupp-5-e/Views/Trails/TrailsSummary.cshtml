@@ -8,10 +8,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Trails</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>    
+    <h1 class="display-4">Leder</h1>       
     @foreach (var trail in Model)
     {
         <a class="nav-link text-dark" asp-area="" asp-controller="Trails" asp-action="TrailDetails" asp-route-id="@trail.Id">@trail.Name</a>
-    }
+    }    
 </div>

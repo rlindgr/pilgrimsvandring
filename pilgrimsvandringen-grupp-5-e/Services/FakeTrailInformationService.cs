@@ -26,7 +26,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 
         }
 
-        public List<TrailsViewModel> GetAllTrails()
+        public async Task<IEnumerable<TrailsViewModel>> GetAllTrails()
         {
             List<TrailsViewModel> list = new List<TrailsViewModel>();
             var trail1 = new TrailsViewModel
