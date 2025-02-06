@@ -1,6 +1,7 @@
 ﻿using pilgrimsvandringen_grupp_5_e.Dto;
 using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
 using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
+using pilgrimsvandringen_grupp_5_e.ViewModels;
 
 namespace pilgrimsvandringen_grupp_5_e.Services
 {
@@ -12,10 +13,10 @@ namespace pilgrimsvandringen_grupp_5_e.Services
         {
             _pointOfInterestRepository = pointOfInterestRepository;
         }
-        public async Task<PointOfInterestDto> GetPointOfInterest(int id)
+        public async Task<PointOfInterestViewModel> GetPointOfInterest(int id)
         {
             var point = await _pointOfInterestRepository.GetPointOfInterestAsync(id);
-            var dto = new PointOfInterestDto
+            var vm = new PointOfInterestViewModel
             {
                 Id = point.Id,
                 Name = point.Name,
@@ -25,15 +26,16 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 Category = point.Category,
             };
             
-            return dto;
+            return vm;
         }
-        public async Task<IEnumerable<PointOfInterestDto>> GetAllPointsOfInterests()
+
+        public async Task<IEnumerable<PointOfInterestViewModel>> GetAllPointsOfInterests()
         {
             var points = await _pointOfInterestRepository.GetAllPointsOfInterestsAsync();
-            List<PointOfInterestDto> pointOfInterestDtos = new List<PointOfInterestDto>();
+            List<PointOfInterestViewModel> pointOfInterestVms = new List<PointOfInterestViewModel>();
             foreach (var point in points)
             {
-                var dto = new PointOfInterestDto
+                var vm = new PointOfInterestViewModel
                 {
                     Id = point.Id,
                     Name = point.Name,
@@ -42,10 +44,10 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                     Latitude = point.Latitude,
                     Category = point.Category
                 };
-                pointOfInterestDtos.Add(dto);
+                pointOfInterestVms.Add(vm);
                 
             }
-            return pointOfInterestDtos;
+            return pointOfInterestVms;
         }
     }
 }
