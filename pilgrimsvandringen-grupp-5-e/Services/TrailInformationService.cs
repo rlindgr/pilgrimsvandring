@@ -18,6 +18,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services
         {
             var trails = await _trailRepository.GetAllTrailsAsync();
 
+
             List<TrailsViewModel> trailsViewModels = new List<TrailsViewModel>();
             foreach (var trail in trails)
             {
