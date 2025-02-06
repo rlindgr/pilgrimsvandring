@@ -111,7 +111,8 @@ p {
     margin-top: 100px;
     position: relative;
     justify-content: center;
-    border: solid black;
+    width: 100%;
+   
 }
 
 #flex-container-stages {
@@ -121,33 +122,48 @@ p {
     scroll-behavior: smooth;
     margin: 0 5px 0 5px;
     border-radius: 5px;
+    overflow:hidden;
+    width: 95%;
+    margin:auto;
 }
 
 .button-container {
     border: 2px solid white;
     position: absolute;
     z-index: 100;
-    left: 0;
     top: 50%;
     transform: translate(0%, -50%);
     background: rgba(0, 0, 0, 0.365);
     border-radius: 5px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    display: none;
+   
+}
+
+#back-button{
+    display:none;
+}
+
+    #back-button img {
+        transform: scaleX(-1);
+    }
+
+#forward-button{
+    position: absolute;
+    right:0;
 }
 
 .stage-item {
     background-color: #181818;
-    height: 400px;
-    width:  200px;
-    border-radius: 5px;
+    height: 350px;
+    width:  250px;
+    border-radius: 15px;
     flex-shrink: 0;
-    border: solid black; 
-    background-image: url(/images/mainpage/mot_ljungdalen.jpg); 
-    text-align: revert;   
+    text-align: revert;  
 }
 
-stage-item img {
-    height: 100%;
-    border-radius: 5px 5px 0px 0px;
-}
+    .stage-item img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+
