@@ -5,9 +5,9 @@ import { orangeIcon } from "../Maps/Markers.js";
 
 
 let test = [
-    { name: 'Indalsleden', color: 'blue' },
-    { name: 'Karboleleden', color: 'yellow' },
-    { name: 'st-olavsleden-hiking-2022', color: 'red' }
+    { name: 'Indalsleden', color: 'blue', startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
+    { name: 'Karboleleden', color: 'yellow', startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
+    { name: 'st-olovsleden', color: 'red', startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927] }
 ];
 const map = L.map('map').setView([62.9, 13.53], 8);
 
@@ -100,14 +100,12 @@ async function fetchAndDisplayRoute() {
     }
 }
 
-async function fetchAndDisplayGPXRoute(trailName, trailColor ) { //FIX: add popup for icons
+async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint) { //FIX: add popup for icons
     try {
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
             marker_options: {
-                startIconUrl: '../images/MapImages/leaf-green.png',
-                endIconUrl: '../images/MapImages/leaf-red.png',
-                shadowUrl: '../images/MapImages/leaf-shadow.png'
+                
             },
             polyline_options: {
                 color: `${trailColor}`,
@@ -121,6 +119,9 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor ) { //FIX: add popu
         gpxLayer.on('loaded', function (e) {
             map.fitBounds(e.target.getBounds());
         });
+
+        L.marker([startPoint[0], startPoint[1]], { icon: greenIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
+        L.marker([endPoint[0], endPoint[1]], { icon: redIcon }).addTo(map).bindPopup(`Slut:${trailName}`);
 
     } catch (error) {
         console.error('Error loading or displaying the GPX route:', error);
@@ -196,7 +197,7 @@ function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
 
 
 function addAllTrails() {
-    test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color));
+    test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint));
 }
 
 
