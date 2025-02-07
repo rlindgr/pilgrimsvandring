@@ -13,6 +13,5 @@
         public double Length { get; set; }
         public double Height { get; set; }
         public string Surface { get; set; }
-
     }
 }

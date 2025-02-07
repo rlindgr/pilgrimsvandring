@@ -70,6 +70,10 @@
 </section>
 
 <div class="trail-stages-container">
+        @foreach (var stage in Model.stageViewModels)
+        {
+            <p>@stage.Name</p>
+        }
   
     <button class="button-container" id="back-button">
         <img src="~/icons/mainpage/right-arrow.png" alt="back-button">

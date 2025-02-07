@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.Abstractions;
 using pilgrimsvandringen_grupp_5_e.Data;
 using pilgrimsvandringen_grupp_5_e.Repositories;
 using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
@@ -14,6 +15,8 @@ builder.Services.AddScoped<ITrailInformationService, TrailInformationService>();
 builder.Services.AddScoped<ITrailRepository, TrailRepository>();
 builder.Services.AddScoped<IPointOfinterestService, PointOfInterestService>();
 builder.Services.AddScoped<IPointOfInterestRepository, PointOfInterestRepository>();
+builder.Services.AddScoped<IStageInformationService, StageInformationService>();
+builder.Services.AddScoped<IStageRepository, StageRepository>();
 
 var config = new ConfigurationBuilder()
 .AddUserSecrets<Program>()

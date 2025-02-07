@@ -14,9 +14,8 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         }
         public async Task<IActionResult> InformationsSummary()
         {
-            var model1 = await _pointOfinterestService.GetAllPointsOfInterests();
-            var model = await _pointOfinterestService.GetPointOfInterest(1);
-            return View("~/Views/Informations/InformationsSummary.cshtml", model1);
+            var model = await _pointOfinterestService.GetAllPointsOfInterests();
+            return View("~/Views/Informations/InformationsSummary.cshtml", model);
         }
 
         public async Task<IActionResult> InformationPointOfInterest(int id)
