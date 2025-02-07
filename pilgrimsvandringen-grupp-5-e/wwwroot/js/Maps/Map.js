@@ -1,7 +1,7 @@
 ﻿
 import { greenIcon } from "../Maps/Markers.js";
 import { redIcon } from "../Maps/Markers.js";
-import { orangeIcon } from "../Maps/Markers.js";
+import { hideIcon } from "../Maps/Markers.js";
 
 
 let test = [
@@ -203,7 +203,22 @@ function addAllTrails() {
 }
 
 
+async function testConnectionAndDisplayPOI() {
+    try {
+        const response = await fetch('/PointsOfInterests/GetAll');
+        if (!response.ok) throw new Error('Failed to load POIs.');
+
+        
+
+    } catch (error) {
+        console.error('Error fetching POIs:', error);
+        document.body.innerText = 'Error fetching POIs';
+    }
+}
+
+
+
 addUserLocation();
 fetchAndDisplayRoute();
 addAllTrails();
-
+testConnectionAndDisplayPOI();

@@ -21,11 +21,11 @@ export const redIcon = L.icon({
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-export const orangeIcon = L.icon({
-    iconUrl: '../images/MapImages/leaf-orange.png',
-    shadowUrl: '../images/MapImages/leaf-shadow.png',
-    iconSize: [38, 95], // size of the icon
-    shadowSize: [50, 64], // size of the shadow
+export const hideIcon = L.icon({
+    iconUrl: '../images/MapImages/hide.png',
+    shadowUrl: '../images/MapImages/hide.png',
+    iconSize: [1, 1], // size of the icon
+    shadowSize: [1, 1], // size of the shadow
     iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
