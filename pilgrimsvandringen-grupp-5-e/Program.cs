@@ -23,7 +23,7 @@ var config = new ConfigurationBuilder()
 .Build();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(config.GetConnectionString("LocalConnection")),
+                options.UseNpgsql(config.GetConnectionString("DefaultConnection")),
                 ServiceLifetime.Scoped
                 );
 
