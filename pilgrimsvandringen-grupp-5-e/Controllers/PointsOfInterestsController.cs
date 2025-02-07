@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using pilgrimsvandringen_grupp_5_e.Services;
 using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
 
 
@@ -16,6 +17,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         {
             var model = await _pointOfinterestService.GetAllPointsOfInterests();
             return View("~/Views/Informations/InformationsSummary.cshtml", model);
+
         }
 
         public async Task<IActionResult> InformationPointOfInterest(int id)
@@ -24,5 +26,14 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             return View("~/Views/Informations/InformationPointOfInterest.cshtml", model);
         }
 
+
+        public async Task<IActionResult> GetAll()
+        {
+            var points = await _pointOfinterestService.GetAllPointsOfInterests();
+            return Json(points);
+
+        }
     }
 }
+
+

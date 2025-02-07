@@ -1,7 +1,7 @@
 ﻿
 import { greenIcon } from "../Maps/Markers.js";
 import { redIcon } from "../Maps/Markers.js";
-import { orangeIcon } from "../Maps/Markers.js";
+import { hideIcon } from "../Maps/Markers.js";
 
 
 let test = [
@@ -105,7 +105,9 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
             marker_options: {
-                
+                startIconUrl: '../images/MapImages/hide.png',
+                endIconUrl: '../images/MapImages/hide.png',
+                shadowUrl: '../images/MapImages/hide.png'
             },
             polyline_options: {
                 color: `${trailColor}`,
@@ -115,7 +117,7 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
 
         gpxLayer.addTo(map);
 
-        
+
         gpxLayer.on('loaded', function (e) {
             map.fitBounds(e.target.getBounds());
         });
@@ -201,7 +203,50 @@ function addAllTrails() {
 }
 
 
+// Define projections
+const sweref99tm = "+proj=utm +zone=33 +ellps=GRS80 +units=m +no_defs";
+const wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
+
+// Function to convert coordinates
+function convertToLatLng(easting, northing) {
+    const [longitude, latitude] = proj4(sweref99tm, wgs84, [easting, northing]);
+    return { lat: latitude, lng: longitude };
+}
+
+
+async function DisplayPointOfInterests() {
+    try {
+        const response = await fetch('/PointsOfInterests/GetAll');
+        if (!response.ok) throw new Error('Failed to load POIs.');
+
+        const points = await response.json();
+
+        points.forEach(point => {
+            // Extract Easting and Northing by removing the prefix 'E' and 'N'
+            const easting = parseFloat(point.longitude.substring(1));
+            const northing = parseFloat(point.latitude.substring(1));
+
+            // Convert to latitude and longitude
+            const { lat, lng } = convertToLatLng(easting, northing);
+
+            // Add marker to the map
+            const marker = L.marker([lat, lng], { icon: greenIcon }).addTo(map);
+            marker.bindPopup(`
+                <b>${point.name}</b><br>
+                ${point.category}<br>
+                ${point.description}
+            `);
+        });
+
+    } catch (error) {
+        console.error('Error fetching POIs:', error);
+        document.body.innerText = 'Error fetching POIs';
+    }
+}
+
+
+
 addUserLocation();
 fetchAndDisplayRoute();
 addAllTrails();
-
+DisplayPointOfInterests();
