@@ -1,4 +1,5 @@
-﻿using pilgrimsvandringen_grupp_5_e.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using pilgrimsvandringen_grupp_5_e.Data;
 using pilgrimsvandringen_grupp_5_e.Models;
 using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
 
@@ -21,6 +22,12 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
         public async Task<IEnumerable<PointOfInterest>> GetAllPointsOfInterestsAsync()
         {
             return await GetAllAsync();
+        }
+
+        public async Task<IEnumerable<PointOfInterest>> GetAllPointsOfInterestsByIdAsync(int trailId)
+        {
+            var pointsOfInterests = await _context.PointsOfInterests.FromSql($"SELECT * FROM \"PointsOfInterests\"").Where(p => p.TrailId.Equals(trailId)).ToListAsync();
+            return pointsOfInterests;
         }
     }
 }

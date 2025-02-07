@@ -24,6 +24,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 Longitude = point.Longitude,
                 Latitude = point.Latitude,
                 Category = point.Category,
+                TrailId = point.TrailId,
             };
             
             return vm;
@@ -42,12 +43,36 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                     Description = point.Description,
                     Longitude = point.Longitude,
                     Latitude = point.Latitude,
-                    Category = point.Category
+                    Category = point.Category,
+                    TrailId = point.TrailId,
                 };
                 pointOfInterestVms.Add(vm);
                 
             }
             return pointOfInterestVms;
+        }
+
+        public async Task<IEnumerable<PointOfInterestViewModel>> GetAllPointsOfInterestsById(int trailId)
+        {
+            var points = await _pointOfInterestRepository.GetAllPointsOfInterestsByIdAsync(trailId);
+            List<PointOfInterestViewModel> pointOfInterestVms = new List<PointOfInterestViewModel>();
+            foreach (var point in points)
+            {
+                var vm = new PointOfInterestViewModel
+                {
+                    Id = point.Id,
+                    Name = point.Name,
+                    Description = point.Description,
+                    Longitude = point.Longitude,
+                    Latitude = point.Latitude,
+                    Category = point.Category,
+                    TrailId = point.TrailId,
+                };
+                pointOfInterestVms.Add(vm);
+
+            }
+            return pointOfInterestVms;
+
         }
     }
 }
