@@ -12,7 +12,7 @@
         public string Color { get; set; }
         public double Length { get; set; }
         public double Height { get; set; }
-        public string Surface { get; set; }
+        public string Surface { get; set; }        
 
         public int TrailId { get; set; }
         public Trail Trail { get; set; }

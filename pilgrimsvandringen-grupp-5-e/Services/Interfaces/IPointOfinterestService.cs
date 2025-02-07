@@ -7,6 +7,6 @@ namespace pilgrimsvandringen_grupp_5_e.Services.Interfaces
     {
         Task<PointOfInterestViewModel> GetPointOfInterest(int id);
         Task<IEnumerable<PointOfInterestViewModel>> GetAllPointsOfInterests();
-
+        Task<IEnumerable<PointOfInterestViewModel>>GetAllPointsOfInterestsById(int id);
     }
 }
