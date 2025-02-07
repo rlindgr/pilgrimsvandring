@@ -70,77 +70,29 @@
 </section>
 
 <div class="trail-stages-container">
-        @foreach (var stage in Model.stageViewModels)
-        {
-            <p>@stage.Name</p>
-        }
+      
+   
+        <button class="button-container" id="back-button">
+            <img src="~/icons/mainpage/right-arrow.png" alt="back-button">
+        </button>
+        
   
-    <button class="button-container" id="back-button">
-        <img src="~/icons/mainpage/right-arrow.png" alt="back-button">
-    </button>
     <div id="flex-container-stages">
-        <div class="stage-item">
-            <img src="/images/mainpage/mot_ljungdalen.jpg"/>
-            <h4 class="stage-title">Etapp 1</h4>
-            <p class="stage-length">2km</p>
-        </div>
-         <div class="stage-item">
-            <img src="/images/mainpage/mot_ljungdalen.jpg"/>
-            <h4 class="stage-title">Etapp 1</h4>
-            <p class="stage-length">2km</p>
-        </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/mot_ljungdalen.jpg" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/mot_ljungdalen.jpg" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/mot_ljungdalen.jpg" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/mot_ljungdalen.jpg" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/trailsmap.png" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/trailsmap.png" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/trailsmap.png" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/trailsmap.png" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/trailsmap.png" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
-            <div class="stage-item">
-                <img src="/images/mainpage/trailsmap.png" />
-                <h4 class="stage-title">Etapp 1</h4>
-                <p class="stage-length">2km</p>
-            </div>
 
-           
+
+
+            @foreach (var stage in Model.stageViewModels)
+            {
+
+                <div class="stage-item">
+                    <img src="/images/mainpage/mot_ljungdalen.jpg" />
+                    <div class="stage-description">
+                        <h4 class="stage-title">@stage.Name </h4>
+                        <p class="stage-length"><img id="stats-icon" src="~/icons/mainpage/placeholder.png" />@stage.Length km</p>
+                    </div>
+                </div>
+            }
+    
 
     </div>
     <button class="button-container" id="forward-button">
