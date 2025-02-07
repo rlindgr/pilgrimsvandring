@@ -5,6 +5,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services
 {
     public class ApiEngine
     {
+        // got the code from Eriks lesson
         private readonly HttpClient _httpClient;
 
         public ApiEngine(HttpClient httpClient)
