@@ -203,12 +203,40 @@ function addAllTrails() {
 }
 
 
-async function testConnectionAndDisplayPOI() {
+// Define projections
+const sweref99tm = "+proj=utm +zone=33 +ellps=GRS80 +units=m +no_defs";
+const wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
+
+// Function to convert coordinates
+function convertToLatLng(easting, northing) {
+    const [longitude, latitude] = proj4(sweref99tm, wgs84, [easting, northing]);
+    return { lat: latitude, lng: longitude };
+}
+
+
+async function DisplayPointOfInterests() {
     try {
         const response = await fetch('/PointsOfInterests/GetAll');
         if (!response.ok) throw new Error('Failed to load POIs.');
 
-        
+        const points = await response.json();
+
+        points.forEach(point => {
+            // Extract Easting and Northing by removing the prefix 'E' and 'N'
+            const easting = parseFloat(point.longitude.substring(1));
+            const northing = parseFloat(point.latitude.substring(1));
+
+            // Convert to latitude and longitude
+            const { lat, lng } = convertToLatLng(easting, northing);
+
+            // Add marker to the map
+            const marker = L.marker([lat, lng], { icon: greenIcon }).addTo(map);
+            marker.bindPopup(`
+                <b>${point.name}</b><br>
+                ${point.category}<br>
+                ${point.description}
+            `);
+        });
 
     } catch (error) {
         console.error('Error fetching POIs:', error);
@@ -221,4 +249,4 @@ async function testConnectionAndDisplayPOI() {
 addUserLocation();
 fetchAndDisplayRoute();
 addAllTrails();
-testConnectionAndDisplayPOI();
+DisplayPointOfInterests();
