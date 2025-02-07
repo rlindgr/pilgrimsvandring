@@ -18,6 +18,9 @@ builder.Services.AddScoped<IPointOfInterestRepository, PointOfInterestRepository
 builder.Services.AddScoped<IStageInformationService, StageInformationService>();
 builder.Services.AddScoped<IStageRepository, StageRepository>();
 
+// api
+builder.Services.AddHttpClient<ApiEngine>();
+
 var config = new ConfigurationBuilder()
 .AddUserSecrets<Program>()
 .Build();
