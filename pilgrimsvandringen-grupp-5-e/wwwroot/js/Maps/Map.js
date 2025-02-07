@@ -105,7 +105,9 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
             marker_options: {
-                
+                startIconUrl: '../images/MapImages/hide.png',
+                endIconUrl: '../images/MapImages/hide.png',
+                shadowUrl: '../images/MapImages/hide.png'
             },
             polyline_options: {
                 color: `${trailColor}`,
@@ -115,7 +117,7 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
 
         gpxLayer.addTo(map);
 
-        
+
         gpxLayer.on('loaded', function (e) {
             map.fitBounds(e.target.getBounds());
         });
