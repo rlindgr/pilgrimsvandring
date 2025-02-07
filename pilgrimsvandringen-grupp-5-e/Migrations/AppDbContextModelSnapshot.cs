@@ -49,7 +49,12 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("TrailId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TrailId");
 
                     b.ToTable("PointsOfInterests");
                 });
@@ -161,15 +166,33 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                     b.ToTable("Trails");
                 });
 
-            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Stage", b =>
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.PointOfInterest", b =>
                 {
                     b.HasOne("pilgrimsvandringen_grupp_5_e.Models.Trail", "Trail")
-                        .WithMany()
+                        .WithMany("PointOfInterests")
                         .HasForeignKey("TrailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Trail");
+                });
+
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Stage", b =>
+                {
+                    b.HasOne("pilgrimsvandringen_grupp_5_e.Models.Trail", "Trail")
+                        .WithMany("Stages")
+                        .HasForeignKey("TrailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Trail");
+                });
+
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Trail", b =>
+                {
+                    b.Navigation("PointOfInterests");
+
+                    b.Navigation("Stages");
                 });
 #pragma warning restore 612, 618
         }

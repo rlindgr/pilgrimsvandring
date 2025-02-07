@@ -24,7 +24,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         {
             var model = await _trailInformationService.GetTrailInformation(id);
             var modelStage = await _stageInformationService.GetAllStagesById(model.Id);
-            model.stageViewModels = modelStage.ToList();
+            model.StageViewModels = modelStage.ToList();
             
             return View("~/Views/Trails/TrailDetails.cshtml", model);
         }

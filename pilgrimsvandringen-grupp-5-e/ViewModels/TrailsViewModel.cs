@@ -14,6 +14,7 @@
         public double Height { get; set; }
         public string Surface { get; set; }
 
-        public ICollection<StageViewModel> stageViewModels { get; set; }
+        public ICollection<StageViewModel> StageViewModels { get; set; }
+        public ICollection<PointOfInterestViewModel> PointOfInterestViewModels { get; set;}
     }
 }
