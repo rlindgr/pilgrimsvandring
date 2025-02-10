@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if(Model != null)
+{
+    @for (int i = 0; i < 168; i++)
+    {
+        <div>
+            <h1>@Model.hourly.time[i]</h1>
+            <p>@Model.hourly.temperature_2m[i]</p> @*@Model.hourly_units.temperature_2m</p>*@
+            <p>@Model.hourly.precipitation_probability[i]</p>@* @Model.hourly_units.precipitation_probability</p>
+            <p>@Model.hourly.precipitation @Model.hourly_units.precipitation</p>
+            <p>@Model.hourly.rain @Model.hourly_units.rain</p>
+            <p>@Model.hourly.showers @Model.hourly_units.showers</p>
+            <p>@Model.hourly.snowfall @Model.hourly_units.snowfall</p>
+            <p>@Model.hourly.snow_depth @Model.hourly_units.snow_depth</p>
+            <p>@Model.hourly.visibility @Model.hourly_units.visibility</p>
+            <p>@Model.hourly.wind_speed_10m @Model.hourly_units.wind_speed_10m</p>
+            <p>@Model.hourly.wind_direction_10m @Model.hourly_units.wind_direction_10m</p>
+            <p>@Model.hourly.wind_gusts_10m @Model.hourly_units.wind_gusts_10m</p>*@
+        </div>
+    }
+}

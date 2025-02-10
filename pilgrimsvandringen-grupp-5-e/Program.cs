@@ -17,9 +17,11 @@ builder.Services.AddScoped<IPointOfinterestService, PointOfInterestService>();
 builder.Services.AddScoped<IPointOfInterestRepository, PointOfInterestRepository>();
 builder.Services.AddScoped<IStageInformationService, StageInformationService>();
 builder.Services.AddScoped<IStageRepository, StageRepository>();
+builder.Services.AddScoped<WeatherService>();
 
 // api
 builder.Services.AddHttpClient<ApiEngine>();
+builder.Services.AddScoped<ApiEngine>();
 
 var config = new ConfigurationBuilder()
 .AddUserSecrets<Program>()
