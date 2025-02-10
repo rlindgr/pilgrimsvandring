@@ -8,6 +8,11 @@ import { blueFlag } from "../Maps/Markers.js";
 import { greenFlag } from "../Maps/Markers.js";
 
 
+let sleep = [];
+let wc = [];
+let boat = [];
+let waterCrossing = [];
+
 let test = [
     { name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
     { name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
@@ -247,6 +252,7 @@ async function DisplayPointOfInterests() {
 
         const points = await response.json();
 
+
         points.forEach(point => {
             // Extract Easting and Northing by removing the prefix 'E' and 'N'
             const easting = parseFloat(point.longitude.substring(1));
@@ -257,17 +263,51 @@ async function DisplayPointOfInterests() {
             const { lat, lng } = convertToLatLng(easting, northing);
 
             // Add marker to the map
-            const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
-            marker.bindPopup(`
-                <b>${point.name}</b><br>
-                ${point.category}<br>
-                ${point.description}
-            `);
+            //const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
+            //marker.bindPopup(`
+            //    <b>${point.name}</b><br>
+            //    ${point.category}<br>
+            //    ${point.description}
+            //`);
+            addToMap();
+            addToCategoryList(point.category);
         });
 
     } catch (error) {
         console.error('Error fetching POIs:', error);
         document.body.innerText = 'Error fetching POIs';
+    }
+}
+
+function addToMap() {
+    const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
+    marker.bindPopup(`
+                <b>${point.name}</b><br>
+                ${point.category}<br>
+                ${point.description}
+            `);
+}
+
+
+function addToCategoryList(category) {
+    switch (category.toLowerCase()) {
+        case 'vadställe':
+            waterCrossing.push(point)
+            return vadstalle;
+        case 'vindskydd':
+            return vindskydd;
+        case 'dass':
+            return utedass;
+        case 'varning':
+            return varning;
+        case 'slogbod':
+            return vindskydd;
+        case 'båtöverfart':
+            return fartyg;
+        case 'färjeläge':
+            return fartyg;
+        case 'pån':
+            return fartyg;
     }
 }
 
