@@ -79,12 +79,9 @@
   
     <div id="flex-container-stages">
 
-
-
             @foreach (var stage in Model.StageViewModels)
             {
-
-                <div class="stage-item">
+                <div class="stage-item" id="@stage.Id">
                     <img src="/images/mainpage/mot_ljungdalen.jpg" />
                     <div class="stage-description">
                         <h4 class="stage-title">@stage.Name </h4>
@@ -92,13 +89,73 @@
                     </div>
                 </div>
             }
+    </div>
+
+
+
+              
+
     
 
-    </div>
+
+   
+
+
+
     <button class="button-container" id="forward-button">
         <img src="~/icons/mainpage/right-arrow.png" alt="forward-button" class="forward-button">
     </button>
 </div>
+
+    
+
+        @foreach (var stage in Model.StageViewModels)
+        {
+            <div class="big-container" id="big-container-@stage.Id" style="display:none;">
+                <div class="stage-name-container">
+                    <h3>@stage.StartPoint - @stage.EndPoint</h3>
+                </div>
+                <div class="description-container">
+                    <p>@stage.Description</p>
+                </div>
+            <div class="stage-stats-container">
+                <div class="stats-item">
+                    <img src="~/icons/mainpage/route.png" alt="längd-bild" />
+                    <p class="">@stage.Length Km</p>
+                </div>
+                <div class="stats-item">
+                    <img src="~/icons/mainpage/arrow.png" alt="längd-bild" />
+                    <p class="">@stage.Height Höjdmeter</p>
+                </div>
+                <div class="stats-item">
+                    <img src="~/icons/mainpage/speedometer (2).png" alt="höjdmeter-bild" />
+                    <p class="">@stage.Difficulty</p>
+                </div>
+                </div>
+            </div>
+        }
+   
 </div>
+
+<script>
+    const stageItem = document.querySelectorAll(".stage-item")
+   
+    stageItem.forEach(item => {
+		item.addEventListener('click', () => {
+			const stageId = item.id; 
+            const details = document.getElementById(`big-container-${stageId}`);
+
+			document.querySelectorAll(".big-container").forEach(container => {
+			 	container.style.display = "none";
+			 })
+
+             if(details){
+			 details.style.display = "flex";
+             }
+
+		})
+    })
+
+</script>
 
 <script type="module" src="~/js/trailDetails.js"></script>

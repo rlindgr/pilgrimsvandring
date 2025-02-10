@@ -4,6 +4,11 @@
     
 }
 
+h3 {
+    margin: 0px; 
+}
+
+
 .trail-page {
     margin: 0 10%;
 }
@@ -100,7 +105,7 @@ p {
     }
 
     .safety-item p {
-        font-size: 0.75rem;
+        font-size: 1rem;
     }
 
     .safety-item img {
@@ -112,8 +117,8 @@ p {
     position: relative;
     justify-content: center;
     width: 100%;
-   
 }
+   
 
 #flex-container-stages {
     display: flex;
@@ -161,10 +166,11 @@ p {
     flex-direction:column;
     background-color: #181818;
     height: 350px;
-    width:  250px;
+    width:  23%;
     border-radius: 15px;
     flex-shrink: 0;
     text-align: revert;  
+    cursor:pointer; 
 }
 
     .stage-item img {
@@ -199,6 +205,56 @@ p {
 #stats-icon{
     width:20px;
     margin-right:5px;
+}
+
+.big-container {
+    background-color: #181C0C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 70%;
+    margin: 20px auto;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.stage-name-container {
+    background-color: #242424;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.description-container {
+    background-color: #242424;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.stage-stats-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+    .stage-stats-container img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+
+
+.stats-item {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #242424;
+    border-radius: 10px;
 }
 
 @media all and (max-width:800px) {
@@ -239,6 +295,35 @@ p {
     .trail-info-container {
         flex-wrap: wrap;
         justify-content:center;
+        width: 100%; 
+    }
+
+    .stage-item {
+        height: 30vh; 
+        width: 50%; 
+    }
+
+    #back-button {
+        display: none;
+    }
+
+    #forward-button {
+        display: none;
+    }
+    .trail-page {
+        margin: 0 5px;
+    }
+
+    .stats-item img {
+        height: 30px; 
+    }
+
+    .stats-item {
+        padding: 5px; 
+    }
+
+    .big-container {
+        width: 100%; 
     }
 
 }
