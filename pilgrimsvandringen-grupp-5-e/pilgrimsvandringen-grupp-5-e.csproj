@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
     <Folder Include="wwwroot\images\MapImages\" />
     <Folder Include="wwwroot\js\Maps\Geojson\" />
   </ItemGroup>

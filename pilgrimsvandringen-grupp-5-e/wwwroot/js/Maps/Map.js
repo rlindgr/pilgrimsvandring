@@ -1,13 +1,17 @@
 ﻿
 import { greenIcon } from "../Maps/Markers.js";
 import { redIcon } from "../Maps/Markers.js";
-import { hideIcon } from "../Maps/Markers.js";
+import { vadstalle, vindskydd, utedass, varning, fartyg } from "../Maps/Markers.js";
+import { redFlag } from "../Maps/Markers.js";
+import { yellowFlag } from "../Maps/Markers.js";
+import { blueFlag } from "../Maps/Markers.js";
+import { greenFlag } from "../Maps/Markers.js";
 
 
 let test = [
-    { name: 'Indalsleden', color: 'blue', startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
-    { name: 'Karboleleden', color: 'yellow', startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
-    { name: 'st-olovsleden', color: 'red', startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927] }
+    { name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
+    { name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
+    { name: 'st-olovsleden', color: 'red', trailIcon: redFlag, startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927] }
 ];
 const map = L.map('map').setView([62.9, 13.53], 8);
 
@@ -91,8 +95,8 @@ async function fetchAndDisplayRoute() {
         }).addTo(map);
 
         
-        L.marker([startCoordinates[1], startCoordinates[0]], { icon: greenIcon }).addTo(map).bindPopup('Start: Jämt-norge-leden');
-        L.marker([endCoordinates[1], endCoordinates[0]], { icon: redIcon }).addTo(map).bindPopup('Slut: Jämt-norge-leden');
+        L.marker([startCoordinates[1], startCoordinates[0]], { icon: greenFlag }).addTo(map).bindPopup('Start: Jämt-norge-leden');
+        L.marker([endCoordinates[1], endCoordinates[0]], { icon: greenFlag }).addTo(map).bindPopup('Slut: Jämt-norge-leden');
 
     } catch (error) {
         console.error('Error loading or displaying the route:', error);
@@ -100,14 +104,16 @@ async function fetchAndDisplayRoute() {
     }
 }
 
-async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint) { //FIX: add popup for icons
+async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint, startIcon) { //FIX: add popup for icons
     try {
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
             marker_options: {
                 startIconUrl: '../images/MapImages/hide.png',
                 endIconUrl: '../images/MapImages/hide.png',
-                shadowUrl: '../images/MapImages/hide.png'
+                shadowUrl: '../images/MapImages/hide.png',
+                iconSize: [1, 1],
+                shadowSize: [1, 1]
             },
             polyline_options: {
                 color: `${trailColor}`,
@@ -122,8 +128,8 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
             map.fitBounds(e.target.getBounds());
         });
 
-        L.marker([startPoint[0], startPoint[1]], { icon: greenIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
-        L.marker([endPoint[0], endPoint[1]], { icon: redIcon }).addTo(map).bindPopup(`Slut:${trailName}`);
+        L.marker([startPoint[0], startPoint[1]], { icon: startIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
+        L.marker([endPoint[0], endPoint[1]], { icon: startIcon }).addTo(map).bindPopup(`Slut:${trailName}`);
 
     } catch (error) {
         console.error('Error loading or displaying the GPX route:', error);
@@ -199,7 +205,7 @@ function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
 
 
 function addAllTrails() {
-    test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint));
+    test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon));
 }
 
 
@@ -213,6 +219,26 @@ function convertToLatLng(easting, northing) {
     return { lat: latitude, lng: longitude };
 }
 
+function getCategoryIcon(category) {
+    switch (category.toLowerCase()) {
+        case 'vadställe':
+            return vadstalle;
+        case 'vindskydd':
+            return vindskydd;
+        case 'dass':
+            return utedass;
+        case 'varning':
+            return varning;
+        case 'slogbod':
+            return vindskydd;
+        case 'båtöverfart':
+            return fartyg;
+        case 'färjeläge':
+            return fartyg;
+        case 'pån':
+            return fartyg;
+    }
+}
 
 async function DisplayPointOfInterests() {
     try {
@@ -226,11 +252,12 @@ async function DisplayPointOfInterests() {
             const easting = parseFloat(point.longitude.substring(1));
             const northing = parseFloat(point.latitude.substring(1));
 
+            const icon = getCategoryIcon(point.category);
             // Convert to latitude and longitude
             const { lat, lng } = convertToLatLng(easting, northing);
 
             // Add marker to the map
-            const marker = L.marker([lat, lng], { icon: greenIcon }).addTo(map);
+            const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
             marker.bindPopup(`
                 <b>${point.name}</b><br>
                 ${point.category}<br>
