@@ -1,7 +1,7 @@
 ﻿
 import { greenIcon } from "../Maps/Markers.js";
 import { redIcon } from "../Maps/Markers.js";
-import { hideIcon } from "../Maps/Markers.js";
+import { vadstalle, vindskydd, utedass, varning, fartyg } from "../Maps/Markers.js";
 
 
 let test = [
@@ -107,7 +107,9 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
             marker_options: {
                 startIconUrl: '../images/MapImages/hide.png',
                 endIconUrl: '../images/MapImages/hide.png',
-                shadowUrl: '../images/MapImages/hide.png'
+                shadowUrl: '../images/MapImages/hide.png',
+                iconSize: [1, 1],
+                shadowSize: [1, 1]
             },
             polyline_options: {
                 color: `${trailColor}`,
@@ -213,6 +215,26 @@ function convertToLatLng(easting, northing) {
     return { lat: latitude, lng: longitude };
 }
 
+function getCategoryIcon(category) {
+    switch (category.toLowerCase()) {
+        case 'vadställe':
+            return vadstalle;
+        case 'vindskydd':
+            return vindskydd;
+        case 'dass':
+            return utedass;
+        case 'varning':
+            return varning;
+        case 'slogbod':
+            return vindskydd;
+        case 'båtöverfart':
+            return fartyg;
+        case 'färjeläge':
+            return fartyg;
+        case 'pån':
+            return fartyg;
+    }
+}
 
 async function DisplayPointOfInterests() {
     try {
@@ -226,11 +248,12 @@ async function DisplayPointOfInterests() {
             const easting = parseFloat(point.longitude.substring(1));
             const northing = parseFloat(point.latitude.substring(1));
 
+            const icon = getCategoryIcon(point.category);
             // Convert to latitude and longitude
             const { lat, lng } = convertToLatLng(easting, northing);
 
             // Add marker to the map
-            const marker = L.marker([lat, lng], { icon: greenIcon }).addTo(map);
+            const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
             marker.bindPopup(`
                 <b>${point.name}</b><br>
                 ${point.category}<br>
