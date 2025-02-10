@@ -68,3 +68,43 @@ export const fartyg = L.icon({
     shadowAnchor: [4, 62], 
     popupAnchor: [-3, -76]
 });
+
+export const redFlag = L.icon({
+    iconUrl: '../images/MapImages/red-flag.png',
+    shadowUrl: null,
+    iconSize: [38, 95],
+    shadowSize: [50, 64],
+    iconAnchor: [22, 94],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76]
+});
+
+export const yellowFlag = L.icon({
+    iconUrl: '../images/MapImages/yellow-flag.png',
+    shadowUrl: null,
+    iconSize: [38, 95],
+    shadowSize: [50, 64],
+    iconAnchor: [22, 94],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76]
+});
+
+export const blueFlag = L.icon({
+    iconUrl: '../images/MapImages/blue-flag.png',
+    shadowUrl: null,
+    iconSize: [38, 95],
+    shadowSize: [50, 64],
+    iconAnchor: [22, 94],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76]
+});
+
+export const greenFlag = L.icon({
+    iconUrl: '../images/MapImages/green-flag.png',
+    shadowUrl: null,
+    iconSize: [38, 95],
+    shadowSize: [50, 64],
+    iconAnchor: [22, 94],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76]
+});
