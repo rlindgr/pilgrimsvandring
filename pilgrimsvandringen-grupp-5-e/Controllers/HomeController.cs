@@ -31,10 +31,6 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public async Task<IActionResult> Weather()
-        {
-            var forecast = await _weatherService.GetWeather();
-            return View("~/Views/Weather/WeatherForecast.cshtml", forecast);
-        }
+        
     }
 }
