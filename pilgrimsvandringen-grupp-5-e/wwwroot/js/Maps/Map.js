@@ -8,6 +8,15 @@ import { blueFlag } from "../Maps/Markers.js";
 import { greenFlag } from "../Maps/Markers.js";
 
 
+
+let categoryMarkers = {
+   sleep: [],
+    wc: [],
+    boat: [],
+    waterCrossing: [],
+    varningArray: []
+} ;
+
 let test = [
     { name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
     { name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
@@ -247,6 +256,7 @@ async function DisplayPointOfInterests() {
 
         const points = await response.json();
 
+
         points.forEach(point => {
             // Extract Easting and Northing by removing the prefix 'E' and 'N'
             const easting = parseFloat(point.longitude.substring(1));
@@ -256,13 +266,16 @@ async function DisplayPointOfInterests() {
             // Convert to latitude and longitude
             const { lat, lng } = convertToLatLng(easting, northing);
 
-            // Add marker to the map
+             /*Add marker to the map*/
             const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
             marker.bindPopup(`
                 <b>${point.name}</b><br>
                 ${point.category}<br>
                 ${point.description}
             `);
+            /*addToMap();*/
+            addToCategoryList(point, marker);
+            
         });
 
     } catch (error) {
@@ -271,9 +284,73 @@ async function DisplayPointOfInterests() {
     }
 }
 
+//function addToMap() {
+//    const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
+//    marker.bindPopup(`
+//                <b>${point.name}</b><br>
+//                ${point.category}<br>
+//                ${point.description}
+//            `);
+//}
+
+
+function addToCategoryList(point, marker) {
+    const category = point.category.toLowerCase();
+
+    // Se till att categoryMarkers[category] alltid är en array
+    //if (!categoryMarkers[category]) {
+    //    categoryMarkers[category] = []; // Om den inte finns, skapa en tom array
+    //}
+    switch (category) {
+        case 'vadställe':
+            categoryMarkers['waterCrossing'].push(marker);
+            break;
+        case 'vindskydd':
+            categoryMarkers['sleep'].push(marker);
+            break;
+        case 'dass':
+            categoryMarkers['wc'].push(marker);
+            break;
+        case 'varning':
+            categoryMarkers['varningArray'].push(marker);
+            break;
+        case 'slogbod':
+            categoryMarkers['sleep'].push(marker);
+            break;
+        case 'båtöverfart':
+            categoryMarkers['boat'].push(marker);
+            break;
+        case 'färjeläge':
+            categoryMarkers['boat'].push(marker);
+            break;
+        case 'pån':
+            categoryMarkers['boat'].push(marker);
+            break;
+    }
+}
+
+function toggleCategory(category) {
+    if (!categoryMarkers[category]) return;
+
+    categoryMarkers[category].forEach(marker => {
+        if (map.hasLayer(marker)) {
+            map.removeLayer(marker);
+        } else {
+            marker.addTo(map);
+        }
+    });
+}
 
 
 addUserLocation();
 fetchAndDisplayRoute();
 addAllTrails();
 DisplayPointOfInterests();
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('toggleSleep').addEventListener('click', () => toggleCategory('sleep'));
+    document.getElementById('toggleWc').addEventListener('click', () => toggleCategory('wc'));
+    document.getElementById('toggleBoat').addEventListener('click', () => toggleCategory('boat'));
+    document.getElementById('toggleWaterCrossing').addEventListener('click', () => toggleCategory('waterCrossing'));
+    document.getElementById('toggleVarningArray').addEventListener('click', () => toggleCategory('varningArray'));
+});
