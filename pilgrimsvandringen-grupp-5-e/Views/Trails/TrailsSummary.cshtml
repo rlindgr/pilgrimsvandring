@@ -7,10 +7,38 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Leder</h1>       
+<link rel="stylesheet" href="~/css/trailssummary.css" />
+
+<section class="trail-cards-container">
+    
     @foreach (var trail in Model)
     {
-        <a class="nav-link text-dark" asp-area="" asp-controller="Trails" asp-action="TrailDetails" asp-route-id="@trail.Id">@trail.Name,  Längd: @trail.Length Km, Ledfärg: @trail.Color</a>
+        <article class="trail-card-item">
+          <a class="nav-link text-dark" asp-area="" asp-controller="Trails" asp-action="TrailDetails" asp-route-id="@trail.Id">
+            <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+            <div class="trail-info-container">
+					<h3>@trail.Name</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+                </p>
+                <div class="trail-stats-container">
+                    <div class="stats-length-container stats-container">
+                        <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                            <p>@trail.Length Km</p>
+                    </div>
+                    <div class="stats-height-container stats-container">
+                        <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                            <p>@trail.Height m</p>
+                    </div>
+                    <div class="stats-difficulty-container stats-container">
+                        <img class="stats-icon" src="/icons/mainpage/placeholder.png" alt="Alternate Text" />
+                        <p>@trail.Difficulty</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </article>
+        
     }    
-</div>
+    </section>

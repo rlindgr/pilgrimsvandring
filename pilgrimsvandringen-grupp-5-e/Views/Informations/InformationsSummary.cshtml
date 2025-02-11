@@ -6,6 +6,21 @@
 @{
     ViewData["Title"] = "Information";
 }
+
+<link rel="stylesheet" href="~/css/informationssummary.css" />
+
+<div class="main-container">
+    <div class="links-container">
+        <h2 id="hunting-link">JAKT</h2>
+        <h2>VÄDER</h2>
+        <h2>UTRUSTNING</h2>
+        <h2>NATUR</h2>
+    </div>
+    <div id="info-container">
+        <h3 id="info-header"></h3> 
+        
+    </div>
+</div>
 <div class="text-center">
     <h1 class="display-4">Information</h1>
     @foreach (var point in Model)
@@ -13,3 +28,5 @@
         <a class="nav-link text-dark" asp-area="" asp-controller="PointsOfInterests" asp-action="InformationPointOfInterest" asp-route-id="@point.Id">@point.Name, Typ av anläggning: @point.Category</a>
     }    
 </div>
+
+<script type="module" src="~/js/informationSummary.js"></script>
