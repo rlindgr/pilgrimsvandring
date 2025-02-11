@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Väderprognos den kommande veckan på våra leder</h2>
+
+<div>
+    <ul>
+        <li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsGreen">
+                <h3>Jämt-Norgeleden</h3>
+                    <div>
+                        <h4>Startpunkt: Revsund</h4>
+                        <p>@Model[0].hourly.time[12]</p>
+                        <p>@Model[0].hourly.temperature_2m[12] @Model[0].hourly_units.temperature_2m</p>
+                    </div>
+                    <div>
+                        <h4>Slutpunkt: Stugudalen</h4>
+                        <p>@Model[1].hourly.time[12]</p>
+                        <p>@Model[1].hourly.temperature_2m[12] @Model[1].hourly_units.temperature_2m</p>
+                    </div>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsYellow">
+                <h3>Kårböleleden</h3>
+                <div>
+                    <h4>Startpunkt: Kårböle</h4>
+                    <p>@Model[2].hourly.time[12]</p>
+                    <p>@Model[2].hourly.temperature_2m[12] @Model[2].hourly_units.temperature_2m</p>
+                </div>
+                <div>
+                    <h4>Slutpunkt: Billsåsen</h4>
+                    <p>@Model[3].hourly.time[12]</p>
+                    <p>@Model[3].hourly.temperature_2m[12] @Model[3].hourly_units.temperature_2m</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsRed">
+                <h3>S:t Olavsleden</h3>
+                <div>
+                    <h4>Startpunkt: Sundsvall</h4>
+                    <p>@Model[4].hourly.time[12]</p>
+                    <p>@Model[4].hourly.temperature_2m[12] @Model[4].hourly_units.temperature_2m</p>
+                </div>
+                <div>
+                    <h4>Slutpunkt: Trondheim</h4>
+                    <p>@Model[5].hourly.time[12]</p>
+                    <p>@Model[5].hourly.temperature_2m[12] @Model[5].hourly_units.temperature_2m</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsBlue">
+                <h3>Indalsleden</h3>
+                <div>
+                    <h4>Startpunkt: Selånger</h4>
+                    <p>@Model[6].hourly.time[12]</p>
+                    <p>@Model[6].hourly.temperature_2m[12] @Model[6].hourly_units.temperature_2m</p>
+                </div>
+                <div>
+                    <h4>Slutpunkt: lit</h4>
+                    <p>@Model[7].hourly.time[12]</p>
+                    <p>@Model[7].hourly.temperature_2m[12] @Model[7].hourly_units.temperature_2m</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+    
+    
+</div>
+
+@* @if(Model != null)
+{
+    @for (int i = 0; i < Model.hourly.time.Count; i++)
+    {       
+
+        <div>
+            <table>
+                <h4>Datum och klockslag: @Model.hourly.time[i]</h4>
+                <tr>                    
+                    <th>Temperatur</th>
+                    <th>Sannolikhet för nederbörd</th>
+                    <th>Nederbörd</th>                    
+                    <th>Snödjup</th>                    
+                    <th>Vindstyrka</th>
+                    <th>Vindriktning</th>
+                    <th>Kastvindar</th>
+                </tr>
+                <tr>                    
+                    <td>@Model.hourly.temperature_2m[i] @Model.hourly_units.temperature_2m</td>
+                    <td>@Model.hourly.precipitation_probability[i] @Model.hourly_units.precipitation_probability</td>
+                    <td>@Model.hourly.precipitation[i] @Model.hourly_units.precipitation</td>                    
+                    <td>@Model.hourly.snow_depth[i] @Model.hourly_units.snow_depth</td>                    
+                    <td>@Model.hourly.wind_speed_10m[i] @Model.hourly_units.wind_speed_10m</td>
+                    <td>@Model.hourly.wind_direction_10m[i] @Model.hourly_units.wind_direction_10m</td>
+                    <td>@Model.hourly.wind_gusts_10m[i] @Model.hourly_units.wind_gusts_10m</td>
+                </tr>
+            </table>
+        </div>
+    }
+} *@

@@ -4,6 +4,6 @@
     {
         public float elevation { get; set; }
         public hourly hourly { get; set; }
-        public hourly_units hourly_Units { get; set; }
+        public hourly_units hourly_units { get; set; }
     }
 }
