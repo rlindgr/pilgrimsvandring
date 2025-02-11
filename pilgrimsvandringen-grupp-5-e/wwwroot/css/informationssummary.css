@@ -1,0 +1,30 @@
+﻿.main-container {
+    border: solid black; 
+    height: 70vh; 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    background-color: black; 
+}
+
+.links-container h2 {
+    border-bottom: solid white;
+    color: white;
+}
+
+
+.links-container {
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+
+.info-container {
+    border: solid white;
+    width: 50%;
+    color: white; 
+}
+
+.info-container h3 {
+    text-align:center; 
+}
