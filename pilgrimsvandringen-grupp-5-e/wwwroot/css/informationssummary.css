@@ -1,15 +1,15 @@
 ﻿.main-container {
-    border: solid black; 
-    height: 70vh; 
-    display: flex; 
-    justify-content: space-around; 
-    align-items: center; 
-    background-color: black; 
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #292F15;
 }
 
 .links-container h2 {
     border-bottom: solid white;
     color: white;
+    cursor:pointer;
 }
 
 
@@ -19,12 +19,52 @@
     gap: 20px; 
 }
 
-.info-container {
-    border: solid white;
+#info-container {
     width: 50%;
     color: white; 
 }
 
-.info-container h3 {
+#info-container h3 {
     text-align:center; 
+}
+
+.small-info-container{
+    display:flex;
+    width:100%;
+    justify-content:space-between;
+}
+
+.small-info-container h4{
+    text-align:center;
+}
+
+.left-item{
+    width:45%;
+}
+
+.right-item {
+    width: 45%;
+}
+
+.hunting-time-info-container{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.hunting-time-info-item, .gear-list-item {
+    display: flex;
+    justify-content: space-around;
+    border: solid white 1px;
+    border-radius: 50px;
+    align-items: center;
+}
+
+    .hunting-time-info-item p {
+        margin: 0;
+        padding: 20px 0px;
+    }
+
+.gear-list-item {
+    padding: 10px;
 }

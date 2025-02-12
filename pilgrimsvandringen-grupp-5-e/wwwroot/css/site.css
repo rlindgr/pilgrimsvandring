@@ -57,6 +57,10 @@ html {
     flex-wrap: wrap;
     background-color: #FFEBE1;
     text-decoration: none;
+    position: fixed;
+    left:0;
+    bottom:0;
+    width:100%;
 }
 
 .footer-container a {
