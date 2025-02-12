@@ -6,7 +6,10 @@
 
 <div class="trail-page">
 <div class="stage-image-container">
-<img src="~/images/mainpage/trailsmap.png" alt="" />
+        <div id="trail"
+             style="height: 500px; width: 100%;"
+             data-trail-id="@Model.Id">
+        </div>
 
 </div>
 
@@ -156,6 +159,13 @@
 		})
     })
 
+    
+
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.0/gpx.min.js"></script>
+<script type="module" src="~/js/trailDetailsMap.js" asp-append-version="true"></script>
 <script type="module" src="~/js/trailDetails.js"></script>

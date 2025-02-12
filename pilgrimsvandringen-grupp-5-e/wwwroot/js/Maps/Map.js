@@ -17,7 +17,7 @@ let categoryMarkers = {
     varningArray: []
 } ;
 
-let test = [
+let trailsInformation = [
     { name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
     { name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
     { name: 'st-olovsleden', color: 'red', trailIcon: redFlag, startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927] }
@@ -29,6 +29,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
+
 
 // Function to fetch and display the user location
 function addUserLocation() {
@@ -113,7 +114,7 @@ async function fetchAndDisplayRoute() {
     }
 }
 
-async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint, startIcon) { //FIX: add popup for icons
+export async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint, trailIcon) { //FIX: add popup for icons
     try {
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
@@ -137,8 +138,8 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
             map.fitBounds(e.target.getBounds());
         });
 
-        L.marker([startPoint[0], startPoint[1]], { icon: startIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
-        L.marker([endPoint[0], endPoint[1]], { icon: startIcon }).addTo(map).bindPopup(`Slut:${trailName}`);
+        L.marker([startPoint[0], startPoint[1]], { icon: trailIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
+        L.marker([endPoint[0], endPoint[1]], { icon: trailIcon }).addTo(map).bindPopup(`Slut:${trailName}`);
 
     } catch (error) {
         console.error('Error loading or displaying the GPX route:', error);
@@ -214,7 +215,7 @@ function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
 
 
 function addAllTrails() {
-    test.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon));
+    trailsInformation.forEach(trail=> fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon));
 }
 
 

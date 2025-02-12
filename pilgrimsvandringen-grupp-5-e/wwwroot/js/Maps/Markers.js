@@ -1,7 +1,7 @@
 ﻿
 export const greenIcon = L.icon({
-    iconUrl: '../images/MapImages/leaf-green.png',
-    shadowUrl: '../images/MapImages/leaf-shadow.png',
+    iconUrl: '/images/MapImages/leaf-green.png',
+    shadowUrl: '/images/MapImages/leaf-shadow.png',
         iconSize: [38, 95], // size of the icon
         shadowSize: [50, 64], // size of the shadow
         iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
@@ -70,7 +70,7 @@ export const fartyg = L.icon({
 });
 
 export const redFlag = L.icon({
-    iconUrl: '../images/MapImages/red-flag.png',
+    iconUrl: '/images/MapImages/red-flag.png',
     shadowUrl: null,
     iconSize: [38, 95],
     shadowSize: [50, 64],
@@ -80,7 +80,7 @@ export const redFlag = L.icon({
 });
 
 export const yellowFlag = L.icon({
-    iconUrl: '../images/MapImages/yellow-flag.png',
+    iconUrl: '/images/MapImages/yellow-flag.png',
     shadowUrl: null,
     iconSize: [38, 95],
     shadowSize: [50, 64],
@@ -90,7 +90,7 @@ export const yellowFlag = L.icon({
 });
 
 export const blueFlag = L.icon({
-    iconUrl: '../images/MapImages/blue-flag.png',
+    iconUrl: '/images/MapImages/blue-flag.png',
     shadowUrl: null,
     iconSize: [38, 95],
     shadowSize: [50, 64],
@@ -100,7 +100,7 @@ export const blueFlag = L.icon({
 });
 
 export const greenFlag = L.icon({
-    iconUrl: '../images/MapImages/green-flag.png',
+    iconUrl: '/images/MapImages/green-flag.png',
     shadowUrl: null,
     iconSize: [38, 95],
     shadowSize: [50, 64],
