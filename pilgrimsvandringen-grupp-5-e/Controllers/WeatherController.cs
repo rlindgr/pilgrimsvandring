@@ -20,8 +20,8 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             return View("~/Views/Weather/WeatherForecastDetails.cshtml", currentPosition);
         }
 
-        public async Task<IActionResult> WeatherForeCastDetailsGreen()
-        {            
+        public async Task<IActionResult> WeatherForeCastDetailsGreen(string trailName)
+        {
             var greenTrail = await _weatherService.GetWeatherTrailGreenAsync();
 
             return View("~/Views/Weather/WeatherForecastDetails.cshtml", greenTrail);

@@ -1,18 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
 @if(Model != null)
 {
     <div class="weather-container">
+        <h3>Platsförnamn för vald led</h3>
         <div>
-            @for (int i = 0; i < Model[0].hourly.time.Count; i++)
+            <h4>Start:</h4>
+            @for (int i = 0; i < Model[0].Hourly.Time.Count; i++)
             {
 
                 <div>
                     <table>
-                        <h4>Datum och klockslag: @Model[0].hourly.time[i]</h4>
+                        <h4>Datum och klockslag: @Model[0].Hourly.Time[i]</h4>
                         <tr>
                             <th>Temperatur</th>
                             <th>Sannolikhet för nederbörd</th>
@@ -23,25 +22,27 @@
                             <th>Kastvindar</th>
                         </tr>
                         <tr>
-                            <td>@Model[0].hourly.temperature_2m[i] @Model[0].hourly_units.temperature_2m</td>
-                            <td>@Model[0].hourly.precipitation_probability[i] @Model[0].hourly_units.precipitation_probability</td>
-                            <td>@Model[0].hourly.precipitation[i] @Model[0].hourly_units.precipitation</td>
-                            <td>@Model[0].hourly.snow_depth[i] @Model[0].hourly_units.snow_depth</td>
-                            <td>@Model[0].hourly.wind_speed_10m[i] @Model[0].hourly_units.wind_speed_10m</td>
-                            <td>@Model[0].hourly.wind_direction_10m[i] @Model[0].hourly_units.wind_direction_10m</td>
-                            <td>@Model[0].hourly.wind_gusts_10m[i] @Model[0].hourly_units.wind_gusts_10m</td>
+                            <td>@Model[0].Hourly.Temperature[i] @Model[0].HourlyUnits.Temperature</td>
+                            <td>@Model[0].Hourly.PrecipitationProbability[i] @Model[0].HourlyUnits.PrecipitationProbability</td>
+                            <td>@Model[0].Hourly.Precipitation[i] @Model[0].HourlyUnits.Precipitation</td>
+                            <td>@Model[0].Hourly.SnowDepth[i] @Model[0].HourlyUnits.SnowDepth</td>
+                            <td>@Model[0].Hourly.WindSpeed[i] @Model[0].HourlyUnits.WindSpeed</td>
+                            <td>@Model[0].Hourly.WindDirection[i] @Model[0].HourlyUnits.WindDirection</td>
+                            <td>@Model[0].Hourly.WindGusts[i] @Model[0].HourlyUnits.WindGusts</td>
                         </tr>
                     </table>
                 </div>
             }
         </div>
         <div>
-            @for (int i = 0; i < Model[1].hourly.time.Count; i++)
+            <h4>Slut:</h4>
+            @for (int i = 0; i < Model[1].Hourly.Time.Count; i++)
             {
 
                 <div>
+
                     <table>
-                        <h4>Datum och klockslag: @Model[1].hourly.time[i]</h4>
+                        <h4>Datum och klockslag: @Model[1].Hourly.Time[i]</h4>
                         <tr>
                             <th>Temperatur</th>
                             <th>Sannolikhet för nederbörd</th>
@@ -52,13 +53,13 @@
                             <th>Kastvindar</th>
                         </tr>
                         <tr>
-                            <td>@Model[1].hourly.temperature_2m[i] @Model[1].hourly_units.temperature_2m</td>
-                            <td>@Model[1].hourly.precipitation_probability[i] @Model[1].hourly_units.precipitation_probability</td>
-                            <td>@Model[1].hourly.precipitation[i] @Model[1].hourly_units.precipitation</td>
-                            <td>@Model[1].hourly.snow_depth[i] @Model[1].hourly_units.snow_depth</td>
-                            <td>@Model[1].hourly.wind_speed_10m[i] @Model[1].hourly_units.wind_speed_10m</td>
-                            <td>@Model[1].hourly.wind_direction_10m[i] @Model[1].hourly_units.wind_direction_10m</td>
-                            <td>@Model[1].hourly.wind_gusts_10m[i] @Model[1].hourly_units.wind_gusts_10m</td>
+                            <td>@Model[1].Hourly.Temperature[i] @Model[1].HourlyUnits.Temperature</td>
+                            <td>@Model[1].Hourly.PrecipitationProbability[i] @Model[1].HourlyUnits.PrecipitationProbability</td>
+                            <td>@Model[1].Hourly.Precipitation[i] @Model[1].HourlyUnits.Precipitation</td>
+                            <td>@Model[1].Hourly.SnowDepth[i] @Model[1].HourlyUnits.SnowDepth</td>
+                            <td>@Model[1].Hourly.WindSpeed[i] @Model[1].HourlyUnits.WindSpeed</td>
+                            <td>@Model[1].Hourly.WindDirection[i] @Model[1].HourlyUnits.WindDirection</td>
+                            <td>@Model[1].Hourly.WindGusts[i] @Model[1].HourlyUnits.WindGusts</td>
                         </tr>
                     </table>
                 </div>
