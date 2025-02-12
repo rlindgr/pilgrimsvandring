@@ -30,6 +30,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
+
 // Function to fetch and display the user location
 function addUserLocation() {
     if (navigator.geolocation) {
@@ -113,7 +114,7 @@ async function fetchAndDisplayRoute() {
     }
 }
 
-export async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint, startIcon) { //FIX: add popup for icons
+export async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint, trailIcon) { //FIX: add popup for icons
     try {
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
@@ -137,8 +138,8 @@ export async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint,
             map.fitBounds(e.target.getBounds());
         });
 
-        L.marker([startPoint[0], startPoint[1]], { icon: startIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
-        L.marker([endPoint[0], endPoint[1]], { icon: startIcon }).addTo(map).bindPopup(`Slut:${trailName}`);
+        L.marker([startPoint[0], startPoint[1]], { icon: trailIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
+        L.marker([endPoint[0], endPoint[1]], { icon: trailIcon }).addTo(map).bindPopup(`Slut:${trailName}`);
 
     } catch (error) {
         console.error('Error loading or displaying the GPX route:', error);
