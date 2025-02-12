@@ -13,6 +13,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
+
+
 async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoint, trailIcon) { //FIX: add popup for icons
     try {
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
@@ -48,16 +50,18 @@ async function fetchAndDisplayGPXRoute(trailName, trailColor, startPoint, endPoi
 
 function initializeMap() {
 
-    
+    const mapContainer = document.getElementById("trail");
 
-    const selectedTrailName = window.selectedTrailName;
+    // Check if the element exists and has the dataset attribute
+    if (mapContainer && mapContainer.dataset.trailName) {
+        const selectedTrailName = mapContainer.dataset.trailName;
 
-    if (selectedTrailName) {
+        
         trailsInformation.forEach(trail => {
-            if (trail.name === selectedTrailName)
-
-                fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon)
-        })
+            if (trail.name === selectedTrailName) {
+                fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon);
+            }
+        });
     }
 
 }
