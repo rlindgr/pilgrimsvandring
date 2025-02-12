@@ -139,6 +139,10 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("EndPointCoords")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<double>("Height")
                         .HasColumnType("double precision");
 
@@ -150,6 +154,10 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("StartPoint")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("StartPointCoords")
                         .IsRequired()
                         .HasColumnType("text");
 

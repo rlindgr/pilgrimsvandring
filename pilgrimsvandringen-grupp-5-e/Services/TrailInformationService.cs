@@ -35,6 +35,8 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                    Length = trail.Length,
                    Height = trail.Height,
                    Surface = trail.Surface,
+                   StartPointCoords = trail.StartPointCoords,
+                   EndPointCoords = trail.EndPointCoords
                 };
                 trailsViewModels.Add(trailVm);
 
@@ -58,6 +60,8 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 Length = trail.Length,
                 Height = trail.Height,
                 Surface = trail.Surface,
+                StartPointCoords = trail.StartPointCoords,
+                EndPointCoords = trail.EndPointCoords
             };
 
             return trailVm;

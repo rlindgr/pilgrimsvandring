@@ -8,65 +8,26 @@
 
 <div>
     <ul>
-        <li>
-            <a class="nav-link text-dark" asp-route-id="Jämt-Norgeleden:Revsund-Stugudalen" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsGreen">
-                <h3>Jämt-Norgeleden</h3>
-                    <div>
-                        <h4>Startpunkt: Revsund</h4>
-                        <p>@Model[0].Hourly.Time[12]</p>
-                        <p>@Model[0].Hourly.Temperature[12] @Model[0].HourlyUnits.Temperature</p>
-                    </div>
-                    <div>
-                        <h4>Slutpunkt: Stugudalen</h4>
-                        <p>@Model[1].Hourly.Time[12]</p>
-                        <p>@Model[1].Hourly.Temperature[12] @Model[1].HourlyUnits.Temperature</p>
-                    </div>
-            </a>
-        </li>
-        <li>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsYellow">
-                <h3>Kårböleleden</h3>
-                <div>
-                    <h4>Startpunkt: Kårböle</h4>
-                    <p>@Model[2].Hourly.Time[12]</p>
-                    <p>@Model[2].Hourly.Temperature[12] @Model[2].HourlyUnits.Temperature</p>
-                </div>
-                <div>
-                    <h4>Slutpunkt: Billsåsen</h4>
-                    <p>@Model[3].Hourly.Time[12]</p>
-                    <p>@Model[3].Hourly.Temperature[12] @Model[3].HourlyUnits.Temperature</p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsRed">
-                <h3>S:t Olavsleden</h3>
-                <div>
-                    <h4>Startpunkt: Sundsvall</h4>
-                    <p>@Model[4].Hourly.Time[12]</p>
-                    <p>@Model[4].Hourly.Temperature[12] @Model[4].HourlyUnits.Temperature</p>
-                </div>
-                <div>
-                    <h4>Slutpunkt: Trondheim</h4>
-                    <p>@Model[5].Hourly.Time[12]</p>
-                    <p>@Model[5].Hourly.Temperature[12] @Model[5].HourlyUnits.Temperature</p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="WeatherForeCastDetailsBlue">
-                <h3>Indalsleden</h3>
-                <div>
-                    <h4>Startpunkt: Selånger</h4>
-                    <p>@Model[6].Hourly.Time[12]</p>
-                    <p>@Model[6].Hourly.Temperature[12] @Model[6].HourlyUnits.Temperature</p>
-                </div>
-                <div>
-                    <h4>Slutpunkt: Lit</h4>
-                    <p>@Model[7].Hourly.Time[12]</p>
-                    <p>@Model[7].Hourly.Temperature[12] @Model[7].HourlyUnits.Temperature</p>
-                </div>
-            </a>
-        </li>
+        @if(Model != null)
+        {
+            @for(int i = 0; i < Model.Count; i++)
+            {
+                <li>
+                    <a class="nav-link text-dark" asp-route-id="@Model[i].TrailVM.Id" asp-area="" asp-controller="Weather" asp-action="WeatherForecastDetails">
+                        <h3>@Model[i].TrailVM.Name</h3>
+                        <div>
+                            <h4>Startpunkt: @Model[i].TrailVM.StartPoint</h4>
+                            <p>@Model[i].WeatherStart.Hourly.Time[12]</p>
+                            <p>@Model[i].WeatherStart.Hourly.Temperature[12] @Model[i].WeatherStart.HourlyUnits.Temperature</p>
+                        </div>
+                        <div>
+                            <h4>Slutpunkt: @Model[i].TrailVM.EndPoint</h4>
+                            <p>@Model[i].WeatherEnd.Hourly.Time[12]</p>
+                            <p>@Model[i].WeatherEnd.Hourly.Temperature[12] @Model[i].WeatherEnd.HourlyUnits.Temperature</p>
+                        </div>
+                    </a>
+                </li>
+            }
+        }
     </ul>
 </div>
