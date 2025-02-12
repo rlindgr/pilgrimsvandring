@@ -13,14 +13,12 @@
 }
 
 .trail-card-item {
-    background-color: black;
+    background-color: #181C0C;
     max-width: 40%;
-    min-width: 350px; 
+    min-width: 350px;
     margin: 10px;
     border-radius: 5px;
-    background: rgba(64, 64, 64, 0.7);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-     
 }
 
     .trail-card-item h3, p{
@@ -51,7 +49,7 @@
 .stats-container {
     display: flex;
     gap: 5px;
-    background-color: gray;
+    background-color: rgb(48, 48, 48);
     height: 30px;
     padding: 5px;
     border-radius: 5px;

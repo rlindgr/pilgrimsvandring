@@ -69,12 +69,11 @@ article {
     display: flex;
     height: 60px;
     align-items: center;
-    background-color: grey;
     color: white;
     padding: 15px;
     gap: 10px;
     border-radius: 5px;
-    background: rgba(64, 64, 64, 0.7);
+    background: #181C0C;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11.5px);
     -webkit-backdrop-filter: blur(11.5px);
@@ -150,15 +149,13 @@ article {
 }
 
 .trail-card-item {
-    background-color: black;
+    background-color: #181C0C;
     display: flex;
     width: 40%;
     margin: 10px;
     border-radius: 5px;
-    background: rgba(64, 64, 64, 0.7);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  
-    color: white; 
+    color: white;
 }
 .trail-image {
     height: 100px; 
@@ -184,11 +181,11 @@ article {
 .stats-container {
     display: flex;
     gap: 5px;
-    background-color: gray;
+    background-color: rgba(48, 48, 48);
     height: 30px;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
-    align-self: center; 
+    align-self: center;
 }
 
 .stats-container p {
