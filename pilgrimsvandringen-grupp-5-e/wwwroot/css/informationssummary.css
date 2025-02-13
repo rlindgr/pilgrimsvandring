@@ -1,9 +1,14 @@
-﻿.main-container {
-    height: 70vh;
+﻿body {
+    background-color: #292F15;
+    height: 100%; 
+}
+
+.main-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #292F15;
+    padding: 100px 0px; 
 }
 
 .links-container h2 {
@@ -20,7 +25,7 @@
 }
 
 #info-container {
-    width: 50%;
+    width: 70%;
     color: white; 
 }
 
@@ -52,6 +57,15 @@
     gap:10px;
 }
 
+.gear-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden; 
+    overflow-y: scroll; 
+    height: 350px; 
+}
+
 .hunting-time-info-item, .gear-list-item {
     display: flex;
     justify-content: space-around;
@@ -65,6 +79,65 @@
         padding: 20px 0px;
     }
 
-.gear-list-item {
-    padding: 10px;
+    .gear-list-item p {
+        margin: 0;
+        padding: 20px 0px;
+    }
+
+    .gear-list-item {
+        padding: 10px;
+    }
+
+    p::first-letter {
+    text-transform: capitalize;
+}
+
+@media all and (max-width:900px) {
+    .small-info-container {
+        flex-direction: column; 
+    }
+
+    .left-item {
+        width: 100%;
+        margin-bottom: 50px; 
+    }
+
+    .right-item {
+        width: 100%;
+    }
+
+    .main-container {
+        flex-direction: column; 
+    }
+
+    .links-container {
+        flex-direction: row; 
+        margin-bottom: 50px; 
+    }
+
+
+}
+
+@media all and (max-width:700px) {
+
+    #info-container {
+        width: 95%; 
+    }
+}
+
+@media all and (max-width:400px) {
+    .links-container h2 {
+        font-size: 1.2rem; 
+    }
+
+    .links-container {
+        gap: 10px; 
+    }
+}
+
+@media all and (min-width:1700px) {
+
+    .main-container {
+        height: 70vh; 
+    }
 }
