@@ -2,32 +2,37 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Väderöverblick";
 }
+
+<link rel="stylesheet" href="~/css/weathersummary.css" />
 
 <h2>Väderprognos den kommande veckan på våra leder</h2>
 
-<div>
-    <ul>
-        @if(Model != null)
+<section class="weather-cards-container">
+    
+    @if(Model != null)
+    {
+        @for(int i = 0; i < Model.Count; i++)
         {
-            @for(int i = 0; i < Model.Count; i++)
-            {
-                <li>
-                    <a class="nav-link text-dark" asp-route-id="@Model[i].TrailVM.Id" asp-area="" asp-controller="Weather" asp-action="WeatherForecastDetails">
-                        <h3>@Model[i].TrailVM.Name</h3>
-                        <div>
+            <a class="nav-link text-dark weather-card-item" asp-route-id="@Model[i].TrailVM.Id" asp-area="" asp-controller="Weather" asp-action="WeatherForecastDetails">
+                <article>
+                    <h3>@Model[i].TrailVM.Name</h3>
+                    <div class="weather-start-end-container">
+                        <div class="weather-start-end-info">
                             <h4>Startpunkt: @Model[i].TrailVM.StartPoint</h4>
                             <p>@Model[i].WeatherStart.Hourly.Time[12]</p>
                             <p>@Model[i].WeatherStart.Hourly.Temperature[12] @Model[i].WeatherStart.HourlyUnits.Temperature</p>
                         </div>
-                        <div>
+                        <div class="weather-start-end-info">
                             <h4>Slutpunkt: @Model[i].TrailVM.EndPoint</h4>
                             <p>@Model[i].WeatherEnd.Hourly.Time[12]</p>
                             <p>@Model[i].WeatherEnd.Hourly.Temperature[12] @Model[i].WeatherEnd.HourlyUnits.Temperature</p>
                         </div>
-                    </a>
-                </li>
-            }
+                    </div>
+                </article>
+            </a>
         }
-    </ul>
-</div>
+    }
+    
+</section>

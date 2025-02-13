@@ -1,0 +1,31 @@
+﻿body {
+    background-color: #292F15;
+    color: white;
+}
+
+.weather-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.weather-card-item {
+    background-color: #61714A;
+    display: flex;
+    width: 40%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: white !important;
+}
+
+.weather-start-end-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weather-start-end-info {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
