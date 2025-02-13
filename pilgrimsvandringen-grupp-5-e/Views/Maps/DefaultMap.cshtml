@@ -4,20 +4,22 @@
 @{
 } 
 
+<body style="background-color: #292F15">
+    <div id="map" style="height: 500px; width: 100%;"></div>
 
-<div id="map" style="height: 500px; width: 100%;"></div> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.0/gpx.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.0/gpx.min.js"></script>
+    @* <script src="~/js/Maps/Markers.js" asp-append-version="true"></script> *@
+    <script type="module" src="~/js/Maps/Map.js" asp-append-version="true"></script>
+    <div>
+        <button id="toggleSleep">Visa/Dölj Vindskydd</button>
+        <button id="toggleWc">Visa/Dölj Dass</button>
+        <button id="toggleBoat">Visa/Dölj Båtöverfarter</button>
+        <button id="toggleWaterCrossing">Visa/Dölj Vadställen</button>
+        <button id="toggleVarningArray">Visa/Dölj Varningar</button>
+    </div>
+</body>
 
-@* <script src="~/js/Maps/Markers.js" asp-append-version="true"></script> *@
-<script type="module" src="~/js/Maps/Map.js" asp-append-version="true"></script> 
-<div>
-    <button id="toggleSleep">Visa/Dölj Vindskydd</button>
-    <button id="toggleWc">Visa/Dölj Dass</button>
-    <button id="toggleBoat">Visa/Dölj Båtöverfarter</button>
-    <button id="toggleWaterCrossing">Visa/Dölj Vadställen</button>
-    <button id="toggleVarningArray">Visa/Dölj Varningar</button>
-</div>

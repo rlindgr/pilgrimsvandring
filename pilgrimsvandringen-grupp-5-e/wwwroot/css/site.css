@@ -13,6 +13,7 @@ html {
 
 body {
     font-family: "DM Sans";
+    height: 100%; 
 }
 
 .navbar {
@@ -55,22 +56,25 @@ html {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #FFEBE1;
+    background-color: transparent;
     text-decoration: none;
-    position: fixed;
-    left:0;
-    bottom:0;
-    width:100%;
+   
+    width: 100%;
+}
+
+footer {
+    border-top: solid transparent; 
 }
 
 .footer-container a {
     text-decoration: none;
-    color: black;
+    color: white;
+    border-bottom: solid white; 
     cursor: pointer;
 }
 
     .footer-container a:hover {
-        text-decoration:underline;
-        color: black;
+       
+        color: gray;
         cursor: pointer;
     }
