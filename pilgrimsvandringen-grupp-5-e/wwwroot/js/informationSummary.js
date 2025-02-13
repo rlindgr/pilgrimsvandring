@@ -1,8 +1,66 @@
-﻿const huntingButton = document.getElementById("hunting-link");
+﻿
+
+
+const huntingButton = document.getElementById("hunting-link");
 const weatherButton = document.getElementById("weather-link");
 const gearButton = document.getElementById("gear-link");
 const natureButton = document.getElementById("nature-link");
 const container = document.getElementById("info-container"); 
+
+
+async function getSpottedAnimals() {
+    const body = {
+        "geographics": {
+            "areas": [
+                {
+                    "areaType": "County",
+                    "featureId": "23"
+                }
+            ]
+        },
+        "date": {
+            "startDate": "2025-01-01",
+            "endDate": "2025-02-13",
+            "dateFilterType": "OverlappingStartDateAndEndDate"
+        },
+        "taxon": {
+            "ids": [4000107],
+            "includeUnderlyingTaxa": true,
+            "taxonListOperator": "Filter"
+        }
+    };
+
+    try {
+        const response = await fetch('https://api.artdatabanken.se/species-observation-system/v1/Observations/Search?skip=0&take=100&validateSearchFilter=false&translationCultureCode=sv-SE&sensitiveObservations=false', {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+                'X-Api-Version': '1.5',
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache',
+                'Ocp-Apim-Subscription-Key': '58b55cda916d480a8a23773a69a25115',
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            console.error('Något gick fel:', response.status);
+            return null;
+        }
+    } catch (error) {
+        console.error('Något gick fel med fetch:', error);
+        return null;
+    }
+}
+
+
+
+
+
+
+
 
 huntingButton.addEventListener('click', () => {
     container.innerHTML = "";
@@ -129,7 +187,7 @@ gearButton.addEventListener('click', () => {
 
 })
 
-natureButton.addEventListener('click', () => {
+natureButton.addEventListener('click', async () => {
     container.innerHTML = "";
     let header = document.createElement("h3");
     container.appendChild(header)
@@ -158,22 +216,47 @@ natureButton.addEventListener('click', () => {
     rightItem.classList.add("right-item")
 
 
-    const gearListHeader = document.createElement("h4");
-    rightItem.appendChild(gearListHeader);
-    gearListHeader.textContent = "Giftiga svampar";
-    gearListHeader.style.color = 'white';
+    const spottedAnimalsHeader = document.createElement("h4");
+    rightItem.appendChild(spottedAnimalsHeader);
+    spottedAnimalsHeader.textContent = "Observerade djur i Jämtland i år";
+    spottedAnimalsHeader.style.color = 'white';
 
     const gearListContainer = document.createElement("div");
     rightItem.appendChild(gearListContainer);
     gearListContainer.classList.add("gear-list-container");
 
-    for (var i = 0; i < 5; i++) {
-        const gearListItem = document.createElement("p");
-        gearListContainer.appendChild(gearListItem);
-        gearListItem.classList.add("gear-list-item");
-        gearListItem.textContent = "Flugsvamp"
-    }
+
+    let animals = [];
+    animals = await getSpottedAnimals();
+    console.log(animals.records)
+
+    animals.records.forEach(record => {
+
+        const animalContainer = document.createElement("div")
+        gearListContainer.appendChild(animalContainer)
+        animalContainer.classList.add("gear-list-item");
+
+        const spottedAnimal = document.createElement("p");
+        animalContainer.appendChild(spottedAnimal);
+        spottedAnimal.textContent = `${record.taxon.vernacularName}`
+
+        const spottedAnimalLocation = document.createElement("p");
+        animalContainer.appendChild(spottedAnimalLocation);
+        spottedAnimalLocation.textContent = `${record.location.municipality.name}`
+    });  
+
+
+        
+    
 
 
 
 })
+
+
+
+
+
+
+
+

@@ -20,12 +20,12 @@
         
     </div>
 </div>
-<div class="text-center">
+@* <div class="text-center">
     <h1 class="display-4">Information</h1>
     @foreach (var point in Model)
     {
         <a class="nav-link text-dark" asp-area="" asp-controller="PointsOfInterests" asp-action="InformationPointOfInterest" asp-route-id="@point.Id">@point.Name, Typ av anläggning: @point.Category</a>
     }    
-</div>
+</div> *@
 
 <script type="module" src="~/js/informationSummary.js"></script>
