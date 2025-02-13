@@ -109,7 +109,7 @@ export function addToCategoryList(point, marker) {
     }
 }
 
-export function toggleCategory(category) {
+export function toggleCategory(map, category) {
     if (!categoryMarkers[category]) return;
 
     categoryMarkers[category].forEach(marker => {
