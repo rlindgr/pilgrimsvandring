@@ -1,6 +1,15 @@
 ﻿body {
 }
 
+.map-div {
+    height: 60vh;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    top: 5vh;
+}
+
+
 .checkbox-wrapper-1 *,
 .checkbox-wrapper-1 ::after,
 .checkbox-wrapper-1 ::before {
@@ -21,8 +30,8 @@
         content: "";
         display: inline-block;
         vertical-align: top;
-        height: 1.15em;
-        width: 1.15em;
+        height: 1.5em;
+        width: 1.5em;
         margin-right: 0.6em;
         color: rgba(0, 0, 0, 0.275);
         border: solid 0.06em;
@@ -102,6 +111,7 @@
     gap: 20px; 
     flex-wrap: wrap; 
     margin-top: 20px; 
+    padding-top: 6vh;
 }
 
 
@@ -115,6 +125,7 @@
     align-items: center;
     position: relative;
     top: -2px;
+    font-size: 1.2em;
 }
 
 

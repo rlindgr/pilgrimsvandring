@@ -5,7 +5,7 @@
 } 
 
 
-<div id="map" style="height: 500px; width: 100%;"></div> 
+<div id="map" class="map-div"></div> 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> 
@@ -16,25 +16,28 @@
 @* <script src="~/js/Maps/Markers.js" asp-append-version="true"></script> *@
 <script type="module" src="~/js/Maps/Map.js" asp-append-version="true"></script> 
 
+
+
+
 <div class="checkbox-container">
     <div class="checkbox-wrapper-1">
-        <input id="toggleSleep" class="substituted" type="checkbox" aria-hidden="true" checked>
+        <input id="toggleSleep" class="substituted" type="checkbox" checked>
         <label for="toggleSleep"> Vindskydd</label>
     </div>
     <div class="checkbox-wrapper-1">
-        <input id="toggleWc" class="substituted" type="checkbox" aria-hidden="true" checked>
+        <input id="toggleWc" class="substituted" type="checkbox" checked>
         <label for="toggleWc"> Dass</label>
     </div>
     <div class="checkbox-wrapper-1">
-        <input id="toggleBoat" class="substituted" type="checkbox" aria-hidden="true" checked>
+        <input id="toggleBoat" class="substituted" type="checkbox" checked>
         <label for="toggleBoat"> Båtöverfarter</label>
     </div>
     <div class="checkbox-wrapper-1">
-        <input id="toggleWaterCrossing" class="substituted" type="checkbox" aria-hidden="true" checked>
+        <input id="toggleWaterCrossing" class="substituted" type="checkbox" checked>
         <label for="toggleWaterCrossing"> Vadställen</label>
     </div>
     <div class="checkbox-wrapper-1">
-        <input id="toggleVarningArray" class="substituted" type="checkbox" aria-hidden="true" checked>
+        <input id="toggleVarningArray" class="substituted" type="checkbox" checked>
         <label for="toggleVarningArray"> Varningar</label>
     </div>
 </div>
