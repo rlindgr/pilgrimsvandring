@@ -51,9 +51,9 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
                     {
                         var startTrailWeather = await _weatherService.GetWeatherByCoordinatesAsync(startCoords[0], startCoords[1]);
                         var endTrailWeather = await _weatherService.GetWeatherByCoordinatesAsync(endCoords[0], endCoords[1]);
+                        var startTrailFireRisk = await _weatherService.GetFireRiskForecastAsync(startCoords[0], startCoords[1]);
 
-
-                        WeatherForeCastDetailsViewModel WFCVM = new WeatherForeCastDetailsViewModel(trail, startTrailWeather, endTrailWeather);
+                        WeatherForeCastDetailsViewModel WFCVM = new WeatherForeCastDetailsViewModel(trail, startTrailWeather, endTrailWeather, startTrailFireRisk);
                         ViewModels.Add(WFCVM);
                     }
                 }

@@ -3,11 +3,19 @@
     color: white;
 }
 
+h2 {
+    margin: 10px;
+}
+
+h3 {
+    margin: 10px;    
+}
+
 .weather-cards-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 100px;    
 }
 
 .weather-card-item {
@@ -22,10 +30,9 @@
 
 .weather-start-end-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
 }
 
 .weather-start-end-info {
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
 }

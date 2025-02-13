@@ -5,12 +5,21 @@ namespace pilgrimsvandringen_grupp_5_e.ViewModels
     public class WeatherForeCastDetailsViewModel
     {
         public TrailsViewModel TrailVM { get; set; }
+        public FireRiskViewModel? FireRiskVM { get; set; }
         public WeatherForeCastDto WeatherStart { get; set; }
         public WeatherForeCastDto WeatherEnd { get; set; }
 
         public WeatherForeCastDetailsViewModel(TrailsViewModel trailsViewModel, WeatherForeCastDto weatherForeCastDtoStart, WeatherForeCastDto weatherForeCastDtoEnd)
         {
+            TrailVM = trailsViewModel;            
+            WeatherStart = weatherForeCastDtoStart;
+            WeatherEnd = weatherForeCastDtoEnd;
+        }
+
+        public WeatherForeCastDetailsViewModel(TrailsViewModel trailsViewModel, WeatherForeCastDto weatherForeCastDtoStart, WeatherForeCastDto weatherForeCastDtoEnd, FireRiskViewModel fireRiskViewModel)
+        {
             TrailVM = trailsViewModel;
+            FireRiskVM = fireRiskViewModel;
             WeatherStart = weatherForeCastDtoStart;
             WeatherEnd = weatherForeCastDtoEnd;
         }

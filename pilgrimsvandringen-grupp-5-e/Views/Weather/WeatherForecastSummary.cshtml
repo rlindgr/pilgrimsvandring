@@ -7,7 +7,8 @@
 
 <link rel="stylesheet" href="~/css/weathersummary.css" />
 
-<h2>Väderprognos den kommande veckan på våra leder</h2>
+<h2>Väderprognos för våra leder</h2>
+<h3>För en detaljerad 7-dygnsprognos, klicka på respektive led.</h3>
 
 <section class="weather-cards-container">
     
@@ -18,9 +19,10 @@
             <a class="nav-link text-dark weather-card-item" asp-route-id="@Model[i].TrailVM.Id" asp-area="" asp-controller="Weather" asp-action="WeatherForecastDetails">
                 <article>
                     <h3>@Model[i].TrailVM.Name</h3>
+                    <p>Brandrisk:<br />@Model[i].FireRiskVM.RiskMessage</p>
                     <div class="weather-start-end-container">
                         <div class="weather-start-end-info">
-                            <h4>Startpunkt: @Model[i].TrailVM.StartPoint</h4>
+                            <h4>Startpunkt: @Model[i].TrailVM.StartPoint </h4>
                             <p>@Model[i].WeatherStart.Hourly.Time[12]</p>
                             <p>@Model[i].WeatherStart.Hourly.Temperature[12] @Model[i].WeatherStart.HourlyUnits.Temperature</p>
                         </div>
