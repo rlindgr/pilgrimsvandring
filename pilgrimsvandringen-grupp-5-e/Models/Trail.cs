@@ -13,6 +13,8 @@
         public double Length { get; set; }
         public double Height { get; set; }
         public string Surface { get; set; }
+        public string StartPointCoords { get; set; }
+        public string EndPointCoords { get; set; }
         public ICollection<Stage> Stages { get; set; }
         public ICollection<PointOfInterest> PointOfInterests { get; set; }
     }

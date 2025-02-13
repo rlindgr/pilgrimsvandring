@@ -1,20 +1,32 @@
-﻿namespace pilgrimsvandringen_grupp_5_e.Dto
+﻿using System.Text.Json.Serialization;
+
+namespace pilgrimsvandringen_grupp_5_e.Dto
 {
-    public class hourly
+    public class Hourly
     {
-        public IEnumerable<string> time { get; set; }
-        public IEnumerable<double> temperature_2m { get; set; }
-        public IEnumerable<int> precipitation_probability { get; set; }
-        public IEnumerable<double> precipitation { get; set; }
-        public IEnumerable<double> rain { get; set; }
-        public IEnumerable<double> showers { get; set; }
-        public IEnumerable<double> snowfall { get; set; }
-        public IEnumerable<double> snow_depth { get; set; }
-        public IEnumerable<double> visibility { get; set; }
-        public IEnumerable<double> wind_speed_10m { get; set; }
-        public IEnumerable<double> wind_direction_10m { get; set; }
-        public IEnumerable<double> wind_gusts_10m { get; set; }
-
-
+        [JsonPropertyName("time")]
+        public IEnumerable<string> Time { get; set; }
+        [JsonPropertyName("temperature_2m")]
+        public IEnumerable<double> Temperature { get; set; }
+        [JsonPropertyName("precipitation_probability")]
+        public IEnumerable<int> PrecipitationProbability { get; set; }
+        [JsonPropertyName("precipitation")]
+        public IEnumerable<double> Precipitation { get; set; }
+        [JsonPropertyName("rain")]
+        public IEnumerable<double> Rain { get; set; }
+        [JsonPropertyName("showers")]
+        public IEnumerable<double> Showers { get; set; }
+        [JsonPropertyName("snowfall")]
+        public IEnumerable<double> Snowfall { get; set; }
+        [JsonPropertyName("snow_depth")]
+        public IEnumerable<double> SnowDepth { get; set; }
+        [JsonPropertyName("visibility")]
+        public IEnumerable<double> Visibility { get; set; }
+        [JsonPropertyName("wind_speed_10m")]
+        public IEnumerable<double> WindSpeed { get; set; }
+        [JsonPropertyName("wind_direction_10m")]
+        public IEnumerable<double> WindDirection { get; set; }
+        [JsonPropertyName("wind_gusts_10m")]
+        public IEnumerable<double> WindGusts { get; set; }
     }
 }
