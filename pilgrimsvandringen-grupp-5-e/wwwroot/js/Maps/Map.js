@@ -22,23 +22,19 @@ trailsInformation.forEach(trail => {
 DisplayPointOfInterests(map);
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('toggleSleep').addEventListener('change', (event) => {
-        toggleCategory(map, 'sleep');
+    document.getElementById('toggleSleep').addEventListener('change', function () {
+        toggleCategory(map, 'sleep', this.checked);
     });
-
-    document.getElementById('toggleWc').addEventListener('change', (event) => {
-        toggleCategory(map, 'wc');
+    document.getElementById('toggleWc').addEventListener('change', function () {
+        toggleCategory(map, 'wc', this.checked);
     });
-
-    document.getElementById('toggleBoat').addEventListener('change', (event) => {
-        toggleCategory(map, 'boat');
+    document.getElementById('toggleBoat').addEventListener('change', function () {
+        toggleCategory(map, 'boat', this.checked);
     });
-
-    document.getElementById('toggleWaterCrossing').addEventListener('change', (event) => {
-        toggleCategory(map, 'waterCrossing');
+    document.getElementById('toggleWaterCrossing').addEventListener('change', function () {
+        toggleCategory(map, 'waterCrossing', this.checked);
     });
-
-    document.getElementById('toggleVarningArray').addEventListener('change', (event) => {
-        toggleCategory(map, 'varningArray');
+    document.getElementById('toggleVarningArray').addEventListener('change', function () {
+        toggleCategory(map, 'varningArray', this.checked);
     });
 });
