@@ -33,7 +33,7 @@ function initializeMap() {
                 fetchAndDisplayGPXRoute(map, selectedTrail.name, selectedTrail.color, selectedTrail.startPoint, selectedTrail.endPoint, selectedTrail.trailIcon);
             }
         } else {
-            console.error("No matching trail found in trailsInformation!");
+            console.error("No matching trail found");
         }
     }
 }
