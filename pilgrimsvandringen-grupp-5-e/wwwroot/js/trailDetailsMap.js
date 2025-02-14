@@ -1,6 +1,7 @@
 ﻿import { redFlag, yellowFlag, blueFlag } from "../js/Maps/Markers.js";
 import { fetchAndDisplayGPXRoute, fetchAndDisplayRoute } from "../js/Maps/MapRoutes.js";
-import { DisplayPointOfInterests } from "../js/Maps/Poi.js";
+import { DisplayPointOfInterests, toggleCategory } from "../js/Maps/Poi.js";
+
 
 
 let trailsInformation = [
@@ -46,3 +47,21 @@ function initializeMap() {
 }
 
 initializeMap();
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('toggleSleep').addEventListener('change', function () {
+        toggleCategory(map, 'sleep', this.checked);
+    });
+    document.getElementById('toggleWc').addEventListener('change', function () {
+        toggleCategory(map, 'wc', this.checked);
+    });
+    document.getElementById('toggleBoat').addEventListener('change', function () {
+        toggleCategory(map, 'boat', this.checked);
+    });
+    document.getElementById('toggleWaterCrossing').addEventListener('change', function () {
+        toggleCategory(map, 'waterCrossing', this.checked);
+    });
+    document.getElementById('toggleVarningArray').addEventListener('change', function () {
+        toggleCategory(map, 'varningArray', this.checked);
+    });
+});

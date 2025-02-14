@@ -34,7 +34,7 @@ export const vindskydd = L.icon({
     shadowUrl: null,
     iconSize: [38, 38],
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [0, 38], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76] 
 });
@@ -44,7 +44,7 @@ export const utedass = L.icon({
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [38, 38], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76] 
 });

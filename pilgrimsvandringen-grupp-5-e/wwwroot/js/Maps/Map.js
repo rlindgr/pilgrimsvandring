@@ -1,4 +1,4 @@
-﻿import { addUserLocation, fetchAndDisplayRoute, fetchAndDisplayGPXRoute, trailsInformation, addAllTrails } from "./MapRoutes.js";
+﻿import { addUserLocation, fetchAndDisplayRoute, addAllTrails } from "./MapRoutes.js";
 import { DisplayPointOfInterests, toggleCategory } from "./Poi.js";
 
 
