@@ -1,17 +1,21 @@
 ﻿@{
+    ViewData["Title"] = "Väder 7-dagarsprognos";
 }
+
+<link rel="stylesheet" href="~/css/weatherdetails.css" />
 
 @if(Model != null)
 {
-        <h3>@Model.TrailVM.Name</h3>
-    <div class="weather-container">
+        <h2>@Model.TrailVM.Name</h2>
+    <section class="weather-container">
         <div>
-            <h4>Start: @Model.TrailVM.StartPoint</h4>
+            
             @for (int i = 0; i < Model.WeatherStart.Hourly.Time.Count; i++)
             {
-                <div>
-                    <table>
-                        <h4>Datum och klockslag: @Model.WeatherStart.Hourly.Time[i]</h4>
+                <div class="weather-info-container">
+                    <h3>Start: @Model.TrailVM.StartPoint</h3>
+                    <h4>Datum och klockslag: @Model.WeatherStart.Hourly.Time[i]</h4>
+                    <table class="weather-info">                        
                         <tr>
                             <th>Temperatur</th>
                             <th>Sannolikhet för nederbörd</th>
@@ -35,15 +39,14 @@
             }
         </div>
         <div>
-            <h4>Slut: @Model.TrailVM.EndPoint</h4>
+            
             @for (int i = 0; i < Model.WeatherEnd.Hourly.Time.Count; i++)
             {
-
-                <div>
-
-                    <table>
-                        <h4>Datum och klockslag: @Model.WeatherEnd.Hourly.Time[i]</h4>
-                        <tr>
+                <div class="weather-info-container">
+                    <h3>Slut: @Model.TrailVM.EndPoint</h3>
+                    <h4>Datum och klockslag: @Model.WeatherEnd.Hourly.Time[i]</h4>
+                    <table class="weather-info">
+                        <tr class="weather-info-point">
                             <th>Temperatur</th>
                             <th>Sannolikhet för nederbörd</th>
                             <th>Nederbörd</th>
@@ -52,7 +55,7 @@
                             <th>Vindriktning</th>
                             <th>Kastvindar</th>
                         </tr>
-                        <tr>
+                        <tr class="weather-info-point">
                             <td>@Model.WeatherEnd.Hourly.Temperature[i] @Model.WeatherEnd.HourlyUnits.Temperature</td>
                             <td>@Model.WeatherEnd.Hourly.PrecipitationProbability[i] @Model.WeatherEnd.HourlyUnits.PrecipitationProbability</td>
                             <td>@Model.WeatherEnd.Hourly.Precipitation[i] @Model.WeatherEnd.HourlyUnits.Precipitation</td>
@@ -65,7 +68,7 @@
                 </div>
             }
         </div>
-    </div>
+    </section>
     
    
 }
