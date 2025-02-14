@@ -7,6 +7,37 @@
 
 <link rel="stylesheet" href="~/css/weathersummary.css" />
 
+
+<div class="header">
+   <button id="myButton" class="dropbtn">Kårböleleden <img src="/icons/mainpage/dropdown.png"/></button>
+    <div id="myDropdown" class="dropdown-content">
+        @for(int i = 0; i < Model.Count; i++)
+        {
+          
+                    <h3>@Model[i].TrailVM.Name</h3>
+        }
+    </div>
+</div>
+
+<div class="weather-start-end-container">
+    <div class="weather-start-end-info">
+        <h4>Startpunkt: @Model[0].TrailVM.StartPoint </h4>
+        <p id="weatherTime">@Model[0].WeatherStart.Hourly.Time[12]</p>
+        <p id="weather-code">@Model[0].WeatherStart.Hourly.WeatherCode[12]</p>
+        <p>@Model[0].WeatherStart.Hourly.Temperature[12] @Model[0].WeatherStart.HourlyUnits.Temperature</p>
+    </div>
+    <div class="weather-start-end-info">
+        <h4>Slutpunkt: @Model[0].TrailVM.EndPoint</h4>
+        <p >@Model[0].WeatherEnd.Hourly.Time[12]</p>
+        <p>@Model[0].WeatherEnd.Hourly.Temperature[12] @Model[0].WeatherEnd.HourlyUnits.Temperature</p>
+    </div>
+</div>
+@* <script>
+       let currentHour = new Date().getHours();
+    document.getElementById('weatherTime').innerHTML = "@Model[0].WeatherStart.Hourly.Time[" + currentHour + "]";
+
+</script> *@
+@* 
 <h2>Väderprognos för våra leder</h2>
 <h3>För en detaljerad 7-dygnsprognos, klicka på respektive led.</h3>
 
@@ -37,4 +68,6 @@
         }
     }
     
-</section>
+</section> *@
+
+<script type="module" src="~/js/weatherSummary.js"></script>                   

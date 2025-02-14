@@ -8,8 +8,8 @@ namespace pilgrimsvandringen_grupp_5_e.Dto
         public IEnumerable<string> Time { get; set; }
         [JsonPropertyName("temperature_2m")]
         public IEnumerable<double> Temperature { get; set; }
-        [JsonPropertyName("precipitation_probability")]
-        public IEnumerable<int> PrecipitationProbability { get; set; }
+        [JsonPropertyName("weather_code")]
+        public IEnumerable<int> WeatherCode { get; set; }
         [JsonPropertyName("precipitation")]
         public IEnumerable<double> Precipitation { get; set; }
         [JsonPropertyName("rain")]
