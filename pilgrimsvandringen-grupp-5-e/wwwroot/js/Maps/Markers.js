@@ -10,8 +10,8 @@ export const greenIcon = L.icon({
 });
 
 export const redIcon = L.icon({
-    iconUrl: '../images/MapImages/leaf-red.png',
-    shadowUrl: '../images/MapImages/leaf-shadow.png',
+    iconUrl: '/images/MapImages/leaf-red.png',
+    shadowUrl: '/images/MapImages/leaf-shadow.png',
     iconSize: [38, 95], 
     shadowSize: [50, 64], 
     iconAnchor: [22, 94], 
@@ -20,7 +20,7 @@ export const redIcon = L.icon({
 });
 
 export const vadstalle = L.icon({
-    iconUrl: '../images/MapImages/vadstalle.png',
+    iconUrl: '/images/MapImages/vadstalle.png',
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
@@ -30,27 +30,27 @@ export const vadstalle = L.icon({
 });
 
 export const vindskydd = L.icon({
-    iconUrl: '../images/MapImages/vindskydd.png',
+    iconUrl: '/images/MapImages/vindskydd.png',
     shadowUrl: null,
     iconSize: [38, 38],
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [0, 38], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76] 
 });
 
 export const utedass = L.icon({
-    iconUrl: '../images/MapImages/torrklosett-utedass.png',
+    iconUrl: '/images/MapImages/torrklosett-utedass.png',
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [38, 38], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76] 
 });
 
 export const varning = L.icon({
-    iconUrl: '../images/MapImages/varning.png',
+    iconUrl: '/images/MapImages/varning.png',
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
@@ -60,7 +60,7 @@ export const varning = L.icon({
 });
 
 export const fartyg = L.icon({
-    iconUrl: '../images/MapImages/fartyg.png',
+    iconUrl: '/images/MapImages/fartyg.png',
     shadowUrl: null,
     iconSize: [38, 38],
     shadowSize: [50, 64], 

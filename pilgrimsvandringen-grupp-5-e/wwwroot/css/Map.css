@@ -1,4 +1,5 @@
 ﻿body {
+    background-color: #292F15;
 }
 
 .map-div {
@@ -126,6 +127,7 @@
     position: relative;
     top: -2px;
     font-size: 1.2em;
+    color:white;
 }
 
 
