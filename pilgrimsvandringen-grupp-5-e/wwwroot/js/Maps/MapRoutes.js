@@ -161,7 +161,7 @@ export function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
 }
 
 
-export function addAllTrails() {
-    trailsInformation.forEach(trail => fetchAndDisplayGPXRoute(trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon));
+export function addAllTrails(map) {
+    trailsInformation.forEach(trail => fetchAndDisplayGPXRoute(map, trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon));
 }
 

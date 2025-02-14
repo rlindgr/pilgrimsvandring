@@ -1,5 +1,6 @@
 ﻿import { redFlag, yellowFlag, blueFlag } from "../js/Maps/Markers.js";
 import { fetchAndDisplayGPXRoute, fetchAndDisplayRoute } from "../js/Maps/MapRoutes.js";
+import { DisplayPointOfInterests } from "../js/Maps/Poi.js";
 
 
 let trailsInformation = [
@@ -32,9 +33,12 @@ function initializeMap() {
             } else {
                 fetchAndDisplayGPXRoute(map, selectedTrail.name, selectedTrail.color, selectedTrail.startPoint, selectedTrail.endPoint, selectedTrail.trailIcon);
             }
-        } else {
-            console.error("No matching trail found");
+
+        } if (selectedTrailId === 1 || selectedTrailId === 2) {
+            DisplayPointOfInterests(map, selectedTrailId);
+            
         }
+        
     }
 }
 

@@ -39,33 +39,40 @@ export function getCategoryIcon(category) {
     }
 }
 
-export async function DisplayPointOfInterests(map) {
+export async function DisplayPointOfInterests(map, selectedTrailId = null) {
     try {
         const response = await fetch('/PointsOfInterests/GetAll');
         if (!response.ok) throw new Error('Failed to load POIs.');
 
         const points = await response.json();
 
+        let filteredPoints;
 
-        points.forEach(point => {
-            // Extract Easting and Northing by removing the prefix 'E' and 'N'
+        if (selectedTrailId) {
+            // Only show POIs for this specific trail
+            filteredPoints = points.filter(point => point.trailId === selectedTrailId);
+        } else {
+            // Show all POIs (default map)
+            filteredPoints = points;
+        }
+     
+
+        filteredPoints.forEach(point => {
             const easting = parseFloat(point.longitude.substring(1));
             const northing = parseFloat(point.latitude.substring(1));
 
             const icon = getCategoryIcon(point.category);
-            // Convert to latitude and longitude
             const { lat, lng } = convertToLatLng(easting, northing);
 
-            //Add marker to the map
+            // Add marker to the map
             const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
             marker.bindPopup(`
                 <b>${point.name}</b><br>
                 ${point.category}<br>
                 ${point.description}
             `);
-            
-            addToCategoryList(point, marker);
 
+            addToCategoryList(point, marker);
         });
 
     } catch (error) {
@@ -73,7 +80,6 @@ export async function DisplayPointOfInterests(map) {
         document.body.innerText = 'Error fetching POIs';
     }
 }
-
 
 
 

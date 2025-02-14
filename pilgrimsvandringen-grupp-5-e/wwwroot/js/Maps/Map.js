@@ -1,4 +1,4 @@
-﻿import { addUserLocation, fetchAndDisplayRoute, fetchAndDisplayGPXRoute, trailsInformation } from "./MapRoutes.js";
+﻿import { addUserLocation, fetchAndDisplayRoute, fetchAndDisplayGPXRoute, trailsInformation, addAllTrails } from "./MapRoutes.js";
 import { DisplayPointOfInterests, toggleCategory } from "./Poi.js";
 
 
@@ -15,9 +15,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 addUserLocation(map);
 fetchAndDisplayRoute(map);
-trailsInformation.forEach(trail => {
-    fetchAndDisplayGPXRoute(map, trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon);
-});
+addAllTrails(map);
 
 DisplayPointOfInterests(map);
 
