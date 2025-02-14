@@ -21,6 +21,57 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("MessageTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageTypeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.MessageType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Type")
+                        .IsUnique();
+
+                    b.ToTable("MessageTypes");
+                });
+
             modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.PointOfInterest", b =>
                 {
                     b.Property<int>("Id")
@@ -57,6 +108,26 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                     b.HasIndex("TrailId");
 
                     b.ToTable("PointsOfInterests");
+                });
+
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleName")
+                        .IsUnique();
+
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Stage", b =>
@@ -174,6 +245,55 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                     b.ToTable("Trails");
                 });
 
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Message", b =>
+                {
+                    b.HasOne("pilgrimsvandringen_grupp_5_e.Models.MessageType", "MessageType")
+                        .WithMany()
+                        .HasForeignKey("MessageTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("pilgrimsvandringen_grupp_5_e.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MessageType");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.PointOfInterest", b =>
                 {
                     b.HasOne("pilgrimsvandringen_grupp_5_e.Models.Trail", "Trail")
@@ -194,6 +314,17 @@ namespace pilgrimsvandringen_grupp_5_e.Migrations
                         .IsRequired();
 
                     b.Navigation("Trail");
+                });
+
+            modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.User", b =>
+                {
+                    b.HasOne("pilgrimsvandringen_grupp_5_e.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("pilgrimsvandringen_grupp_5_e.Models.Trail", b =>
