@@ -39,22 +39,22 @@ export function getCategoryIcon(category) {
     }
 }
 
-export async function DisplayPointOfInterests(map, selectedTrailId = null) {
+export async function DisplayPointOfInterests(map, selectedTrailId = null) { 
     try {
         const response = await fetch('/PointsOfInterests/GetAll');
         if (!response.ok) throw new Error('Failed to load POIs.');
 
         const points = await response.json();
 
-        let filteredPoints;
+        let filteredPoints; 
 
-        if (selectedTrailId) {
-            // Only show POIs for this specific trail
-            filteredPoints = points.filter(point => point.trailId === selectedTrailId);
-        } else {
-            // Show all POIs (default map)
-            filteredPoints = points;
-        }
+        if (selectedTrailId) { 
+            // Only show POIs for this specific trail 
+            filteredPoints = points.filter(point => point.trailId === selectedTrailId); 
+        } else { 
+            // Show all POIs (default map) 
+            filteredPoints = points; 
+        } 
      
 
         filteredPoints.forEach(point => {

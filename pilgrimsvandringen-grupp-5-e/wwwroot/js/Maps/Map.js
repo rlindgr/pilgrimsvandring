@@ -15,9 +15,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 addUserLocation(map);
 fetchAndDisplayRoute(map);
-addAllTrails(map);
+addAllTrails(map); 
 
-DisplayPointOfInterests(map);
+DisplayPointOfInterests(map); 
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('toggleSleep').addEventListener('change', function () {
