@@ -1,5 +1,5 @@
 ﻿import { addUserLocation, fetchAndDisplayRoute, addAllTrails } from "./MapRoutes.js";
-import { DisplayPointOfInterests, toggleCategory, getWeather } from "./Poi.js";
+import { DisplayPointOfInterests, toggleCategory, getWeather, filterAlternativesForMap } from "./Poi.js";
 
 
 
@@ -15,23 +15,38 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 addUserLocation(map);
 fetchAndDisplayRoute(map);
 addAllTrails(map); 
+const existingIcons = filterAlternativesForMap();
+
+function addChekBoxes() {
+    const container = document.getElementById("checkboxes-icons");
+    container.innerHTML = "";
+
+    existingIcons.forEach(icon => {
+        const checkboxWrapper = document.createElement("div");
+        checkboxWrapper.classList.add("checkbox-wrapper-1");
+        const checkboxInput = document.createElement("input");
+        checkboxInput.id = `${icon}`;
+        checkboxInput.classList.add("substituted");
+        checkboxInput.type = "checkbox";
+        checkboxInput.checked = true;
+
+        const label = document.createElement("label");
+        label.setAttribute("for", checkboxInput.id);
+        label.innerText = `${icon}`;
+
+        checkboxWrapper.appendChild(checkboxInput);
+        checkboxWrapper.appendChild(label);
+        container.appendChild(checkboxWrapper);
+
+        checkboxInput.addEventListener('change', function () {
+            toggleCategory(map, icon, this.checked);
+        });
+    });
+}
 
 DisplayPointOfInterests(map); 
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('toggleSleep').addEventListener('change', function () {
-        toggleCategory(map, 'sleep', this.checked);
-    });
-    document.getElementById('toggleWc').addEventListener('change', function () {
-        toggleCategory(map, 'wc', this.checked);
-    });
-    document.getElementById('toggleBoat').addEventListener('change', function () {
-        toggleCategory(map, 'boat', this.checked);
-    });
-    document.getElementById('toggleWaterCrossing').addEventListener('change', function () {
-        toggleCategory(map, 'waterCrossing', this.checked);
-    });
-    document.getElementById('toggleVarningArray').addEventListener('change', function () {
-        toggleCategory(map, 'varningArray', this.checked);
-    });
+   
+    addChekBoxes();
 });

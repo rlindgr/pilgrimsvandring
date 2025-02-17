@@ -1,11 +1,13 @@
-﻿import { vadstalle, vindskydd, utedass, varning, fartyg } from "../Maps/Markers.js";
+﻿import { vadstalle, vindskydd, utedass, varning, fartyg, shop, church } from "../Maps/Markers.js";
 
 export let categoryMarkers = {
     sleep: [],
     wc: [],
     boat: [],
     waterCrossing: [],
-    varningArray: []
+    varningArray: [], 
+    churches: [],
+    shops: []
 };
 
 // Define projections
@@ -36,6 +38,10 @@ export function getCategoryIcon(category) {
             return fartyg;
         case 'pån':
             return fartyg;
+        case 'kyrka':
+            return church;
+        case 'affär':
+            return shop;
     }
 }
 
@@ -117,6 +123,12 @@ export function addToCategoryList(point, marker) {
         case 'pån':
             categoryMarkers['boat'].push(marker);
             break;
+        case 'kyrka':
+            categoryMarkers['churches'].push(marker);
+            break;
+        case 'affär':
+            categoryMarkers['shops'].push(marker);
+            break;
     }
 }
 
@@ -172,4 +184,16 @@ function getWeatherDescription(weathercode) {
     };
 
     return weatherDescription[weathercode] || "Okänt väder 🤷‍";
+}
+
+
+export function filterAlternativesForMap() {
+    const existingIcons = [];
+    Object.keys(categoryMarkers).forEach(category => {
+        // Only add the category if it has markers
+        if (categoryMarkers[category] != null) {
+            existingIcons.push(category);  // Push the category name to the array
+        }
+    });
+    return existingIcons;
 }

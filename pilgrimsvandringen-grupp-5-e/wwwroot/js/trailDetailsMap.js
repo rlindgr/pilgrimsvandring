@@ -38,7 +38,7 @@ function initializeMap() {
             }
 
         }
-        if (selectedTrailId === 1 || selectedTrailId === 2) { 
+        if (selectedTrailId !== 4) { 
             DisplayPointOfInterests(map, selectedTrailId); 
             
         }
