@@ -20,6 +20,13 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             return currentPositionWeather;
         }
 
+        public async Task<WeatherForeCastDto> GetCurrentWeatherAsync(string latitude, string longitude)
+        {
+            var currentPositionWeather = await _apiEngine.GetAsync<WeatherForeCastDto>($"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true");
+
+            return currentPositionWeather;
+        }
+
         public async Task<FireRiskViewModel> GetFireRiskForecastAsync(string latitude, string longitude)
         {
             try

@@ -1,5 +1,5 @@
 ﻿import { addUserLocation, fetchAndDisplayRoute, addAllTrails } from "./MapRoutes.js";
-import { DisplayPointOfInterests, toggleCategory } from "./Poi.js";
+import { DisplayPointOfInterests, toggleCategory, getWeather } from "./Poi.js";
 
 
 
@@ -10,7 +10,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
-
 
 
 addUserLocation(map);
