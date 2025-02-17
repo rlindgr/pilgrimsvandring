@@ -23,7 +23,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             var startCoords = model.StartPointCoords.Replace(" ", string.Empty).Split(',');
             var endCoords = model.EndPointCoords.Replace(" ", string.Empty).Split(',');
 
-            if(startCoords.Length > 1 && startCoords.Length < 3 || endCoords.Length > 1 && endCoords.Length < 3)
+            if (startCoords.Length > 1 && startCoords.Length < 3 || endCoords.Length > 1 && endCoords.Length < 3)
             {
                 var startTrailWeather = await _weatherService.GetWeatherByCoordinatesAsync(startCoords[0], startCoords[1]);
                 var endTrailWeather = await _weatherService.GetWeatherByCoordinatesAsync(endCoords[0], endCoords[1]);
@@ -70,6 +70,14 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
 
 
             return View("~/Views/Weather/WeatherForecastDetails.cshtml", currentPosition);
+        }
+
+        public async Task<IActionResult> GetWeatherByCords(string latitude, string longitude)
+        {
+            var weatherData = await _weatherService.GetCurrentWeatherAsync(latitude, longitude);
+
+
+            return Json(weatherData);
         }
     }
 }

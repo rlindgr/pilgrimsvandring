@@ -57,23 +57,26 @@ export async function DisplayPointOfInterests(map, selectedTrailId = null) {
         } 
      
 
-        filteredPoints.forEach(point => {
+        for (const point of filteredPoints) {
             const easting = parseFloat(point.longitude.substring(1));
             const northing = parseFloat(point.latitude.substring(1));
 
             const icon = getCategoryIcon(point.category);
             const { lat, lng } = convertToLatLng(easting, northing);
 
+            const temperature = await getWeather(lat, lng);
+
             // Add marker to the map
             const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
             marker.bindPopup(`
                 <b>${point.name}</b><br>
                 ${point.category}<br>
-                ${point.description}
+                ${point.description}<br>
+                ${temperature} celsius
             `);
 
             addToCategoryList(point, marker);
-        });
+        }
 
     } catch (error) {
         console.error('Error fetching POIs:', error);
@@ -125,4 +128,16 @@ export function toggleCategory(map, category) {
             marker.addTo(map);
         }
     });
+}
+
+export async function getWeather(latitude, longitude) {
+
+    const response = await fetch(`/Weather/GetWeatherByCords?latitude=${latitude}&longitude=${longitude}`);
+
+    const weatherData = await response.json();
+
+    const temperature = weatherData?.current_weather?.temperature;
+
+    return temperature;
+
 }
