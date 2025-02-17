@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using pilgrimsvandringen_grupp_5_e.ViewModels;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace pilgrimsvandringen_grupp_5_e.Controllers
 {
@@ -24,12 +25,11 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         {
             if (!ModelState.IsValid) return View(loginViewModel);
 
-            var result1 = await _signInManager.PasswordSignInAsync("vandrare@test.se", "Aaaa1111!", loginViewModel.RememberMe, false);
-            var result = await _signInManager.PasswordSignInAsync(loginViewModel.Email, loginViewModel.Password, loginViewModel.RememberMe, false);
+            var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, loginViewModel.RememberMe, false);
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Account");
+                return RedirectToAction("Index", "Account", loginViewModel);
             }
 
             ModelState.AddModelError("", "Felaktig inloggning");
@@ -67,9 +67,9 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         }
 
         [Authorize]
-        public IActionResult Index()
+        public IActionResult Index(LoginViewModel loginViewModel)
         {
-            return View();
+            return View(loginViewModel);
         }
 
         // TODO Create a view for AccessDenied
