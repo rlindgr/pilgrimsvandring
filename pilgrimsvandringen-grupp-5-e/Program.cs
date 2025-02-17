@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
 using pilgrimsvandringen_grupp_5_e.Data;
@@ -32,8 +33,29 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                 ServiceLifetime.Scoped
                 );
 
+builder.Services.AddDbContext<CustomIdentityDbContext>(options =>
+                options.UseNpgsql(config.GetConnectionString("DefaultConnection")),
+                ServiceLifetime.Scoped
+                );
+
+// Loginfunction for user
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<CustomIdentityDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+});
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    await SeedRoles(roleManager);
+}
 
 
 // Configure the HTTP request pipeline.
@@ -56,5 +78,18 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-
 app.Run();
+
+// Borrowed from Erik. 
+static async Task SeedRoles(RoleManager<IdentityRole> roleManager)
+{
+    if (!await roleManager.RoleExistsAsync("admin"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("admin"));
+    }
+
+    if (!await roleManager.RoleExistsAsync("user"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("user"));
+    }
+}
