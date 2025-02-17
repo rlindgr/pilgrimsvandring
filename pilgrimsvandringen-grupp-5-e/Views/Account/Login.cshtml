@@ -1,0 +1,27 @@
+﻿@model pilgrimsvandringen_grupp_5_e.ViewModels.LoginViewModel
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <div class="form-group">
+        <label for="Email">Epost</label>
+        <input type="email" name="Email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Password">Lösenord</label>
+        <input type="password" name="Password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Logga in</button>
+</form>
+<div>
+    <h3>Skapa ett konto</h3>
+    <a asp-controller="Account" asp-action="Register" class="btn btn-primary">Skapa konto</a>
+</div>
