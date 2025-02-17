@@ -64,7 +64,8 @@ export async function DisplayPointOfInterests(map, selectedTrailId = null) {
             const icon = getCategoryIcon(point.category);
             const { lat, lng } = convertToLatLng(easting, northing);
 
-            const temperature = await getWeather(lat, lng);
+            const { temperature, weatherCode } = await getWeather(lat, lng);
+            const weatherDescription = getWeatherDescription(weatherCode);
 
             // Add marker to the map
             const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
@@ -72,6 +73,7 @@ export async function DisplayPointOfInterests(map, selectedTrailId = null) {
                 <b>${point.name}</b><br>
                 ${point.category}<br>
                 ${point.description}<br>
+                ${weatherDescription}<br>
                 ${temperature} celsius
             `);
 
@@ -138,6 +140,36 @@ export async function getWeather(latitude, longitude) {
 
     const temperature = weatherData?.current_weather?.temperature;
 
-    return temperature;
+    const weatherCode = weatherData?.current_weather?.weathercode;
 
+    return { temperature, weatherCode };
+
+}
+
+function getWeatherDescription(weathercode) {
+    const weatherDescription = {
+        0: "Klart väder ☀️",
+        1: "Mestadels klart 🌤️",
+        2: "Delvis molnigt 🌥️",
+        3: "Mulet ☁️",
+        45: "Dimma 🌫️",
+        48: "Underkyld dimma ❄️🌫️",
+        51: "Lätt duggregn 🌦️",
+        53: "Måttligt duggregn 🌧️",
+        55: "Kraftigt duggregn 🌧️",
+        61: "Lätt regn 🌦️",
+        63: "Måttligt regn 🌧️",
+        65: "Kraftigt regn 🌧️🌊",
+        71: "Lätt snöfall 🌨️",
+        73: "Måttligt snöfall 🌨️",
+        75: "Kraftigt snöfall ❄️❄️",
+        80: "Lätta regnskurar 🌦️",
+        81: "Måttliga regnskurar 🌧️",
+        82: "Kraftiga regnskurar 🌧️🌊",
+        95: "Åskväder ⛈️",
+        96: "Åskväder med hagel ⛈️🌨️",
+        99: "Kraftigt åskväder med hagel ⚡❄️"
+    };
+
+    return weatherDescription[weathercode] || "Okänt väder 🤷‍";
 }
