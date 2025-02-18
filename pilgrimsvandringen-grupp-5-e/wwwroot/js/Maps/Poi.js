@@ -203,18 +203,6 @@ function getWeatherDescription(weathercode) {
     return weatherDescription[weathercode] || "Okänt väder 🤷‍";
 }
 
-
- function filterAlternativesForMap() {
-    const existingIcons = [];
-    Object.keys(categoryMarkers).forEach(category => {
-        // Only add the category if it has markers
-        if (categoryMarkers[category] != null) {
-            existingIcons.push(category);  // Push the category name to the array
-        }
-    });
-    return existingIcons;
-}
-
 export function addChekBoxes(map) {
     const container = document.getElementById("checkboxes-icons");
     container.innerHTML = "";
@@ -223,7 +211,7 @@ export function addChekBoxes(map) {
     const categoriesWithMarkers = Object.keys(categoryMarkers).filter(category => categoryMarkers[category].length > 0);
 
     categoriesWithMarkers.forEach(category => {
-        const categoryLabel = categoryNames[category] || category; // Display name conversion
+        const categoryLabel = categoryNames[category] || category; //Shows displayname
 
         const checkboxWrapper = document.createElement("div");
         checkboxWrapper.classList.add("checkbox-wrapper-1");
