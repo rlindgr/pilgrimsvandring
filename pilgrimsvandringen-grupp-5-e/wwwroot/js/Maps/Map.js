@@ -1,5 +1,5 @@
 ﻿import { addUserLocation, fetchAndDisplayRoute, addAllTrails } from "./MapRoutes.js";
-import { DisplayPointOfInterests, toggleCategory, getWeather, filterAlternativesForMap } from "./Poi.js";
+import { DisplayPointOfInterests, toggleCategory, filterAlternativesForMap } from "./Poi.js";
 
 
 

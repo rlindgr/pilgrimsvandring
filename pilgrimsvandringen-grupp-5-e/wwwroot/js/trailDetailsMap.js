@@ -38,10 +38,9 @@ function initializeMap() {
             }
 
         }
-        if (selectedTrailId !== 4) { 
-            DisplayPointOfInterests(map, selectedTrailId); 
+       DisplayPointOfInterests(map, selectedTrailId); 
             
-        }
+        
         
     }
 }

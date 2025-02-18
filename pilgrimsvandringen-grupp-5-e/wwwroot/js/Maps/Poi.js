@@ -144,7 +144,7 @@ export function toggleCategory(map, category) {
     });
 }
 
-export async function getWeather(latitude, longitude) {
+async function getWeather(latitude, longitude) {
 
     const response = await fetch(`/Weather/GetWeatherByCords?latitude=${latitude}&longitude=${longitude}`);
 
