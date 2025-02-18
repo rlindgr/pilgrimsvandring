@@ -1,5 +1,7 @@
 ﻿import { vadstalle, vindskydd, utedass, varning, fartyg, shop, church } from "../Maps/Markers.js";
 
+const existingCategories = new Set(); // Tracks existing categories
+
 export let categoryMarkers = {
     sleep: [],
     wc: [],
@@ -8,6 +10,16 @@ export let categoryMarkers = {
     varningArray: [], 
     churches: [],
     shops: []
+};
+
+const categoryNames = { //changes the display name for the chkboxes
+    sleep: "Vindskydd",
+    wc: "Dass",
+    boat: "Båtöverfart",
+    waterCrossing: "Vadställe",
+    varningArray: "Varning",
+    churches: "Kyrka",
+    shops: "Affär"
 };
 
 // Define projections
@@ -68,10 +80,14 @@ export async function DisplayPointOfInterests(map, selectedTrailId = null) {
             const northing = parseFloat(point.latitude.substring(1));
 
             const icon = getCategoryIcon(point.category);
+            if (!icon) continue; //Skips unknown categories
+
             const { lat, lng } = convertToLatLng(easting, northing);
 
             const { temperature, weatherCode } = await getWeather(lat, lng);
             const weatherDescription = getWeatherDescription(weatherCode);
+
+            existingCategories.add(point.category); // Add category to existingCategories
 
             // Add marker to the map
             const marker = L.marker([lat, lng], { icon: icon }).addTo(map);
@@ -133,9 +149,10 @@ export function addToCategoryList(point, marker) {
 }
 
 export function toggleCategory(map, category) {
-    if (!categoryMarkers[category]) return;
+    const markers = categoryMarkers[category];
+    if (!markers) return; // If no markers exist for this category, do nothing
 
-    categoryMarkers[category].forEach(marker => {
+    markers.forEach(marker => {
         if (map.hasLayer(marker)) {
             map.removeLayer(marker);
         } else {
@@ -187,7 +204,7 @@ function getWeatherDescription(weathercode) {
 }
 
 
-export function filterAlternativesForMap() {
+ function filterAlternativesForMap() {
     const existingIcons = [];
     Object.keys(categoryMarkers).forEach(category => {
         // Only add the category if it has markers
@@ -196,4 +213,37 @@ export function filterAlternativesForMap() {
         }
     });
     return existingIcons;
+}
+
+export function addChekBoxes(map) {
+    const container = document.getElementById("checkboxes-icons");
+    container.innerHTML = "";
+
+    // Find categories that actually have markers
+    const categoriesWithMarkers = Object.keys(categoryMarkers).filter(category => categoryMarkers[category].length > 0);
+
+    categoriesWithMarkers.forEach(category => {
+        const categoryLabel = categoryNames[category] || category; // Display name conversion
+
+        const checkboxWrapper = document.createElement("div");
+        checkboxWrapper.classList.add("checkbox-wrapper-1");
+
+        const checkboxInput = document.createElement("input");
+        checkboxInput.id = `${category}`;
+        checkboxInput.classList.add("substituted");
+        checkboxInput.type = "checkbox";
+        checkboxInput.checked = true;
+
+        const label = document.createElement("label");
+        label.setAttribute("for", checkboxInput.id);
+        label.innerText = categoryLabel;
+
+        checkboxWrapper.appendChild(checkboxInput);
+        checkboxWrapper.appendChild(label);
+        container.appendChild(checkboxWrapper);
+
+        checkboxInput.addEventListener('change', function () {
+            toggleCategory(map, category);
+        });
+    });
 }
