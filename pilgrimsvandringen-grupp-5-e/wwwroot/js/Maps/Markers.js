@@ -108,3 +108,23 @@ export const greenFlag = L.icon({
     shadowAnchor: [4, 62],
     popupAnchor: [-3, -76]
 });
+
+export const church = L.icon({
+    iconUrl: '/images/MapImages/church.png',
+    shadowUrl: null,
+    iconSize: [38, 38],
+    shadowSize: [50, 64],
+    iconAnchor: [19, 19],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76]
+});
+
+export const shop = L.icon({
+    iconUrl: '/images/MapImages/shop.png',
+    shadowUrl: null,
+    iconSize: [38, 38],
+    shadowSize: [50, 64],
+    iconAnchor: [19, 19],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76]
+});
