@@ -29,7 +29,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Account", loginViewModel);
+                return RedirectToAction("Index", "Account");
             }
 
             ModelState.AddModelError("", "Felaktig inloggning");
