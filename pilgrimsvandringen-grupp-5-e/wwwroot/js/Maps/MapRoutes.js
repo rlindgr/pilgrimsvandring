@@ -2,9 +2,9 @@
 
 
 export let trailsInformation = [
-    { id: 4, name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
-    { id: 2, name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
-    { id: 3, name: 'st-olovsleden', color: 'red', trailIcon: redFlag, startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927] }
+    { id: 4, name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855], displayName: 'Indalsleden' },
+    { id: 2, name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407], displayName: 'Kårböleleden' },
+    { id: 3, name: 'st-olovsleden', color: 'red', trailIcon: redFlag, startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927], displayName: 'S:t Olovsleden' }
 ];
 
 
@@ -66,7 +66,7 @@ export async function fetchAndDisplayRoute(map) {
 }
 
 // Function to fetch & display GPX routes
-export async function fetchAndDisplayGPXRoute(map, trailName, trailColor, startPoint, endPoint, trailIcon) {
+export async function fetchAndDisplayGPXRoute(map, trailId, trailName, trailColor, startPoint, endPoint, trailIcon, trailDisplayName) {
     try {
         const gpxLayer = new L.GPX(`/js/Maps/Gpx/${trailName}.gpx`, {
             async: true,
@@ -89,6 +89,21 @@ export async function fetchAndDisplayGPXRoute(map, trailName, trailColor, startP
 
         L.marker(startPoint, { icon: trailIcon }).addTo(map).bindPopup(`Start: ${trailName}`);
         L.marker(endPoint, { icon: trailIcon }).addTo(map).bindPopup(`Slut: ${trailName}`);
+
+        // Make GPX route clickable
+        gpxLayer.on('addline', function (e) {
+            e.line.on('click', function (event) {  // <-- FIXED: `on` instead of `om`
+                L.popup()
+                    .setLatLng(event.latlng)
+                    .setContent(`
+                        <b>${trailDisplayName}</b><br>
+                        <a href="/Trails/TrailDetails?id=${trailId}" target="_blank">View More Details</a>
+
+                    `)
+                    .openOn(map);
+            });
+        });
+
 
     } catch (error) {
         console.error('Error loading or displaying the GPX route:', error);
@@ -162,6 +177,6 @@ export function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
 
 
 export function addAllTrails(map) {
-    trailsInformation.forEach(trail => fetchAndDisplayGPXRoute(map, trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon));
+    trailsInformation.forEach(trail => fetchAndDisplayGPXRoute(map, trail.id, trail.name, trail.color, trail.startPoint, trail.endPoint, trail.trailIcon, trail.displayName));
 }
 
