@@ -1,6 +1,6 @@
 ﻿import { redFlag, yellowFlag, blueFlag } from "../js/Maps/Markers.js";
 import { fetchAndDisplayGPXRoute, fetchAndDisplayRoute } from "../js/Maps/MapRoutes.js";
-import { DisplayPointOfInterests, toggleCategory } from "../js/Maps/Poi.js";
+import { DisplayPointOfInterests, addChekBoxes } from "../js/Maps/Poi.js";
 
 
 
@@ -20,48 +20,28 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
-// Function to determine and load the correct route baseed on selected ID
+
 function initializeMap() {
     const mapContainer = document.getElementById("trail");
 
     if (mapContainer && mapContainer.dataset.trailId) {
-        const selectedTrailId = parseInt(mapContainer.dataset.trailId, 10); //Ensure ID is an integer
+        const selectedTrailId = parseInt(mapContainer.dataset.trailId, 10); 
 
-        const selectedTrail = trailsInformation.find(trail => trail.id === selectedTrailId); 
+        const selectedTrail = trailsInformation.find(trail => trail.id === selectedTrailId);
 
         if (selectedTrail) {
             if (selectedTrail.id === 1) {
-                fetchAndDisplayRoute(map); // Load GeoJSON route for trail ID 1
+                fetchAndDisplayRoute(map);
             } else {
                 fetchAndDisplayGPXRoute(map, selectedTrail.name, selectedTrail.color, selectedTrail.startPoint, selectedTrail.endPoint, selectedTrail.trailIcon);
-
             }
+        }
 
-        }
-        if (selectedTrailId === 1 || selectedTrailId === 2) { 
-            DisplayPointOfInterests(map, selectedTrailId); 
-            
-        }
         
+        DisplayPointOfInterests(map, selectedTrailId).then(() => {
+            addChekBoxes(map);
+        });
     }
 }
 
 initializeMap();
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('toggleSleep').addEventListener('change', function () {
-        toggleCategory(map, 'sleep', this.checked);
-    });
-    document.getElementById('toggleWc').addEventListener('change', function () {
-        toggleCategory(map, 'wc', this.checked);
-    });
-    document.getElementById('toggleBoat').addEventListener('change', function () {
-        toggleCategory(map, 'boat', this.checked);
-    });
-    document.getElementById('toggleWaterCrossing').addEventListener('change', function () {
-        toggleCategory(map, 'waterCrossing', this.checked);
-    });
-    document.getElementById('toggleVarningArray').addEventListener('change', function () {
-        toggleCategory(map, 'varningArray', this.checked);
-    });
-});
