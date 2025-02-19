@@ -1,5 +1,6 @@
 ﻿body {
     background-color: #292F15; 
+    padding-bottom: 100px;
 }
 
 /*.page-container {
@@ -63,9 +64,11 @@ article {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center; 
+
 }
 
 .cards-item {
+    text-decoration: none;
     display: flex;
     height: 60px;
     align-items: center;
@@ -87,10 +90,12 @@ article {
         font-size: 1.5rem;
         font-weight: 300;
         margin: 0px;
+        text-decoration: none;
     }
 
 .cards-item img {
     height: 30px; 
+
 }
 
 .circle-item {
