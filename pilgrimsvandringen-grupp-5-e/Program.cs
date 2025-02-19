@@ -19,6 +19,8 @@ builder.Services.AddScoped<IPointOfInterestRepository, PointOfInterestRepository
 builder.Services.AddScoped<IStageInformationService, StageInformationService>();
 builder.Services.AddScoped<IStageRepository, StageRepository>();
 builder.Services.AddScoped<WeatherService>();
+builder.Services.AddScoped<IMessageService, MessageService>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 
 // api
 builder.Services.AddHttpClient<ApiEngine>();

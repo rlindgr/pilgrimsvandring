@@ -2,22 +2,21 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using pilgrimsvandringen_grupp_5_e.Models;
 using pilgrimsvandringen_grupp_5_e.Services;
+using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
 
 namespace pilgrimsvandringen_grupp_5_e.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly WeatherService _weatherService;
+        private readonly ILogger<HomeController> _logger;        
 
-        public HomeController(ILogger<HomeController> logger, WeatherService weatherService)
+        public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
-            _weatherService = weatherService;
+            _logger = logger;           
         }
 
         public async Task<IActionResult> Index()
-        {
+        {            
             return View();
         }
 
