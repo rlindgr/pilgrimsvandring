@@ -18,6 +18,9 @@ body {
 
 .navbar {
     background-color: #FFEBE1;
+    position:fixed;
+    width:100%;
+    z-index: 1000;
 }
 
 .navbar-brand img{
@@ -77,6 +80,7 @@ footer {
     background-color: transparent;
     border-top: solid transparent;
     padding: 20px;
+    z-index: 1000;
 }
 
 .footer-container {

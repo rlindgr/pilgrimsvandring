@@ -3,6 +3,11 @@
     padding-bottom: 100px;
 }
 
+.map-div {
+    height: 500px;
+    width: 70%;
+    margin: 0 auto;
+}
 /*.page-container {
     width: 80%; 
     display: flex;
@@ -10,7 +15,6 @@
     align-items: center;
     margin-left: 10%; 
 }*/
-
 .first-section {
     height: 100vh;
     display: flex;
