@@ -24,7 +24,7 @@ export const vadstalle = L.icon({
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [19, 19], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76] 
 });
@@ -34,7 +34,7 @@ export const vindskydd = L.icon({
     shadowUrl: null,
     iconSize: [38, 38],
     shadowSize: [50, 64], 
-    iconAnchor: [0, 38], 
+    iconAnchor: [0, 19], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76] 
 });
@@ -44,7 +44,7 @@ export const utedass = L.icon({
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [38, 38], 
+    iconAnchor: [38, 19], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76] 
 });
@@ -54,7 +54,7 @@ export const varning = L.icon({
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [19, 19], 
     shadowAnchor: [4, 62],  
     popupAnchor: [-3, -76]
 });
@@ -64,7 +64,7 @@ export const fartyg = L.icon({
     shadowUrl: null,
     iconSize: [38, 38],
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94],
+    iconAnchor: [19, 19],
     shadowAnchor: [4, 62], 
     popupAnchor: [-3, -76]
 });
