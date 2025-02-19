@@ -52,7 +52,19 @@ export async function fetchAndDisplayRoute(map) {
         // Create LineString feature and display it on the map
         L.geoJSON(
             { type: 'Feature', geometry: { type: 'LineString', coordinates: orderedCoordinates } },
-            { style: { color: 'Green', weight: 4 } }
+            { style: { color: 'Green', weight: 4  },
+            onEachFeature: function (feature, layer) {
+                layer.on('click', function (event) {
+                    L.popup()
+                        .setLatLng(event.latlng)
+                        .setContent(`
+                        <b>Jämt Norge leden</b><br>
+                        <a href="/Trails/TrailDetails?id=1" target="_blank">Se mer information</a>
+                    `)
+                        .openOn(map);
+                  });
+                }
+            }
         ).addTo(map);
 
         // Add markers for start and end points
@@ -92,12 +104,12 @@ export async function fetchAndDisplayGPXRoute(map, trailId, trailName, trailColo
 
         // Make GPX route clickable
         gpxLayer.on('addline', function (e) {
-            e.line.on('click', function (event) {  // <-- FIXED: `on` instead of `om`
+            e.line.on('click', function (event) { 
                 L.popup()
                     .setLatLng(event.latlng)
                     .setContent(`
                         <b>${trailDisplayName}</b><br>
-                        <a href="/Trails/TrailDetails?id=${trailId}" target="_blank">View More Details</a>
+                        <a href="/Trails/TrailDetails?id=${trailId}" target="_blank">Se mer information</a>
 
                     `)
                     .openOn(map);
