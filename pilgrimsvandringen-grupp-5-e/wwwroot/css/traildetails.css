@@ -359,7 +359,7 @@ p {
     gap: 20px;
     flex-wrap: wrap;
     margin-top: 35px;
-    padding-top: 1vh;
+    padding-top: 6vh;
 }
 
 
@@ -378,7 +378,7 @@ p {
     }
 
 .trail-map {
-    top: 25px;
+    top: 100px;
     height:500px;
     width:100%
 }
