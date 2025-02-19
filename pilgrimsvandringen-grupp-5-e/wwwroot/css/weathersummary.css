@@ -225,3 +225,20 @@ a {
 .firerisk-message p {
     margin-bottom:0;
 }
+
+@media all and (max-width:800px) {
+
+    .firerisk-container {
+        width: 450px;
+    }
+}
+
+@media all and (max-width:450px) {
+    .dropbtn {
+        width:95%;
+    }
+        .firerisk-container{
+      width: 300px;
+    }
+
+}
