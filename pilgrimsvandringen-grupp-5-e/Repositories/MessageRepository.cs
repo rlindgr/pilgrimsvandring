@@ -40,7 +40,8 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
         {
             try
             {
-                await AddAsync(message);
+                var result = _context.Messages.Add(message);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex) 
             { 

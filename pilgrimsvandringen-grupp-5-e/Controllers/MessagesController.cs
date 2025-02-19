@@ -20,11 +20,25 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
 
         public async Task<IActionResult> Guestbook()
         {
-            //var user = await _userManager.FindByNameAsync("GladaVandraren1");
-            //ViewBag.User = user;
-            var model = await _messageService.GetAllMessagesAsync();
-            ViewBag.Message = model;
-            return View(model);
+            try
+            {
+                var userId = HttpContext.Session.GetString("UserId");
+                if(userId != null)
+                {
+                    var userInt = int.Parse(userId);
+                    var user = await _messageService.GetUserByIdAsync(userInt);
+                    ViewBag.User = user;
+                }
+
+                var model = await _messageService.GetAllMessagesAsync();
+                ViewBag.Message = model;
+                return View();
+            }
+            catch (Exception)
+            {
+
+                return NotFound("Det gick inte bra ");
+            }
         }
 
         public async Task<IActionResult> PostMessage(Message message)
@@ -32,7 +46,10 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             var userId = HttpContext.Session.GetString("UserId");
             var userInt = int.Parse(userId);
             var user = await _messageService.GetUserByIdAsync(userInt);
-            var model = _messageService.AddMessageAsync(message);
+            message.DateTime = DateTime.Now;
+            message.MessageTypeId = 1;
+            message.User = user;
+            await _messageService.AddMessageAsync(message);
             return RedirectToAction("Guestbook");
 
         }

@@ -66,6 +66,8 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
 
             if (result.Succeeded)
             {
+                // Update the usertable with the properties from AspNetIdentityuser
+
                 await _signInManager.SignInAsync(user, false);
                 return RedirectToAction("Index", "Account");
             }

@@ -48,6 +48,8 @@ builder.Services.AddDbContext<CustomIdentityDbContext>(options =>
                 ServiceLifetime.Scoped
                 );
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 // Loginfunction for user
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<CustomIdentityDbContext>()
