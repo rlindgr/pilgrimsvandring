@@ -7,6 +7,9 @@ const gearButton = document.getElementById("gear-link");
 const natureButton = document.getElementById("nature-link");
 const container = document.getElementById("info-container"); 
 
+document.addEventListener("DOMContentLoaded", () => {
+    huntingButton.click(); 
+});
 
 async function getSpottedAnimals() {
     const body = {

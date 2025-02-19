@@ -109,11 +109,24 @@
                     </table>
                 </div>
             }}
-
         </div>
     
     </div>
+               <div class="firerisk-container">
+               <img src="/icons/mainpage/wildfire.png"/>
+            <div class="firerisk-message">
+                <h4>Brandrisk</h4>
+                <p>
+                    @{
+                        var riskMessage = Model[i].FireRiskVM.RiskMessage;
+                        var defaultMessage = "Ingen brandrisk just nu.";
+                    }
+                    @(riskMessage.Contains("Data saknas") ? defaultMessage : riskMessage)
+                </p>
+            </div>
+        </div>
     </div>
 }
+
 
 <script type="module" src="~/js/weatherSummary.js"></script>                   

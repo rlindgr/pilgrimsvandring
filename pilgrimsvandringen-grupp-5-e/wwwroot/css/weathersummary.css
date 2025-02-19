@@ -97,7 +97,7 @@ a {
     flex-wrap: wrap; 
     justify-content:center;
     margin: 100px 0;
-    gap:150px;
+    gap:50px 150px;
 }
 
 .weather-start-end-info {
@@ -194,4 +194,34 @@ a {
 
 .date {
     font-size:0.8rem;
+}
+
+.firerisk-container {
+    width: 750px;
+    border: solid white 1px;
+    padding: 20px 50px;
+    border-radius: 10px;
+    margin: 0 200px;
+    display: flex;
+    align-items: center; 
+    gap: 50px;
+}
+
+.firerisk-container h4{
+    font-size:1.3rem; 
+    
+
+}
+
+    .firerisk-container img {
+        height: fit-content;
+        width:50px;
+    }
+
+.firerisk-message {
+    width: 550px;
+}
+
+.firerisk-message p {
+    margin-bottom:0;
 }
