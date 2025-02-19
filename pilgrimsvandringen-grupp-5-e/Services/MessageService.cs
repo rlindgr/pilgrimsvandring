@@ -19,10 +19,16 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             return result;
         }
 
-        //public async Task<Message> AddMessageAsync(Message message)
-        //{
-        //    var result = _messageRepository.PostMessageAsync(message);
-            
-        //}
+        public async Task AddMessageAsync(Message message)
+        {
+            await _messageRepository.PostMessageAsync(message);
+
+        }
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            var user = await _messageRepository.GetUserByIdAsync(id);
+            return user;
+        }
     }
 }

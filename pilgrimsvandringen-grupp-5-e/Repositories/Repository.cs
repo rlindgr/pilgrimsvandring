@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using pilgrimsvandringen_grupp_5_e.Data;
+using pilgrimsvandringen_grupp_5_e.Models;
 using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
 
 namespace pilgrimsvandringen_grupp_5_e.Repositories
@@ -26,6 +27,15 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
         public void Delete(T entity) => _dbSet.Remove(entity);
 
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
+
+        //public async Task<User> GetUserByGuid(string guid)
+        //{
+        //    return await _context.Users.FirstOrDefaultAsync(x => x.IdentityUserId == guid);
+        //}
+
+        //public async Task<T> GetByIdAsync(string guid) => await _dbSet.FindAsync(guid);
+
+
     }
 }
 

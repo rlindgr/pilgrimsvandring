@@ -1,11 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model pilgrimsvandringen_grupp_5_e.Models.Message
+
 @{
 }
-@if (Model != null && Model.Count > 0)
+<section>
+    <h2>Skriv ett meddelande</h2>
+    <form asp-action="PostMessage" method="post" asp-route-id="@ViewBag.User.Id">
+        <div class="message-form">
+            <label asp-for="Title">Rubrik</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div >
+        <div class="message-form">
+            <label asp-for="Description">Text</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="message-form">
+            <label asp-for="User.UserName">Användarnamn</label>
+            <input asp-for="User.UserName" class="form-control" />
+            <span asp-validation-for="User.UserName" class="text-danger"></span>
+        </div>
+        <div class="message-form">
+            <label asp-for="DateTime">Datum</label>
+            <input asp-for="DateTime" class="form-control" />
+            <span asp-validation-for="DateTime" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Publicera meddelande</button>
+    </form>
+</section>
+
+<section>
+    <h2>Läs meddelanden</h2>
+@if (ViewBag.Message != null && ViewBag.Message.Count > 0)
 {
-    foreach (var message in Model)
+    foreach (var message in ViewBag.Message)
     {
         <article>
             <h3>@message.Title</h3>
@@ -17,3 +45,4 @@
     }
 
 }
+</section>

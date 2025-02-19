@@ -4,6 +4,8 @@ namespace pilgrimsvandringen_grupp_5_e.Services.Interfaces
 {
     public interface IMessageService
     {
-        Task<IEnumerable<Message>> GetAllMessagesAsync();
+        Task AddMessageAsync(Message message);
+        Task<IEnumerable<Message>> GetAllMessagesAsync();        
+        Task<User> GetUserByIdAsync(int id);
     }
 }

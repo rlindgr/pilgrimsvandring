@@ -1,7 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using pilgrimsvandringen_grupp_5_e.Data;
+using pilgrimsvandringen_grupp_5_e.Models;
+using pilgrimsvandringen_grupp_5_e.Repositories;
 using pilgrimsvandringen_grupp_5_e.ViewModels;
+using System.Security.Claims;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace pilgrimsvandringen_grupp_5_e.Controllers
@@ -10,11 +15,20 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly AppDbContext _context;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, AppDbContext appDbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = appDbContext;
+        }      
+        
+
+        public async Task<User> GetUserByGuid(string guid)
+        {
+            //var test = await _context.Users.ToListAsync();
+            return await _context.Users.FirstOrDefaultAsync(x => x.IdentityUserId == guid);
         }
 
         public IActionResult Login() => View();
@@ -29,6 +43,9 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
 
             if (result.Succeeded)
             {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var user = await GetUserByGuid(userId);
+                HttpContext.Session.SetString("UserId", user.Id.ToString());
                 return RedirectToAction("Index", "Account");
             }
 
@@ -75,4 +92,6 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         // TODO Create a view for AccessDenied
         public IActionResult AccessDenied() => View();
     }
+
+
 }

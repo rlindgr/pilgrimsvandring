@@ -10,6 +10,11 @@ using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add sesssions
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITrailInformationService, TrailInformationService>();
@@ -21,6 +26,9 @@ builder.Services.AddScoped<IStageRepository, StageRepository>();
 builder.Services.AddScoped<WeatherService>();
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+
+
+
 
 // api
 builder.Services.AddHttpClient<ApiEngine>();
@@ -59,6 +67,7 @@ using (var scope = app.Services.CreateScope())
     await SeedRoles(roleManager);
 }
 
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -70,9 +79,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapStaticAssets();
 
 app.MapControllerRoute(

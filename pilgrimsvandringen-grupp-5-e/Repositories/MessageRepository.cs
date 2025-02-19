@@ -49,5 +49,10 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
             
         }
 
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
     }
 }
