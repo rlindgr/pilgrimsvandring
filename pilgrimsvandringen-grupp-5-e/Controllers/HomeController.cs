@@ -20,6 +20,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             return View();
         }
 
+
         public IActionResult Privacy()
         {
             return View();

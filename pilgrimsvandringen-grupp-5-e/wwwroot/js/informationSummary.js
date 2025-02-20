@@ -60,25 +60,60 @@ async function getSpottedAnimals() {
 huntingButton.addEventListener('click', () => {
     container.innerHTML = "";
     let header = document.createElement("h3");
-    container.appendChild(header)
+    container.appendChild(header);
     header.textContent = `${huntingButton.textContent}`;
 
     const smallInfoContainer = document.createElement("div");
     container.appendChild(smallInfoContainer);
     smallInfoContainer.classList.add("small-info-container");
 
-    const leftItem = document.createElement("div");
-    smallInfoContainer.appendChild(leftItem);
-    leftItem.classList.add("left-item");
+    const infoContainer = document.createElement("div");
+    smallInfoContainer.appendChild(infoContainer);
+    infoContainer.classList.add("info-container");
 
-    const infoHeader = document.createElement("h4");
-    leftItem.appendChild(infoHeader);
-    infoHeader.textContent = "Info";
-    infoHeader.style.color = 'white';
+    const createInfoSection = (headerText, paragraphText) => {
+        const leftItem = document.createElement("div");
+        infoContainer.appendChild(leftItem);
+        leftItem.classList.add("left-item");
 
-    const infoText = document.createElement("p");
-    leftItem.appendChild(infoText);
-    infoText.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt sem et orci eleifend condimentum. Duis ut turpis nec mauris elementum ornare nec eu nisl. Vestibulum quis tincidunt enim, quis dapibus massa. Donec iaculis venenatis augue vitae viverra. Vestibulum pulvinar consequat diam, at faucibus metus consectetur non. Aenean volutpat egestas tellus, eu cursus diam. Nullam et velit faucibus, lobortis nulla vel, feugiat tellus. Nulla et varius elit, a congue est. Proin vel lacus scelerisque, cursus ante eu, fringilla sem. Aliquam elementum tempor placerat. Sed dui nisi, pulvinar in mattis ut, lobortis et nisl. Fusce eu ultrices mauris. Pellentesque accumsan ultricies enim, ac efficitur tortor gravida a.";
+
+        const infoHeader = document.createElement("h4");
+        leftItem.appendChild(infoHeader);
+        infoHeader.textContent = headerText;
+        infoHeader.style.color = 'white';
+
+        const infoText = document.createElement("p");
+        leftItem.appendChild(infoText);
+        infoText.textContent = paragraphText;
+
+        return leftItem;
+    };
+
+    createInfoSection(
+        "• Jakt och allemansrätten",
+        "I Sverige är jakt en reglerad aktivitet som styrs av jaktlagstiftningen och viltvårdsförordningen. Även om allemansrätten ger frihet att vistas i naturen, innebär den inte rätt att jaga eller störa vilt."
+    );
+
+    createInfoSection(
+        "• Jaktsäsonger och säkerhet",
+        "Under hösten och vintern pågår många jaktperioder, särskilt för älg och rådjur. Jakten kan ske i stora områden, och det är bra att vara uppmärksam på jaktlagens skyltar eller informera sig om jakt i området."
+    );
+
+    createInfoSection(
+        "• Hundar och jaktområden",
+        "Om du har med dig hund i skogen ska den vara kopplad mellan 1 mars och 20 augusti för att skydda viltet. Under jaktsäsongen kan lösa hundar uppfattas som en störning av jägare, så det är bäst att hålla hunden under kontroll."
+    );
+
+    createInfoSection(
+        "Jaktförbud och skyddade områden",
+        "I nationalparker och naturreservat kan särskilda jaktregler gälla, och ibland råder totalförbud mot jakt. Kontrollera lokala regler innan du ger dig ut i ett område."
+    );
+
+    createInfoSection(
+        "• Respekt och samspel",
+        "Om du stöter på jägare i skogen, visa respekt genom att hålla avstånd och undvika att gå rakt igenom jaktmarker. Om du hör skott eller ser jaktskyltar kan det vara klokt att välja en annan rutt."
+    );
+
 
     const rightItem = document.createElement("div");
     smallInfoContainer.appendChild(rightItem);
@@ -123,19 +158,32 @@ weatherButton.addEventListener('click', () => {
     container.appendChild(header)
     header.textContent = `${weatherButton.textContent}`;
 
-    const smallInfoContainer = document.createElement("div");
-    container.appendChild(smallInfoContainer);
-    smallInfoContainer.classList.add("small-info-container");
+    const createInfoSection = (headerText, paragraphText) => {
+        const smallInfoItem = document.createElement("div");
+        smallInfoItem.classList.add("small-info-item");
 
-    const smallInfoItem = document.createElement("div");
-    smallInfoContainer.appendChild(smallInfoItem);
-    smallInfoItem.classList.add("small-info-item")
+        const infoHeader = document.createElement("h4"); 
+        infoHeader.textContent = headerText;
+        smallInfoItem.appendChild(infoHeader);
 
-    const infoText = document.createElement("p");
-    smallInfoItem.appendChild(infoText);
-    infoText.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt sem et orci eleifend condimentum. Duis ut turpis nec mauris elementum ornare nec eu nisl. Vestibulum quis tincidunt enim, quis dapibus massa. Donec iaculis venenatis augue vitae viverra. Vestibulum pulvinar consequat diam, at faucibus metus consectetur non. Aenean volutpat egestas tellus, eu cursus diam. Nullam et velit faucibus, lobortis nulla vel, feugiat tellus. Nulla et varius elit, a congue est. Proin vel lacus scelerisque, cursus ante eu, fringilla sem. Aliquam elementum tempor placerat. Sed dui nisi, pulvinar in mattis ut, lobortis et nisl. Fusce eu ultrices mauris. Pellentesque accumsan ultricies enim, ac efficitur tortor gravida a."
+        const infoText = document.createElement("p"); 
+        infoText.textContent = paragraphText;
+        smallInfoItem.appendChild(infoText);
 
-})
+        return smallInfoItem;
+    };
+
+
+    const section1 = createInfoSection("Snö och kyla även på sommaren", "ven om det är sommar kan det fortfarande vara snö på högre högar, och det kan till och med snöa i juni, särskilt i fjällen. Var beredd på att vädret kan förändras snabbt, och att det kan bli mycket kallt, även om det är varmt på låga högar.");
+    container.appendChild(section1);
+
+    const section2 = createInfoSection("Vandring på is", "I vissa delar av Sverige, särskilt i norr, kan du gå på is fram till april och ibland även i maj, beroende på vädret. Tänk på att isen kan vara mycket osäker, och det är viktigt att vara försiktig när du vandrar över sjöar eller floder.");
+    container.appendChild(section2);
+
+   
+    const section3 = createInfoSection("Midnattssol och Vintermörker", "I de norra delarna av Sverige kan du uppleva midnattssol under sommaren, vilket innebär att det är ljust dygnet runt. Under vintermånaderna kan det vara mörkt nästan hela dygnet. Planera din vandring utifrån detta och ta med dig tillräcklig belysning om du ska vara ute på kvällarna.");
+    container.appendChild(section3);
+});
 
 gearButton.addEventListener('click', () => {
     container.innerHTML = "";
@@ -147,19 +195,75 @@ gearButton.addEventListener('click', () => {
     container.appendChild(smallInfoContainer);
     smallInfoContainer.classList.add("small-info-container");
 
-    const leftItem = document.createElement("div");
-    smallInfoContainer.appendChild(leftItem);
-    leftItem.classList.add("left-item")
+    const infoContainer = document.createElement("div");
+    smallInfoContainer.appendChild(infoContainer);
+    infoContainer.classList.add("info-container"); 
 
+    const leftItem = document.createElement("div");
+    infoContainer.appendChild(leftItem);
+    leftItem.classList.add("left-item");
 
     const infoHeader = document.createElement("h4");
     leftItem.appendChild(infoHeader);
-    infoHeader.textContent = "Info";
+    infoHeader.textContent = "• Välj rätt utrustning";
     infoHeader.style.color = 'white';
 
     const infoText = document.createElement("p");
     leftItem.appendChild(infoText);
-    infoText.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt sem et orci eleifend condimentum. Duis ut turpis nec mauris elementum ornare nec eu nisl. Vestibulum quis tincidunt enim, quis dapibus massa. Donec iaculis venenatis augue vitae viverra. Vestibulum pulvinar consequat diam, at faucibus metus consectetur non. Aenean volutpat egestas tellus, eu cursus diam. Nullam et velit faucibus, lobortis nulla vel, feugiat tellus. Nulla et varius elit, a congue est. Proin vel lacus scelerisque, cursus ante eu, fringilla sem. Aliquam elementum tempor placerat. Sed dui nisi, pulvinar in mattis ut, lobortis et nisl. Fusce eu ultrices mauris. Pellentesque accumsan ultricies enim, ac efficitur tortor gravida a."
+    infoText.textContent = `Kläder och skor ska tåla vind och väta. Kläderna bör kunna bäras i flera skikt för att enkelt anpassas efter väder och temperatur. Bra utrustning behöver inte vara dyr och en klokt packad ryggsäck bör inte vara för tung. På Fjällsäkerhetsrådets webbplats finns checklistor över lämplig utrustning för olika aktiviteter i olika typer av fjällmiljöer.`;
+
+    const leftItem2 = document.createElement("div");
+    infoContainer.appendChild(leftItem2);
+    leftItem2.classList.add("left-item");
+
+    const infoHeader2 = document.createElement("h4");
+    leftItem2.appendChild(infoHeader2);
+    infoHeader2.textContent = "• Meddela färdväg och beräknad återkomst";
+    infoHeader2.style.color = 'white';
+
+    const infoText2 = document.createElement("p");
+    leftItem2.appendChild(infoText2);
+    infoText2.textContent = `Det är viktigt att någon känner till er planerade färdväg och när ni räknar med att komma tillbaka. Meddela en vän, en släkting eller någon annan som kan slå larm om ni inte skulle återvända som planerat.`;
+
+    const leftItem3 = document.createElement("div");
+    infoContainer.appendChild(leftItem3);
+    leftItem3.classList.add("left-item");
+
+    const infoHeader3 = document.createElement("h4");
+    leftItem3.appendChild(infoHeader3);
+    infoHeader3.textContent = "• Anpassa din fjälltur efter vädret";
+    infoHeader3.style.color = 'white';
+
+    const infoText3 = document.createElement("p");
+    leftItem3.appendChild(infoText3);
+    infoText3.textContent = `Vädret kan slå om hastigt i fjällen. Ta del av lokala och aktuella väderprognoser via radion eller SMHI:s webbplats. Vädertjänster erbjuds även som applikationer för mobiltelefoner. Respektera alltid utfärdade fjällvädervarningar. Den 15 december börjar lavinprognoser att publiceras.`;
+
+    const leftItem5 = document.createElement("div");
+    infoContainer.appendChild(leftItem5);
+    leftItem5.classList.add("left-item");
+
+    const infoHeader5 = document.createElement("h4");
+    leftItem5.appendChild(infoHeader5);
+    infoHeader5.textContent = "• Följ markerade leder";
+    infoHeader5.style.color = 'white';
+
+
+    const infoText5 = document.createElement("p");
+    leftItem5.appendChild(infoText5);
+    infoText5.textContent = `Vinterlederna öppnar normalt först i februari. Det finns hundratals mil markerade vinterleder i fjällen, med bland annat avståndsmarkeringar, övernattningsstugor och hjälptelefoner. De flesta gör klokt i att följa lederna, och är ett säkrare alternativ om ni av någon anledning skulle behöva hjälp.`;
+
+    const leftItem6 = document.createElement("div");
+    infoContainer.appendChild(leftItem6);
+    leftItem6.classList.add("left-item");
+
+    const infoHeader6 = document.createElement("h4");
+    leftItem6.appendChild(infoHeader6);
+    infoHeader6.textContent = "• Ta med karta och kompass";
+    infoHeader6.style.color = 'white';
+
+    const infoText6 = document.createElement("p");
+    leftItem6.appendChild(infoText6);
+    infoText6.textContent = `Se till att ha med en karta som är aktuell. Kompass behövs framförallt utanför markerade leder. Användning av kompass kräver dock kunskaper – instruktioner finns på Fjällsäkerhetsrådets webbplats. Komplettera gärna med GPS eller mobila applikationer vilka erbjuder möjlighet till att kunna orientera sig, men tänk på att batterier laddas ur snabbt när det är kallt.`;
 
     const rightItem = document.createElement("div");
     smallInfoContainer.appendChild(rightItem);
@@ -201,12 +305,44 @@ natureButton.addEventListener('click', async () => {
 
     const infoHeader = document.createElement("h4");
     leftItem.appendChild(infoHeader);
-    infoHeader.textContent = "Info";
+    infoHeader.textContent = "Renar på fjället";
     infoHeader.style.color = 'white';
 
     const infoText = document.createElement("p");
     leftItem.appendChild(infoText);
-    infoText.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit...";
+    infoText.textContent = "Som besökare på fjället och i alla områden där renskötsel bedrivs är det viktigt att du inte stör eller skrämmer renen.";
+
+    const infoList = document.createElement("ul");
+    leftItem.appendChild(infoList);
+
+
+    const tip1 = document.createElement("li");
+    tip1.textContent = "När du ser renar på fjället, stanna upp, sätt dig ner och var tyst. Låt renarna passera i sin egen takt.";
+    infoList.appendChild(tip1);
+
+    const tip2 = document.createElement("li");
+    tip2.textContent = "Gå aldrig rakt mot en betande ren – ta en omväg om det behövs.";
+    infoList.appendChild(tip2);
+
+    const tip3 = document.createElement("li");
+    tip3.textContent = "Drar sig flocken undan? Då har du redan kommit för nära.";
+    infoList.appendChild(tip3);
+
+    const tip4 = document.createElement("li");
+    tip4.textContent = "Lyfter renen på huvudet och svansen samtidigt som den spetsar öronen? Det är ett tydligt tecken på stress och att du bör backa.";
+    infoList.appendChild(tip4);
+
+    const tip5 = document.createElement("li");
+    tip5.textContent = "Håll alltid hunden kopplad och nära intill dig. Renen upplever instinktivt hunden som ett hot.";
+    infoList.appendChild(tip5);
+
+    const tip6 = document.createElement("li");
+    tip6.textContent = "Fråga gärna på närmaste turistbyrå, fjällstation eller fjällstuga var renarna befinner sig just nu och undvik de områdena.";
+    infoList.appendChild(tip6);
+
+    const tip7 = document.createElement("li");
+    tip7.textContent = "Visa även respekt och hänsyn mot renskötarna. Håll dig ur vägen och låt dem sköta sitt jobb. Du befinner dig på deras arbetsplats.";
+    infoList.appendChild(tip7);
 
     const rightItem = document.createElement("div");
     smallInfoContainer.appendChild(rightItem);
