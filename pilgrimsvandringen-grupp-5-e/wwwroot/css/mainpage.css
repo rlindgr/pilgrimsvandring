@@ -2,6 +2,11 @@
     background-color: #292F15; 
 }
 
+.map-div {
+    height: 500px;
+    width: 70%;
+    margin: 0 auto;
+}
 /*.page-container {
     width: 80%; 
     display: flex;
@@ -9,7 +14,6 @@
     align-items: center;
     margin-left: 10%; 
 }*/
-
 .first-section {
     height: 100vh;
     display: flex;
@@ -25,7 +29,7 @@
     left: 0;
     right: 0;
     bottom: 0; 
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.247) 75%, #292F15 100% ), url("/images/mainpage/mot_ljungdalen.jpg");
+    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.247) 75%, #292F15 100% ), url("/images/mainpage/startpageimg.jpg");
     background-size: cover;
     background-position: center 20%;
     background-repeat: no-repeat;
@@ -63,9 +67,11 @@ article {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center; 
+
 }
 
 .cards-item {
+    text-decoration: none;
     display: flex;
     height: 60px;
     align-items: center;
@@ -87,10 +93,12 @@ article {
         font-size: 1.5rem;
         font-weight: 300;
         margin: 0px;
+        text-decoration: none;
     }
 
 .cards-item img {
     height: 30px; 
+
 }
 
 .circle-item {

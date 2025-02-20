@@ -85,7 +85,7 @@ export async function DisplayPointOfInterests(map, selectedTrailId = null) {
             const { lat, lng } = convertToLatLng(easting, northing);
 
             const { temperature, weatherCode } = await getWeather(lat, lng);
-            const weatherDescription = getWeatherDescription(weatherCode);
+            const weatherDescription = weatherCode !== null ? getWeatherDescription(weatherCode) : "Väder ej tillgängligt";
 
             existingCategories.add(point.category); // Add category to existingCategories
 
@@ -162,17 +162,24 @@ export function toggleCategory(map, category) {
 }
 
 async function getWeather(latitude, longitude) {
+    try {
+        const response = await fetch(`/Weather/GetWeatherByCords?latitude=${latitude}&longitude=${longitude}`);
 
-    const response = await fetch(`/Weather/GetWeatherByCords?latitude=${latitude}&longitude=${longitude}`);
+        if (!response.ok) {
+            throw new Error(`Weather API error`);
+        }
 
-    const weatherData = await response.json();
+        const weatherData = await response.json();
 
-    const temperature = weatherData?.current_weather?.temperature;
+        return {
+            temperature: weatherData?.current_weather?.temperature ?? "N/A",
+            weatherCode: weatherData?.current_weather?.weathercode ?? null
+        };
 
-    const weatherCode = weatherData?.current_weather?.weathercode;
-
-    return { temperature, weatherCode };
-
+    } catch (error) {
+        console.error("Failed to fetch weather data:", error);
+        return { temperature: "N/A", weatherCode: null };
+    }
 }
 
 function getWeatherDescription(weathercode) {
