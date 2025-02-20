@@ -7,5 +7,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services.Interfaces
         Task AddMessageAsync(Message message);
         Task<IEnumerable<Message>> GetAllMessagesAsync();        
         Task<User> GetUserByIdAsync(int id);
+        Task<bool> MessageTypeExistsAsync(string typeName);
+        Task SeedMessageTypesAsync(MessageType messageType);
     }
 }

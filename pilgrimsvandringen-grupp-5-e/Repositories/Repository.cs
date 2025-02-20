@@ -28,14 +28,11 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
 
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
 
-        //public async Task<User> GetUserByGuid(string guid)
-        //{
-        //    return await _context.Users.FirstOrDefaultAsync(x => x.IdentityUserId == guid);
-        //}
 
-        //public async Task<T> GetByIdAsync(string guid) => await _dbSet.FindAsync(guid);
-
-
+        public async Task<User> GetUserByGuid(string guid)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.IdentityUserId == guid);
+        }
     }
 }
 

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
 using pilgrimsvandringen_grupp_5_e.Data;
+using pilgrimsvandringen_grupp_5_e.Models;
 using pilgrimsvandringen_grupp_5_e.Repositories;
 using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
 using pilgrimsvandringen_grupp_5_e.Services;
@@ -26,6 +27,8 @@ builder.Services.AddScoped<IStageRepository, StageRepository>();
 builder.Services.AddScoped<WeatherService>();
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 
 
@@ -64,9 +67,12 @@ builder.Services.ConfigureApplicationCookie(options =>
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
+    var messageTypeManager = scope.ServiceProvider.GetRequiredService<IMessageService>();
+    var localRoleManager = scope.ServiceProvider.GetRequiredService<IAccountService>();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-    await SeedRoles(roleManager);
+    await SeedRoles(roleManager, localRoleManager);
+    await SeedMessageTypes(messageTypeManager);
 }
 
 app.UseSession();
@@ -92,15 +98,38 @@ app.MapControllerRoute(
 app.Run();
 
 // Borrowed from Erik. 
-static async Task SeedRoles(RoleManager<IdentityRole> roleManager)
+static async Task SeedRoles(RoleManager<IdentityRole> roleManager, IAccountService accountService)
 {
     if (!await roleManager.RoleExistsAsync("admin"))
     {
         await roleManager.CreateAsync(new IdentityRole("admin"));
     }
 
+    if (!await accountService.RoleExistsAsync("admin"))
+    {
+        await accountService.SeedRolesAsync(new Role("admin"));
+    }
+
     if (!await roleManager.RoleExistsAsync("user"))
     {
         await roleManager.CreateAsync(new IdentityRole("user"));
+    }
+
+    if (!await accountService.RoleExistsAsync("user"))
+    {
+        await accountService.SeedRolesAsync(new Role("user"));
+    }
+}
+
+static async Task SeedMessageTypes(IMessageService messageService)
+{
+    if (!await messageService.MessageTypeExistsAsync("guestbook"))
+    {
+        messageService.SeedMessageTypesAsync(new MessageType("guestbook"));
+    }
+
+    if (!await messageService.MessageTypeExistsAsync("notification"))
+    {
+        messageService.SeedMessageTypesAsync(new MessageType("notification"));
     }
 }

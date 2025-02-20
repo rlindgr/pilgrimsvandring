@@ -1,4 +1,5 @@
-﻿using pilgrimsvandringen_grupp_5_e.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using pilgrimsvandringen_grupp_5_e.Models;
 using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
 using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
 using System.Runtime.CompilerServices;
@@ -29,6 +30,21 @@ namespace pilgrimsvandringen_grupp_5_e.Services
         {
             var user = await _messageRepository.GetUserByIdAsync(id);
             return user;
+        }
+
+        public async Task SeedMessageTypesAsync(MessageType messageType)
+        {
+            await _messageRepository.SeedMessageTypesAsync(messageType);
+        }
+
+        public async Task<bool> MessageTypeExistsAsync(string typeName)
+        {
+            var result = await _messageRepository.MessageTypeExistsAsync(typeName);
+            if(result != null && result == true)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

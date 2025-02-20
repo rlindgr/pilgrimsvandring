@@ -27,7 +27,7 @@
 {
     foreach (var message in ViewBag.Message)
     {
-        <article>
+        <article class="guestbook-note">
             <h3>@message.Title</h3>
             <p>@message.Description</p>
             <br></br>
@@ -35,6 +35,5 @@
             <p>@message.DateTime</p>
         </article>
     }
-
 }
 </section>

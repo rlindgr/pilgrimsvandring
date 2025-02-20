@@ -23,7 +23,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             try
             {
                 var userId = HttpContext.Session.GetString("UserId");
-                if(userId != null)
+                if(userId != null && userId != "-1")
                 {
                     var userInt = int.Parse(userId);
                     var user = await _messageService.GetUserByIdAsync(userInt);
@@ -34,10 +34,10 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
                 ViewBag.Message = model;
                 return View();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return NotFound("Det gick inte bra ");
+                return NotFound($"Det gick inte bra. Felmeddelande {ex.Message}");
             }
         }
 
@@ -47,7 +47,8 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             var userInt = int.Parse(userId);
             var user = await _messageService.GetUserByIdAsync(userInt);
             message.DateTime = DateTime.Now;
-            message.MessageTypeId = 1;
+            message.MessageTypeId = 2;
+            message.UserId = user.Id;
             message.User = user;
             await _messageService.AddMessageAsync(message);
             return RedirectToAction("Guestbook");

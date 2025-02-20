@@ -2,6 +2,7 @@
 using pilgrimsvandringen_grupp_5_e.Data;
 using pilgrimsvandringen_grupp_5_e.Models;
 using pilgrimsvandringen_grupp_5_e.Repositories.Interfaces;
+using System.Data;
 
 namespace pilgrimsvandringen_grupp_5_e.Repositories
 {
@@ -50,10 +51,26 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
             
         }
 
+        // TODO Find better place for method
         public async Task<User> GetUserByIdAsync(int id)
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task SeedMessageTypesAsync(MessageType messageType)
+        {
+            var result = await _context.MessageTypes.AddAsync(messageType);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> MessageTypeExistsAsync(string typeName)
+        {
+            var result = await _context.MessageTypes.FirstOrDefaultAsync(x => x.Type == typeName);
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
