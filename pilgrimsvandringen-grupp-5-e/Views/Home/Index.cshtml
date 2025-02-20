@@ -14,34 +14,37 @@
         </h1>
         <img src="~/images/mainpage/trailsmap.png" alt="Alternate Text" />
     </div>
-    <div class="route-cards-container">
-        <div class="cards-item">
-            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
-			<h2>Kårböleleden</h2>
-            <div class="circle-item yellow-circle"></div>
+        <div class="route-cards-container">
+            <a href="@Url.Action("TrailDetails", "Trails", new { id = 2 })" class="cards-item">
+                <img src="~/icons/mainpage/placeholder.png" alt="Kårböleleden" />
+                <h2>Kårböleleden</h2>
+                <div class="circle-item yellow-circle"></div>
+            </a>
+
+            <a href="@Url.Action("TrailDetails", "Trails", new { id = 1 })" class="cards-item">
+                <img src="~/icons/mainpage/placeholder.png" alt="Jämt-Norgevägen" />
+                <h2>Jämt-Norgevägen</h2>
+                <div class="circle-item green-circle"></div>
+            </a>
+
+            <a href="@Url.Action("TrailDetails", "Trails", new { id = 3 })" class="cards-item">
+                <img src="~/icons/mainpage/placeholder.png" alt="St:Olovsleden" />
+                <h2>St:Olovsleden</h2>
+                <div class="circle-item red-circle"></div>
+            </a>
+
+            <a href="@Url.Action("TrailDetails", "Trails", new { id = 4 })" class="cards-item">
+                <img src="~/icons/mainpage/placeholder.png" alt="Indalsleden" />
+                <h2>Indalsleden</h2>
+                <div class="circle-item blue-circle"></div>
+            </a>
         </div>
-        <div class="cards-item">
-            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
-            <h2>Jämt-Norgevägen</h2>
-            <div class="circle-item green-circle"></div>
-        </div>
-        <div class="cards-item">
-            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
-            <h2>St:Olovsleden</h2>
-            <div class="circle-item red-circle"></div>
-        </div>
-        <div class="cards-item">
-            <img src="~/icons/mainpage/placeholder.png" alt="Alternate Text" />
-            <h2>Indalsleden</h2>
-            <div class="circle-item blue-circle"></div>
-        </div>
-    </div>
 </section>
         
 
 <section>
     <article>
-        <img class="map-continer" alt="Placeholder" src="/images/mainpage/mot_ljungdalen.jpg" />
+            <div id="start-page-map" class="map-div"></div>
     </article>
 </section>
 
@@ -49,38 +52,38 @@
     <div class="safety-item">
         <img src="/icons/mainpage/exclimation.png" alt="Utropstecken" />
 		<h3>Säkerhet</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
-            get magna volutpat iaculis.  </p>
+            <p>Vädret kan skifta snabbt, så klä dig i lager och ha alltid med regn-
+                och vindskydd. Håll dig på markerade leder och meddela någon om din 
+                planerade rutt.<br/> Läs mer</p>
     </div>
     <div class="safety-item">
         <img src="/icons/mainpage/backpack (1).png" alt="Utropstecken" />
         <h3>Utrustning</h3>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
-            get magna volutpat iaculis.
+                Bra kängor, karta och tillräckligt med mat och vatten är viktiga
+                för en säker vandring. Packa även ett första hjälpen-kit och en laddad
+                mobil.<br/> Läs mer
         </p>
     </div>
     <div class="safety-item">
         <img src="/icons/mainpage/checklist.png" alt="Utropstecken" />
         <h3>Förberedelser</h3>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem e
-            get magna.
+                Planera din rutt i förväg och träna inför längre etapper.
+                Läs på om natur och kultur längs leden
+                för en rikare upplevelse.<br/> Läs mer
         </p>
     </div>
 </section>
 
 <section class="trail-cards-container">
     <article class="trail-card-item">
-        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+            <img class="trail-image" src="~/images/RouteImages/pexels-lauripoldre-30713810.jpg" alt="Alternate Text" />
         <div class="trail-info-container">
 			<h3>Kårböleleden</h3>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+                    En naturskön led genom skogar och fjäll, 
+                    med historiska kapell och vackra vyer. En vandring för både stillhet och äventyr.
             </p>
             <div class="trail-stats-container">
                 <div class="stats-length-container stats-container">
@@ -99,12 +102,12 @@
         </div>
     </article>
     <article class="trail-card-item">
-        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+            <img class="trail-image" src="~/images/RouteImages/pexels-photo-1237111.jpeg" alt="Alternate Text" />
         <div class="trail-info-container">
             <h3>Jämt-Norgevägen</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+                    En historisk pilgrimsled genom Jämtlands storslagna landskap,
+                    fylld med kulturarv, fjäll och rofyllda skogsstigar.
             </p>
                 <div class="trail-stats-container">
                     <div class="stats-length-container stats-container">
@@ -123,12 +126,12 @@
         </div>
     </article>
     <article class="trail-card-item">
-        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+            <img class="trail-image" src="~/images/RouteImages/pexels-roemag-27742040.jpg" alt="Alternate Text" />
         <div class="trail-info-container">
             <h3>St:Olovsleden</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+                    En naturskön pilgrimsled som sträcker sig från Selånger till Trondheim,
+                    kantad av kulturminnen, fjäll och vidsträckta skogar.
             </p>
                 <div class="trail-stats-container">
                     <div class="stats-length-container stats-container">
@@ -147,12 +150,12 @@
         </div>
     </article>
     <article class="trail-card-item">
-        <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+        <img class="trail-image" src="~/images/RouteImages/pexels-henkephotoart-29775986.jpg" alt="Alternate Text" />
         <div class="trail-info-container">
             <h3>Indalsleden</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+                    En vacker vandringsled som följer Indalsälven genom djupa skogar och öppna dalgångar,
+                    med historiska platser och natursköna vyer längs vägen.
             </p>
                 <div class="trail-stats-container">
                     <div class="stats-length-container stats-container">
@@ -175,3 +178,10 @@
 </section>
 
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.0/gpx.min.js"></script>
+<script type="module" src="~/js/Maps/StartPageMap.js" asp-append-version="true"></script>

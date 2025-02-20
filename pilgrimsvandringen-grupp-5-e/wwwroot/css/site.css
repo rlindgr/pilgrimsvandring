@@ -2,7 +2,11 @@
 
 
 html {
-  font-size: 14px;
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (min-width: 768px) {
@@ -13,11 +17,17 @@ html {
 
 body {
     font-family: "DM Sans";
-    height: 100%; 
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {
     background-color: #FFEBE1;
+    position:fixed;
+    width:100%;
+    z-index: 1000;
 }
 
 .navbar-brand img{
@@ -38,11 +48,14 @@ html {
   min-height: 100%;
 }
 
-
+.account-img {
+    position:relative;
+    top:-3px;
+}
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
@@ -62,19 +75,38 @@ html {
     width: 100%;
 }
 
+main {
+    flex: 1;
+}
+
 footer {
-    border-top: solid transparent; 
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    border-top: solid transparent;
+    padding: 20px;
+    z-index: 1000;
 }
 
-.footer-container a {
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
     text-decoration: none;
-    color: white;
-    border-bottom: solid white 1px; 
-    cursor: pointer;
+    width: 100%;
 }
 
-    .footer-container a:hover {
-       
-        color: gray;
+    .footer-container a {
+        text-decoration: none;
+        color: white;
+        border-bottom: solid white 1px;
         cursor: pointer;
     }
+
+        .footer-container a:hover {
+            color: gray;
+            cursor: pointer;
+        }

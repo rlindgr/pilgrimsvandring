@@ -29,9 +29,10 @@
     color: white; 
 }
 
-#info-container h3 {
-    text-align:center; 
-}
+    #info-container h3 {
+        text-align: center;
+        margin-bottom: 3%;
+    }
 
 .small-info-container{
     display:flex;
@@ -49,24 +50,50 @@
 
 .right-item {
     width: 45%;
-}
-
-.hunting-time-info-container{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.gear-list-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    overflow: hidden; 
-    overflow-y: scroll; 
-    height: 350px; 
+    justify-content: center;
 }
 
-.hunting-time-info-item, .gear-list-item {
+
+
+
+.gear-list-container, .animal-list-container, .hunting-time-info-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 350px;
+}
+
+    .hunting-time-info-container::-webkit-scrollbar {
+        width: 8px;
+    }
+    .hunting-time-info-container::-webkit-scrollbar-thumb {
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid #282828;
+    }
+
+    .hunting-time-info-container::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 10px;
+    }
+
+.gearl-list-container {
+   
+    gap: 0px;
+   
+}
+
+.hunting-time-info-container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.hunting-time-info-item, .gear-list-item, .animal-list-item {
     display: flex;
     justify-content: space-around;
     border: solid white 1px;
@@ -84,6 +111,11 @@
         padding: 20px 0px;
     }
 
+    .animal-list-item p {
+        margin: 0;
+        padding: 15px 0px;
+    }
+
     .gear-list-item {
         padding: 10px;
     }
@@ -91,6 +123,16 @@
     p::first-letter {
     text-transform: capitalize;
 }
+
+.show-map-button {
+    background-color: #727f57e8;
+    border: solid white;
+    padding: 2% 0;
+    border-radius: 25px;
+    color: white;
+    margin: 30px 10px;
+}
+
 
 @media all and (max-width:900px) {
     .small-info-container {
@@ -115,7 +157,6 @@
         margin-bottom: 50px; 
     }
 
-
 }
 
 @media all and (max-width:700px) {
@@ -123,6 +164,7 @@
     #info-container {
         width: 95%; 
     }
+ 
 }
 
 @media all and (max-width:400px) {
@@ -133,7 +175,10 @@
     .links-container {
         gap: 10px; 
     }
-}
+    .dropbtn {
+        width:100%;
+    }
+
 
 @media all and (min-width:1700px) {
 

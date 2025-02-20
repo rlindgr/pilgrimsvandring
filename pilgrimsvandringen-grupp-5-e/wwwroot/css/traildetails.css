@@ -358,8 +358,8 @@ p {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-top: 20px;
-    padding-top: 1vh;
+    margin-top: 35px;
+    padding-top: 100px;
 }
 
 
@@ -376,6 +376,12 @@ p {
         font-size: 1.2em;
         color: white;
     }
+
+.trail-map {
+    top: 100px;
+    height:500px;
+    width:100%
+}
 
 
 

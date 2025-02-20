@@ -24,9 +24,9 @@ export const vadstalle = L.icon({
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [19, 19], 
     shadowAnchor: [4, 62],  
-    popupAnchor: [-3, -76] 
+    popupAnchor: [0, -26]
 });
 
 export const vindskydd = L.icon({
@@ -34,9 +34,9 @@ export const vindskydd = L.icon({
     shadowUrl: null,
     iconSize: [38, 38],
     shadowSize: [50, 64], 
-    iconAnchor: [0, 38], 
+    iconAnchor: [0, 19], 
     shadowAnchor: [4, 62],  
-    popupAnchor: [-3, -76] 
+    popupAnchor: [20, -26] 
 });
 
 export const utedass = L.icon({
@@ -44,9 +44,9 @@ export const utedass = L.icon({
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [38, 38], 
+    iconAnchor: [38, 19], 
     shadowAnchor: [4, 62],  
-    popupAnchor: [-3, -76] 
+    popupAnchor: [-18, -26]
 });
 
 export const varning = L.icon({
@@ -54,9 +54,9 @@ export const varning = L.icon({
     shadowUrl: null,
     iconSize: [38, 38], 
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94], 
+    iconAnchor: [19, 19], 
     shadowAnchor: [4, 62],  
-    popupAnchor: [-3, -76]
+    popupAnchor: [0, -26]
 });
 
 export const fartyg = L.icon({
@@ -64,9 +64,9 @@ export const fartyg = L.icon({
     shadowUrl: null,
     iconSize: [38, 38],
     shadowSize: [50, 64], 
-    iconAnchor: [22, 94],
+    iconAnchor: [19, 19],
     shadowAnchor: [4, 62], 
-    popupAnchor: [-3, -76]
+    popupAnchor: [0, -26]
 });
 
 export const redFlag = L.icon({
@@ -116,7 +116,7 @@ export const church = L.icon({
     shadowSize: [50, 64],
     iconAnchor: [19, 19],
     shadowAnchor: [4, 62],
-    popupAnchor: [-3, -76]
+    popupAnchor: [0, -26]
 });
 
 export const shop = L.icon({
@@ -126,5 +126,5 @@ export const shop = L.icon({
     shadowSize: [50, 64],
     iconAnchor: [19, 19],
     shadowAnchor: [4, 62],
-    popupAnchor: [-3, -76]
+    popupAnchor: [0, -26]
 });

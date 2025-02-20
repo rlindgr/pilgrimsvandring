@@ -5,17 +5,32 @@
 }
 @{
     ViewData["Title"] = "Home Page";
+
+    var trailImages = new Dictionary<int, string>
+    {
+        { 1, "/images/RouteImages/pexels-photo-1237111.jpeg" },
+        { 2, "/images/RouteImages/pexels-lauripoldre-30713810.jpg" },
+        { 3, "/images/RouteImages/pexels-roemag-27742040.jpg" },
+        { 4, "/images/RouteImages/pexels-henkephotoart-29775986.jpg" }
+    };
 }
+}
+
+
 
 <link rel="stylesheet" href="~/css/trailssummary.css" />
 
 <section class="trail-cards-container">
+
+    
     
     @foreach (var trail in Model)
     {
+        var imagePath = trailImages.ContainsKey(trail.Id) ? trailImages[trail.Id] : "/images/trails/default.jpg";
+
         <article class="trail-card-item">
           <a class="nav-link text-dark" asp-area="" asp-controller="Trails" asp-action="TrailDetails" asp-route-id="@trail.Id">
-            <img class="trail-image" src="~/images/mainpage/mot_ljungdalen.jpg" alt="Alternate Text" />
+            <img class="trail-image" src="@imagePath" alt="Alternate Text" />
             <div class="trail-info-container">
 					<h3>@trail.Name</h3>
                 <p>
