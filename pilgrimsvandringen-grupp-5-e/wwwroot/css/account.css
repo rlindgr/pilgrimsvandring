@@ -11,7 +11,14 @@ h3 {
     margin: 10px;
 }
 
-.account-container { 
+.main-form-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-container {
     margin-top: 100px;
 }
 
@@ -21,4 +28,24 @@ h3 {
     border-radius: 5px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     color: white !important;
+    width: 400px;
+}
+.form-login{
+    padding: 0px 10px 10px;
+}
+
+.btn-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0px 0px;
+}
+
+.main-index-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
