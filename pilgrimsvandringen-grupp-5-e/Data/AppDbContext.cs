@@ -17,6 +17,10 @@ namespace pilgrimsvandringen_grupp_5_e.Data
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        /// <summary>
+        /// conects identityUser with user
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); modelBuilder.Entity<User>().ToTable("Users");

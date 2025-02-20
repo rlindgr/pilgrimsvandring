@@ -15,7 +15,6 @@ namespace pilgrimsvandringen_grupp_5_e.ViewModels
         public double Length { get; set; }
         public double Height { get; set; }
         public string Surface { get; set; }
-
         public int TrailId { get; set; }
         public Trail Trail { get; set; }
     }

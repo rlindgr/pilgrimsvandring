@@ -37,9 +37,9 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             await _messageRepository.SeedMessageTypesAsync(messageType);
         }
 
-        public async Task<bool> MessageTypeExistsAsync(string typeName)
+        public async Task<bool> CheckMessageTypeExistensAsync(string typeName)
         {
-            var result = await _messageRepository.MessageTypeExistsAsync(typeName);
+            var result = await _messageRepository.CheckMessageTypeExistensAsync(typeName);
             if(result != null && result == true)
             {
                 return true;

@@ -13,8 +13,6 @@ namespace pilgrimsvandringen_grupp_5_e.Models
         public int Id { get; set; }
         [Required]
         public string Type { get; set; }
-
-
         public MessageType(string type)
         {
             Type = type;

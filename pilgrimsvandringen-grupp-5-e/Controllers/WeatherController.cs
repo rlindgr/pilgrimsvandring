@@ -9,25 +9,25 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
     public class WeatherController : Controller
     {
         private readonly ITrailInformationService _trailInformationService;
-        private readonly WeatherService _weatherService;
+        private readonly IWeatherService _weatherService;
 
-        public WeatherController(ITrailInformationService trailInformationService, WeatherService weatherService)
+        public WeatherController(ITrailInformationService trailInformationService, IWeatherService weatherService)
         {
             _trailInformationService = trailInformationService;
             _weatherService = weatherService;
         }
-
+        // TODO develop a structured weatherdetails view
         public async Task<IActionResult> WeatherForecastDetails(int id)
         {
-            var model = await _trailInformationService.GetTrailInformation(id);
-            var startCoords = model.StartPointCoords.Replace(" ", string.Empty).Split(',');
-            var endCoords = model.EndPointCoords.Replace(" ", string.Empty).Split(',');
+            var trailVM = await _trailInformationService.GetTrailById(id);
+            var startCoords = trailVM.StartPointCoords.Replace(" ", string.Empty).Split(',');
+            var endCoords = trailVM.EndPointCoords.Replace(" ", string.Empty).Split(',');
 
             if (startCoords.Length > 1 && startCoords.Length < 3 || endCoords.Length > 1 && endCoords.Length < 3)
             {
                 var startTrailWeather = await _weatherService.GetWeatherByCoordinatesAsync(startCoords[0], startCoords[1]);
                 var endTrailWeather = await _weatherService.GetWeatherByCoordinatesAsync(endCoords[0], endCoords[1]);
-                WeatherForeCastDetailsViewModel WFCVM = new WeatherForeCastDetailsViewModel(model, startTrailWeather, endTrailWeather);
+                WeatherForeCastDetailsViewModel WFCVM = new WeatherForeCastDetailsViewModel(trailVM, startTrailWeather, endTrailWeather);
 
                 return View(WFCVM);
             }
@@ -62,12 +62,10 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             }
             return NotFound();
         }
-
-        // This metod is supposed to be used at the map, click and get position by string (obs), latitude and longitude
+        
         public async Task<IActionResult> WeatherForeCastCurrentPosition(string latitude, string longitude)
         {
             var currentPosition = await _weatherService.GetWeatherByCoordinatesAsync(latitude, longitude);
-
 
             return View("~/Views/Weather/WeatherForecastDetails.cshtml", currentPosition);
         }
@@ -75,7 +73,6 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         public async Task<IActionResult> GetWeatherByCords(string latitude, string longitude)
         {
             var weatherData = await _weatherService.GetCurrentWeatherAsync(latitude, longitude);
-
 
             return Json(weatherData);
         }

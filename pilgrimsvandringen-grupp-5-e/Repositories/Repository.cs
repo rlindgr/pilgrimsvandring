@@ -27,12 +27,7 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
         public void Delete(T entity) => _dbSet.Remove(entity);
 
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
-
-
-        public async Task<User> GetUserByGuid(string guid)
-        {
-            return await _context.Users.FirstOrDefaultAsync(x => x.IdentityUserId == guid);
-        }
+        
     }
 }
 

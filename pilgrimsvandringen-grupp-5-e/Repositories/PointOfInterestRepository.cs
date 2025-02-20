@@ -24,7 +24,7 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
             return await GetAllAsync();
         }
 
-        public async Task<IEnumerable<PointOfInterest>> GetAllPointsOfInterestsByIdAsync(int trailId)
+        public async Task<IEnumerable<PointOfInterest>> GetAllPointsOfInterestsByTrailIdAsync(int trailId)
         {
             var pointsOfInterests = await _context.PointsOfInterests.FromSql($"SELECT * FROM \"PointsOfInterests\"").Where(p => p.TrailId.Equals(trailId)).ToListAsync();
             return pointsOfInterests;

@@ -19,10 +19,10 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             var trails = await _trailRepository.GetAllTrailsAsync();
 
 
-            List<TrailViewModel> trailsViewModels = new List<TrailViewModel>();
+            List<TrailViewModel> trailsVMs = new List<TrailViewModel>();
             foreach (var trail in trails)
             {
-                var trailVm = new TrailViewModel
+                var trailVM = new TrailViewModel
                 {
                    Id = trail.Id,
                    Name = trail.Name,
@@ -38,16 +38,16 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                    StartPointCoords = trail.StartPointCoords,
                    EndPointCoords = trail.EndPointCoords
                 };
-                trailsViewModels.Add(trailVm);
+                trailsVMs.Add(trailVM);
 
             }
-            return trailsViewModels;
+            return trailsVMs;
         }
 
-        public async Task<TrailViewModel> GetTrailInformation(int id)
+        public async Task<TrailViewModel> GetTrailById(int id)
         {
-            var trail = await _trailRepository.GetTrailAsync(id);
-            var trailVm = new TrailViewModel
+            var trail = await _trailRepository.GetTrailByIdAsync(id);
+            var trailVM = new TrailViewModel
             {
                 Id = trail.Id,
                 Name = trail.Name,
@@ -64,7 +64,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 EndPointCoords = trail.EndPointCoords
             };
 
-            return trailVm;
+            return trailVM;
         }
     }
 }

@@ -6,6 +6,6 @@ namespace pilgrimsvandringen_grupp_5_e.Services.Interfaces
     {
         Task SeedRolesAsync(Role role);
         Task CreateUserAsync(User user);
-        Task<bool> RoleExistsAsync(string role);
+        Task<bool> CheckRoleExistensAsync(string role);
     }
 }

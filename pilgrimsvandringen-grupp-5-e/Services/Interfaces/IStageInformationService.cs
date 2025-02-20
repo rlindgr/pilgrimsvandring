@@ -4,8 +4,8 @@ namespace pilgrimsvandringen_grupp_5_e.Services.Interfaces
 {
     public interface IStageInformationService
     {
-        Task<StageViewModel> GetStageInformation(int id);
-        Task<IEnumerable<StageViewModel>> GetAllStagesById(int trailId);
+        Task<StageViewModel> GetStageById(int id);
+        Task<IEnumerable<StageViewModel>> GetAllStagesByTrailId(int trailId);
         Task<IEnumerable<StageViewModel>> GetAllStages();
     }
 }

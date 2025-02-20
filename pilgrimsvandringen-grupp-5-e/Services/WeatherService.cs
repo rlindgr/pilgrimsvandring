@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.Caching.Memory;
 using pilgrimsvandringen_grupp_5_e.Dto;
+using pilgrimsvandringen_grupp_5_e.Services.Interfaces;
 using pilgrimsvandringen_grupp_5_e.ViewModels;
 using System.Globalization;
 
 namespace pilgrimsvandringen_grupp_5_e.Services
 {
-    public class WeatherService
+    public class WeatherService : IWeatherService
     {
         private readonly ApiEngine _apiEngine;
         private readonly IMemoryCache _memoryCache;
@@ -57,13 +58,13 @@ namespace pilgrimsvandringen_grupp_5_e.Services
 
                 if (currentPositionFireRiskDto != null)
                 {
-                    FireRiskViewModel fireRiskViewModel = new FireRiskViewModel
+                    FireRiskViewModel fireRiskVM = new FireRiskViewModel
                     {
                         Date = currentPositionFireRiskDto.FireRiskForecastDto.Date,
                         GrassMessage = currentPositionFireRiskDto.FireRiskForecastDto.GrassMessage,
                         RiskMessage = currentPositionFireRiskDto.FireRiskForecastDto.RiskMessage
                     };
-                    return fireRiskViewModel;
+                    return fireRiskVM;
                 }
 
                 return null;

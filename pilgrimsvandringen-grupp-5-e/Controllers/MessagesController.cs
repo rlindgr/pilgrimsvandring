@@ -44,12 +44,14 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         public async Task<IActionResult> PostMessage(Message message)
         {
             var userId = HttpContext.Session.GetString("UserId");
-            var userInt = int.Parse(userId);
-            var user = await _messageService.GetUserByIdAsync(userInt);
+            var userConvertedId = int.Parse(userId);
+            var user = await _messageService.GetUserByIdAsync(userConvertedId);
+
             message.DateTime = DateTime.Now;
-            message.MessageTypeId = 2;
+            message.MessageTypeId = 2; // TODO fetch messageTypeId from database
             message.UserId = user.Id;
             message.User = user;
+
             await _messageService.AddMessageAsync(message);
             return RedirectToAction("Guestbook");
 

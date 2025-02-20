@@ -14,15 +14,15 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             _stageRepository = stageRepository; 
         }
 
-        public async Task<IEnumerable<StageViewModel>> GetAllStagesById(int trailId)
+        public async Task<IEnumerable<StageViewModel>> GetAllStagesByTrailId(int trailId)
         {
-            var stages = await _stageRepository.GetAllStagesByIdAsync(trailId);
+            var stages = await _stageRepository.GetAllStagesByTrailIdAsync(trailId);
 
 
-            List<StageViewModel> stageViewModels = new List<StageViewModel>();
+            List<StageViewModel> stageVMs = new List<StageViewModel>();
             foreach (var stage in stages)
             {
-                var stageVm = new StageViewModel
+                var stageVM = new StageViewModel
                 {
                     Id = stage.Id,
                     Name = stage.Name,
@@ -37,10 +37,10 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                     Surface = stage.Surface,
                     TrailId = stage.TrailId
                 };
-                stageViewModels.Add(stageVm);
+                stageVMs.Add(stageVM);
 
             }
-            return stageViewModels;
+            return stageVMs;
         }
 
         public async Task<IEnumerable<StageViewModel>> GetAllStages()
@@ -48,10 +48,10 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             var stages = await _stageRepository.GetAllStagesAsync();
 
 
-            List<StageViewModel> stageViewModels = new List<StageViewModel>();
+            List<StageViewModel> stageVMs = new List<StageViewModel>();
             foreach (var stage in stages)
             {
-                var stageVm = new StageViewModel
+                var stageVM = new StageViewModel
                 {
                     Id = stage.Id,
                     Name = stage.Name,
@@ -66,16 +66,16 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                     Surface = stage.Surface,
                     TrailId = stage.TrailId
                 };
-                stageViewModels.Add(stageVm);
+                stageVMs.Add(stageVM);
 
             }
-            return stageViewModels;
+            return stageVMs;
         }
 
-        public async Task<StageViewModel> GetStageInformation(int id)
+        public async Task<StageViewModel> GetStageById(int id)
         {
-            var stage = await _stageRepository.GetStageAsync(id);
-            var stageVm = new StageViewModel
+            var stage = await _stageRepository.GetStageByIdAsync(id);
+            var stageVM = new StageViewModel
             {
                 Id = stage.Id,
                 Name = stage.Name,
@@ -90,7 +90,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 Surface = stage.Surface,
             };
 
-            return stageVm;
+            return stageVM;
         }
     }
 }
