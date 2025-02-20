@@ -7,14 +7,6 @@ export let trailsInformation = [
     { id: 3, name: 'st-olovsleden', color: 'red', trailIcon: redFlag, startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927] }
 ];
 
-export const map = L.map('map').setView([62.9, 13.53], 8);  // Replace with your desired center and zoom level
-
-// Add OpenStreetMap tiles
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
-}).addTo(map);
-
 
 // Function to fetch & display user location
 export function addUserLocation(map) {

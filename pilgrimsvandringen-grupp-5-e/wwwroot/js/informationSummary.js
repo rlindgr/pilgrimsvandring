@@ -1,6 +1,4 @@
 ﻿
-import { map } from "./Maps/MapRoutes.js";
-
 const huntingButton = document.getElementById("hunting-link");
 const weatherButton = document.getElementById("weather-link");
 const gearButton = document.getElementById("gear-link");
@@ -57,7 +55,6 @@ async function getSpottedAnimals() {
         return null;
     }
 }
-
 
 
 huntingButton.addEventListener('click', () => {
@@ -186,9 +183,6 @@ gearButton.addEventListener('click', () => {
         gearListItem.classList.add("gear-list-item");
         gearListItem.textContent = items[i]; 
     }
-
-
-
 })
 
 natureButton.addEventListener('click', async () => {
@@ -227,90 +221,90 @@ natureButton.addEventListener('click', async () => {
     rightItem.appendChild(animalListContainer);
     animalListContainer.classList.add("animal-list-container");
 
-    let animals = [];
-    animals = await getSpottedAnimals();
-    console.log(animals.records);
+    async function initializeMap() {
+       
+        let animals = await getSpottedAnimals();
+        console.log(animals.records);
 
-    const dangerousAnimals = ["älg", "björn", "varg"];
-    const filteredAnimals = animals.records.filter(record =>
-        dangerousAnimals.includes(record.taxon.vernacularName)
-    );
+        const dangerousAnimals = ["älg", "björn", "varg"];
+        const filteredAnimals = animals.records.filter(record =>
+            dangerousAnimals.includes(record.taxon.vernacularName)
+        );
 
-    const animalLocations = [];
+        const animalLocations = [];
 
-    filteredAnimals.forEach(record => {
-        const animalListItem = document.createElement("div");
-        animalListContainer.appendChild(animalListItem);
-        animalListItem.classList.add("animal-list-item");
+        filteredAnimals.forEach(record => {
+            const animalListItem = document.createElement("div");
+            animalListContainer.appendChild(animalListItem);
+            animalListItem.classList.add("animal-list-item");
 
-        const spottedAnimal = document.createElement("p");
-        animalListItem.appendChild(spottedAnimal);
-        spottedAnimal.textContent = `${record.taxon.vernacularName}`;
+            const spottedAnimal = document.createElement("p");
+            animalListItem.appendChild(spottedAnimal);
+            spottedAnimal.textContent = `${record.taxon.vernacularName}`;
 
-        const spottedAnimalLocation = document.createElement("p");
-        animalListItem.appendChild(spottedAnimalLocation);
-        spottedAnimalLocation.textContent = `${record.location.municipality.name}`;
+            const spottedAnimalLocation = document.createElement("p");
+            animalListItem.appendChild(spottedAnimalLocation);
+            spottedAnimalLocation.textContent = `${record.location.municipality.name}`;
 
-        const lat = parseFloat(record.location?.decimalLatitude);
-        const lon = parseFloat(record.location?.decimalLongitude);
+            const lat = parseFloat(record.location?.decimalLatitude);
+            const lon = parseFloat(record.location?.decimalLongitude);
 
-        if (!isNaN(lat) && !isNaN(lon)) {
-            const spottedDate = new Date(record.event.startDate);
-            const formattedDate = spottedDate.toLocaleString();
+            if (!isNaN(lat) && !isNaN(lon)) {
+                const spottedDate = new Date(record.event.startDate);
+                const formattedDate = spottedDate.toLocaleString();
 
-            animalLocations.push({ lat, lon, animalName: record.taxon.vernacularName, location: record.location.municipality?.name, spottedDate: formattedDate });
+                animalLocations.push({
+                    lat,
+                    lon,
+                    animalName: record.taxon.vernacularName,
+                    location: record.location.municipality?.name,
+                    spottedDate: formattedDate
+                });
+            } else {
+                console.warn(`Invalid coordinates for ${record.taxon.vernacularName}`);
+            }
+        });
 
-            L.marker([lat, lon])
-                .addTo(map)
-                .bindPopup(`<b>${record.taxon.vernacularName}</b><br>${record.location.municipality?.name || "Okänd plats"}<br>Spotted on: ${formattedDate}`);
-        } else {
-            console.warn(`Invalid coordinates for ${record.taxon.vernacularName}`);
-        }
-    });
+        const showOnMapButton = document.createElement("button");
+        rightItem.appendChild(showOnMapButton);
+        showOnMapButton.textContent = "Visa alla på karta";
+        showOnMapButton.classList.add("show-map-button");
 
-    /*Manage show on map */
-    const showOnMapButton = document.createElement("button");
-    rightItem.appendChild(showOnMapButton);
-    showOnMapButton.textContent = "Visa alla på karta";
-    showOnMapButton.classList.add("show-map-button");
+        let mapContainer = null;
+        let newMap = null;
 
-    let mapContainer;  
-    let newMap;       
+        showOnMapButton.addEventListener('click', () => {
+            if (mapContainer) {
+                rightItem.removeChild(mapContainer);
+                mapContainer = null;
+                newMap = null; 
+            } else {
+                mapContainer = document.createElement("div");
+                mapContainer.style.width = "100%";
+                mapContainer.style.height = "400px";
+                rightItem.appendChild(mapContainer); 
 
-    showOnMapButton.addEventListener('click', () => {
-     
-        if (mapContainer) {
-          
-            rightItem.removeChild(mapContainer);
-            mapContainer = null;  
-        } else {
-            mapContainer = document.createElement("div");
-            mapContainer.style.width = "100%";
-            mapContainer.style.height = "400px";
-            rightItem.appendChild(mapContainer);
+                newMap = L.map(mapContainer).setView([62.9, 13.53], 8);
 
-            newMap = L.map(mapContainer).setView([0, 0], 2);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(newMap);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(newMap);
+                animalLocations.forEach(location => {
+                    L.marker([location.lat, location.lon])
+                        .addTo(newMap)
+                        .bindPopup(`<b>${location.animalName}</b><br>${location.location}<br>Observerad: ${location.spottedDate}`);
+                });
 
-            animalLocations.forEach(location => {
-                L.marker([location.lat, location.lon])
-                    .addTo(newMap)
-                    .bindPopup(`<b>${location.animalName}</b><br>${location.location}<br>Observerad: ${location.spottedDate}`);
-            });
+                if (animalLocations.length > 0) {
+                    const bounds = L.latLngBounds(animalLocations.map(loc => [loc.lat, loc.lon]));
+                    newMap.fitBounds(bounds);
+                }
+            }
+        });
+    }
 
-            // Fit the map to the bounds of all the markers
-            const latitudes = animalLocations.map(location => location.lat);
-            const longitudes = animalLocations.map(location => location.lon);
+    initializeMap();
 
-            const southWest = new L.LatLng(Math.min(...latitudes), Math.min(...longitudes));
-            const northEast = new L.LatLng(Math.max(...latitudes), Math.max(...longitudes));
-
-            const bounds = new L.LatLngBounds(southWest, northEast);
-
-            newMap.fitBounds(bounds);
-        }
-    });
 });
