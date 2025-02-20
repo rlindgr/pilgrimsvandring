@@ -42,7 +42,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             if (trailsVM != null)
             {
                 List<WeatherForeCastDetailsViewModel> ViewModels = new List<WeatherForeCastDetailsViewModel>();
-                foreach (TrailsViewModel trail in trailsVM)
+                foreach (TrailViewModel trail in trailsVM)
                 {
                     var startCoords = trail.StartPointCoords.Replace(" ", string.Empty).Split(',');
                     var endCoords = trail.EndPointCoords.Replace(" ", string.Empty).Split(',');

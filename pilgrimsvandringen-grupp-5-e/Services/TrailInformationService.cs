@@ -14,15 +14,15 @@ namespace pilgrimsvandringen_grupp_5_e.Services
         
         {  _trailRepository = trailRepository; }
 
-        public async Task<IEnumerable<TrailsViewModel>> GetAllTrails()
+        public async Task<IEnumerable<TrailViewModel>> GetAllTrails()
         {
             var trails = await _trailRepository.GetAllTrailsAsync();
 
 
-            List<TrailsViewModel> trailsViewModels = new List<TrailsViewModel>();
+            List<TrailViewModel> trailsViewModels = new List<TrailViewModel>();
             foreach (var trail in trails)
             {
-                var trailVm = new TrailsViewModel
+                var trailVm = new TrailViewModel
                 {
                    Id = trail.Id,
                    Name = trail.Name,
@@ -44,10 +44,10 @@ namespace pilgrimsvandringen_grupp_5_e.Services
             return trailsViewModels;
         }
 
-        public async Task<TrailsViewModel> GetTrailInformation(int id)
+        public async Task<TrailViewModel> GetTrailInformation(int id)
         {
             var trail = await _trailRepository.GetTrailAsync(id);
-            var trailVm = new TrailsViewModel
+            var trailVm = new TrailViewModel
             {
                 Id = trail.Id,
                 Name = trail.Name,

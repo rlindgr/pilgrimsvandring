@@ -1,6 +1,6 @@
 ﻿namespace pilgrimsvandringen_grupp_5_e.ViewModels
 {
-    public class TrailsViewModel
+    public class TrailViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

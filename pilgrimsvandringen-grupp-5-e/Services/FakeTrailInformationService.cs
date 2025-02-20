@@ -6,9 +6,9 @@ namespace pilgrimsvandringen_grupp_5_e.Services
     public class FakeTrailInformationService : ITrailInformationService
     {
 
-        public async Task<TrailsViewModel> GetTrailInformation(int id = 1)
+        public async Task<TrailViewModel> GetTrailInformation(int id = 1)
         {
-            var trailVm = new TrailsViewModel
+            var trailVm = new TrailViewModel
             {
                 Id = id,
                 Name = "Kårböleleden",
@@ -27,15 +27,15 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 
         }
 
-        public async Task<IEnumerable<TrailsViewModel>> GetAllTrails()
+        public async Task<IEnumerable<TrailViewModel>> GetAllTrails()
         {
-            List<TrailsViewModel> list = new List<TrailsViewModel>();
-            var trail1 = new TrailsViewModel
+            List<TrailViewModel> list = new List<TrailViewModel>();
+            var trail1 = new TrailViewModel
             {
                 Id = 1,
                 Name = "Kårböleleden"
             };
-            var trail2 = new TrailsViewModel
+            var trail2 = new TrailViewModel
             {
                 Id = 2,
                 Name = "Led2"

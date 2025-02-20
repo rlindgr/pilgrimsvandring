@@ -12,6 +12,13 @@ namespace pilgrimsvandringen_grupp_5_e.Models
         public int Id { get; set; }
         [Required]
         public string RoleName {  get; set; }
-        
+
+        public Role(string roleName)
+        {
+            RoleName = roleName;
+        }
     }
+
+
+
 }
