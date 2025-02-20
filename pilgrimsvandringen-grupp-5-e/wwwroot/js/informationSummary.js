@@ -299,9 +299,13 @@ natureButton.addEventListener('click', async () => {
     container.appendChild(smallInfoContainer);
     smallInfoContainer.classList.add("small-info-container");
 
+    const infoContainer = document.createElement("div");
+    smallInfoContainer.appendChild(infoContainer);
+    infoContainer.classList.add("info-container"); 
+
     const leftItem = document.createElement("div");
-    smallInfoContainer.appendChild(leftItem);
-    leftItem.classList.add("left-item");
+    infoContainer.appendChild(leftItem);
+    leftItem.classList.add("left-item-nature");
 
     const infoHeader = document.createElement("h4");
     leftItem.appendChild(infoHeader);
