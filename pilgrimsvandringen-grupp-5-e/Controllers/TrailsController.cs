@@ -24,9 +24,9 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         
         public async Task<IActionResult> TrailDetails(int id)
         {
-            var model = await _trailInformationService.GetTrailInformation(id);
-            var modelStages = await _stageInformationService.GetAllStagesById(model.Id);
-            var modelPointsOfInterests = await _pointOfinterestService.GetAllPointsOfInterestsById(model.Id);
+            var model = await _trailInformationService.GetTrailById(id);
+            var modelStages = await _stageInformationService.GetAllStagesByTrailId(model.Id);
+            var modelPointsOfInterests = await _pointOfinterestService.GetAllPointsOfInterestsByTrailId(model.Id);
             model.StageViewModels = modelStages.ToList();
             model.PointOfInterestViewModels = modelPointsOfInterests.ToList();
 

@@ -15,7 +15,6 @@ namespace pilgrimsvandringen_grupp_5_e.Models
         [Required]
         public int RoleId { get; set; }
         public Role Role { get; set; }
-
         public string IdentityUserId { get; set; }
         [ForeignKey("IdentityUserId")]
         public virtual ApplicationUser IdentityUser{ get; set; }

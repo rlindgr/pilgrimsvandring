@@ -13,20 +13,29 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
             _context = context;
         }
 
-        public async Task SetUserAsync(User user)
+        public async Task CreateUserInDbAsync(User user)
         {
             var result = await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-
         }
 
+        /// <summary>
+        /// creates roles if they do not exists in database
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
         public async Task SeedRolesAsync(Role role)
         {
             var result = await _context.Roles.AddAsync(role);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> RoleExistsAsync(string role)
+        /// <summary>
+        /// checks if role exists in database
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public async Task<bool> CheckRoleExistensAsync(string role)
         {
             var result = await _context.Roles.FirstOrDefaultAsync(x => x.RoleName == role);
             if (result != null)

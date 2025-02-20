@@ -16,7 +16,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services
         public async Task<PointOfInterestViewModel> GetPointOfInterest(int id)
         {
             var point = await _pointOfInterestRepository.GetPointOfInterestAsync(id);
-            var vm = new PointOfInterestViewModel
+            var pointVM = new PointOfInterestViewModel
             {
                 Id = point.Id,
                 Name = point.Name,
@@ -27,16 +27,16 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                 TrailId = point.TrailId,
             };
             
-            return vm;
+            return pointVM;
         }
 
         public async Task<IEnumerable<PointOfInterestViewModel>> GetAllPointsOfInterests()
         {
             var points = await _pointOfInterestRepository.GetAllPointsOfInterestsAsync();
-            List<PointOfInterestViewModel> pointOfInterestVms = new List<PointOfInterestViewModel>();
+            List<PointOfInterestViewModel> pointOfInterestVMs = new List<PointOfInterestViewModel>();
             foreach (var point in points)
             {
-                var vm = new PointOfInterestViewModel
+                var pointVM = new PointOfInterestViewModel
                 {
                     Id = point.Id,
                     Name = point.Name,
@@ -46,19 +46,19 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                     Category = point.Category,
                     TrailId = point.TrailId,
                 };
-                pointOfInterestVms.Add(vm);
+                pointOfInterestVMs.Add(pointVM);
                 
             }
-            return pointOfInterestVms;
+            return pointOfInterestVMs;
         }
 
-        public async Task<IEnumerable<PointOfInterestViewModel>> GetAllPointsOfInterestsById(int trailId)
+        public async Task<IEnumerable<PointOfInterestViewModel>> GetAllPointsOfInterestsByTrailId(int trailId)
         {
-            var points = await _pointOfInterestRepository.GetAllPointsOfInterestsByIdAsync(trailId);
-            List<PointOfInterestViewModel> pointOfInterestVms = new List<PointOfInterestViewModel>();
+            var points = await _pointOfInterestRepository.GetAllPointsOfInterestsByTrailIdAsync(trailId);
+            List<PointOfInterestViewModel> pointOfInterestVMs = new List<PointOfInterestViewModel>();
             foreach (var point in points)
             {
-                var vm = new PointOfInterestViewModel
+                var pointVM = new PointOfInterestViewModel
                 {
                     Id = point.Id,
                     Name = point.Name,
@@ -68,10 +68,10 @@ namespace pilgrimsvandringen_grupp_5_e.Services
                     Category = point.Category,
                     TrailId = point.TrailId,
                 };
-                pointOfInterestVms.Add(vm);
+                pointOfInterestVMs.Add(pointVM);
 
             }
-            return pointOfInterestVms;
+            return pointOfInterestVMs;
 
         }
     }

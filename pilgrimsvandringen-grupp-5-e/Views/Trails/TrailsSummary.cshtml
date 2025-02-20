@@ -4,7 +4,7 @@
 @{
 }
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Leder";
 
     var trailImages = new Dictionary<int, string>
     {
@@ -16,13 +16,9 @@
 }
 }
 
-
-
 <link rel="stylesheet" href="~/css/trailssummary.css" />
 
-<section class="trail-cards-container">
-
-    
+<section class="trail-cards-container">    
     
     @foreach (var trail in Model)
     {

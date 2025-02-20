@@ -31,10 +31,13 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             _messageService = messageService;
         }      
         
-
+        /// <summary>
+        /// to get user by aspnetuseridentity guid
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns></returns>
         public async Task<User> GetUserByGuid(string guid)
-        {
-            //var test = await _context.Users.ToListAsync();
+        {            
             return await _context.Users.FirstOrDefaultAsync(x => x.IdentityUserId == guid);
         }
 
@@ -73,12 +76,12 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
 
             if (result.Succeeded)
             {
-                User localUser = new User { UserName = user.UserName, RoleId = 2, IdentityUserId = user.Id};
-                await _accountService.CreateUserAsync(localUser);
+                User registerUser = new User { UserName = user.UserName, RoleId = 2, IdentityUserId = user.Id}; // TODO fetch RoleId from database
+                await _accountService.CreateUserAsync(registerUser);
                 await _signInManager.SignInAsync(user, false);
-                HttpContext.Session.SetString("UserId", localUser.Id.ToString());
+                HttpContext.Session.SetString("UserId", registerUser.Id.ToString());
 
-                return RedirectToAction("Index", "Account", localUser.UserName);
+                return RedirectToAction("Index", "Account", registerUser.UserName);
             }
 
             foreach (var error in result.Errors)
@@ -109,8 +112,7 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
             
             return View();
         }
-
-        // TODO Create a view for AccessDenied
+                
         public IActionResult AccessDenied() => View();
     }
 

@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@{
+﻿@{
     ViewData["Title"] = "Information";
 }
 
@@ -19,13 +14,7 @@
     <div id="info-container">
     </div>
 </div>
-@* <div class="text-center">
-    <h1 class="display-4">Information</h1>
-    @foreach (var point in Model)
-    {
-        <a class="nav-link text-dark" asp-area="" asp-controller="PointsOfInterests" asp-action="InformationPointOfInterest" asp-route-id="@point.Id">@point.Name, Typ av anläggning: @point.Category</a>
-    }    
-</div> *@
+
 
 <script type="module" src="~/js/informationSummary.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>

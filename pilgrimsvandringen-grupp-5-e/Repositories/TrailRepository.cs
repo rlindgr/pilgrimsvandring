@@ -13,7 +13,7 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
             _context = context;
         }
 
-        public async Task<Trail> GetTrailAsync(int id)
+        public async Task<Trail> GetTrailByIdAsync(int id)
         {
             return await GetByIdAsync(id);
         }

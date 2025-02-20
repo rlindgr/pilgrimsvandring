@@ -4,7 +4,7 @@ namespace pilgrimsvandringen_grupp_5_e.Services.Interfaces
 {
     public interface ITrailInformationService
     {
-        Task<TrailViewModel> GetTrailInformation(int id);
+        Task<TrailViewModel> GetTrailById(int id);
         Task<IEnumerable<TrailViewModel>> GetAllTrails();
 
     }

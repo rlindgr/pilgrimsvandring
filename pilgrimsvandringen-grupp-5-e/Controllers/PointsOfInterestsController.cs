@@ -12,20 +12,13 @@ namespace pilgrimsvandringen_grupp_5_e.Controllers
         public PointsOfInterestsController(IPointOfinterestService pointOfinterestService)
         {
             this._pointOfinterestService = pointOfinterestService;
-        }
-        public async Task<IActionResult> InformationsSummary()
-        {
-            var model = await _pointOfinterestService.GetAllPointsOfInterests();
-            return View("~/Views/Informations/InformationsSummary.cshtml", model);
-
-        }
+        }        
 
         public async Task<IActionResult> InformationPointOfInterest(int id)
         {
             var model = await _pointOfinterestService.GetPointOfInterest(id);
-            return View("~/Views/Informations/InformationPointOfInterest.cshtml", model);
+            return View("~/Views/Informations/InformationPointOfInterest.cshtml", model); // TODO develop a structured view for pointsofinterest
         }
-
 
         public async Task<IActionResult> GetAll()
         {

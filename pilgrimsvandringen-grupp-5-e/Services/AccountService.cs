@@ -15,16 +15,16 @@ namespace pilgrimsvandringen_grupp_5_e.Services
 
         public async Task CreateUserAsync(User user)
         {
-            await _accountRepository.SetUserAsync(user);
+            await _accountRepository.CreateUserInDbAsync(user);
         }
 
         public async Task SeedRolesAsync(Role role)
         {
             await _accountRepository.SeedRolesAsync(role);
         }
-        public async Task<bool> RoleExistsAsync(string role)
+        public async Task<bool> CheckRoleExistensAsync(string role)
         {
-            var result = await _accountRepository.RoleExistsAsync(role);
+            var result = await _accountRepository.CheckRoleExistensAsync(role);
             if (result != null && result == true)
             {
                 return true;

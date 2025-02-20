@@ -24,13 +24,11 @@ builder.Services.AddScoped<IPointOfinterestService, PointOfInterestService>();
 builder.Services.AddScoped<IPointOfInterestRepository, PointOfInterestRepository>();
 builder.Services.AddScoped<IStageInformationService, StageInformationService>();
 builder.Services.AddScoped<IStageRepository, StageRepository>();
-builder.Services.AddScoped<WeatherService>();
+builder.Services.AddScoped<IWeatherService, WeatherService>();
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-
-
 
 
 // api
@@ -105,7 +103,7 @@ static async Task SeedRoles(RoleManager<IdentityRole> roleManager, IAccountServi
         await roleManager.CreateAsync(new IdentityRole("admin"));
     }
 
-    if (!await accountService.RoleExistsAsync("admin"))
+    if (!await accountService.CheckRoleExistensAsync("admin"))
     {
         await accountService.SeedRolesAsync(new Role("admin"));
     }
@@ -115,7 +113,7 @@ static async Task SeedRoles(RoleManager<IdentityRole> roleManager, IAccountServi
         await roleManager.CreateAsync(new IdentityRole("user"));
     }
 
-    if (!await accountService.RoleExistsAsync("user"))
+    if (!await accountService.CheckRoleExistensAsync("user"))
     {
         await accountService.SeedRolesAsync(new Role("user"));
     }
@@ -123,12 +121,12 @@ static async Task SeedRoles(RoleManager<IdentityRole> roleManager, IAccountServi
 
 static async Task SeedMessageTypes(IMessageService messageService)
 {
-    if (!await messageService.MessageTypeExistsAsync("guestbook"))
+    if (!await messageService.CheckMessageTypeExistensAsync("guestbook"))
     {
         messageService.SeedMessageTypesAsync(new MessageType("guestbook"));
     }
 
-    if (!await messageService.MessageTypeExistsAsync("notification"))
+    if (!await messageService.CheckMessageTypeExistensAsync("notification"))
     {
         messageService.SeedMessageTypesAsync(new MessageType("notification"));
     }

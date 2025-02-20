@@ -3,9 +3,9 @@ using System.Text;
 
 namespace pilgrimsvandringen_grupp_5_e.Services
 {
+    // got the code from Eriks lesson
     public class ApiEngine
-    {
-        // got the code from Eriks lesson
+    {        
         private readonly HttpClient _httpClient;
 
         public ApiEngine(HttpClient httpClient)

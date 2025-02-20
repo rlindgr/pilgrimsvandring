@@ -7,23 +7,21 @@ using System.Data;
 namespace pilgrimsvandringen_grupp_5_e.Repositories
 {
     public class MessageRepository : Repository<Message>, IMessageRepository
-    {
-        // Post, get and delete
-
+    {        
         private readonly AppDbContext _context;
 
         public MessageRepository(AppDbContext context) : base(context)
         {
             _context = context;
         }
-        //Get all messages
+        
         public async Task<IEnumerable<Message>> GetMessagesAsync()
         {
             var messages = await _context.Messages.Include(message  => message.User).Include(message => message.MessageType).ToListAsync();
             return messages;
         }
-
-        // Delete a message
+        
+        // TODO setup delete action in database
         public void DeleteMessage(Message message)
         {
             try
@@ -35,8 +33,7 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
                 throw;
             }
         }
-
-        // Post a message
+                
         public async Task PostMessageAsync(Message message)
         {
             try
@@ -56,14 +53,23 @@ namespace pilgrimsvandringen_grupp_5_e.Repositories
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
-
+        /// <summary>
+        /// gives messageType a name if they do not already exists in database
+        /// </summary>
+        /// <param name="messageType"></param>
+        /// <returns></returns>
         public async Task SeedMessageTypesAsync(MessageType messageType)
         {
             var result = await _context.MessageTypes.AddAsync(messageType);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> MessageTypeExistsAsync(string typeName)
+        /// <summary>
+        /// checks if messageType exists in database
+        /// </summary>
+        /// <param name="typeName"></param>
+        /// <returns></returns>
+        public async Task<bool> CheckMessageTypeExistensAsync(string typeName)
         {
             var result = await _context.MessageTypes.FirstOrDefaultAsync(x => x.Type == typeName);
             if (result != null)
