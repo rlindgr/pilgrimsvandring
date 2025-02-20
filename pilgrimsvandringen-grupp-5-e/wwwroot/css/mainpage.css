@@ -55,7 +55,6 @@
 article {
     display: flex;
     padding: 10px;
-    align-items: center;
 }
 
 .general-info {
@@ -166,7 +165,7 @@ article {
     color: white;
 }
 .trail-image {
-    height: 100px; 
+    width: 100%; 
 }
 
 .stats-icon {
@@ -179,6 +178,10 @@ article {
 
 .trail-info-container {
     padding: 20px; 
+}
+
+p.trail-detail {
+    height: 200px;
 }
 
 .trail-stats-container {
@@ -268,6 +271,12 @@ article {
     }
 
     
+}
+
+@media all and (max-width: 400px) {
+    p.trail-detail {
+        height: 300px;
+    }
 }
 
     
