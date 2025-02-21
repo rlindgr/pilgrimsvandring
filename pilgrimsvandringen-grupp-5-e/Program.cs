@@ -39,6 +39,7 @@ var config = new ConfigurationBuilder()
 .AddUserSecrets<Program>()
 .Build();
 
+// database connection
 builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(config.GetConnectionString("DefaultConnection")),
                 ServiceLifetime.Scoped

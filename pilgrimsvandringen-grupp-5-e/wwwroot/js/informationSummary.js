@@ -38,7 +38,7 @@ const createInfoSection = (headerText, paragraphText, parent) => {
 const createHeader = (headerText) => {
     const header = document.createElement("h3");
     header.textContent = headerText;
-    container.innerHTML = ""; // Clear previous content
+    container.innerHTML = ""; 
     container.appendChild(header);
 };
 
@@ -220,6 +220,7 @@ natureButton.addEventListener('click', async () => {
         infoList.appendChild(listItem);
     });
 
+    // TODO split into smaller functions
     async function initializeMap() {
        
         let animals = await getSpottedAnimals();
@@ -270,7 +271,7 @@ natureButton.addEventListener('click', async () => {
 
         let mapContainer = null;
         let newMap = null;
-
+                
         showOnMapButton.addEventListener('click', () => {
             if (mapContainer) {
                 rightItem.removeChild(mapContainer);

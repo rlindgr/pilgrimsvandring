@@ -1,8 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 @{
     ViewData["Title"] = "Leder";
 
@@ -13,7 +9,6 @@
         { 3, "/images/RouteImages/pexels-roemag-27742040.jpg" },
         { 4, "/images/RouteImages/pexels-henkephotoart-29775986.jpg" }
     };
-}
 }
 
 <link rel="stylesheet" href="~/css/trailssummary.css" />
@@ -30,8 +25,7 @@
             <div class="trail-info-container">
 					<h3>@trail.Name</h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Praesent nec arcu sed tortor iaculis dignissim. Ut vel sem eget
+                    @trail.Description
                 </p>
                 <div class="trail-stats-container">
                     <div class="stats-length-container stats-container">
