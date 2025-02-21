@@ -41,6 +41,7 @@ This project is not licensed and may not be used or modified without permission.
 - [lohrberg](https://github.com/lohrberg)
 - [OscarBoman](https://github.com/OscarBoman)
 - [pettersoderblom](https://github.com/pettersoderblom)
+- [rlindgr](https://github.com/rlindgr)
 - [stabkonrads](https://github.com/stabkonrads)
 
 ## Contact
