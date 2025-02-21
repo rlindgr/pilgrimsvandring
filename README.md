@@ -37,11 +37,11 @@ To access the website, a connection to the database is required. Ensure you have
 This project is not licensed and may not be used or modified without permission. Please contact the author for inquiries.
 
 ## Contributors
-- emgenz
-- lohrberg
-- OscarBoman
-- pettersoderblom
-- stabkonrads
+- [emgenz](https://github.com/emgenz)
+- [lohrberg](https://github.com/lohrberg)
+- [OscarBoman](https://github.com/OscarBoman)
+- [pettersoderblom](https://github.com/pettersoderblom)
+- [stabkonrads](https://github.com/stabkonrads)
 
 ## Contact
 For any inquiries, feel free to contact us through the website.
