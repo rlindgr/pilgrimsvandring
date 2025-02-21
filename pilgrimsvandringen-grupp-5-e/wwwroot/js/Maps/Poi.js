@@ -1,6 +1,6 @@
 ﻿import { vadstalle, vindskydd, utedass, varning, fartyg, shop, church } from "../Maps/Markers.js";
 
-const existingCategories = new Set(); // Tracks existing categories
+const existingCategories = new Set();
 
 export let categoryMarkers = {
     sleep: [],
@@ -26,7 +26,12 @@ const categoryNames = { //changes the display name for the chkboxes
 const sweref99tm = "+proj=utm +zone=33 +ellps=GRS80 +units=m +no_defs";
 const wgs84 = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
 
-// Function to convert coordinates
+/**
+ * Function to convert coordinates
+ * @param {string} easting
+ * @param {string} northing
+ * @returns converted latitude longitude
+ */
 export function convertToLatLng(easting, northing) {
     const [longitude, latitude] = proj4(sweref99tm, wgs84, [easting, northing]);
     return { lat: latitude, lng: longitude };
@@ -56,7 +61,7 @@ export function getCategoryIcon(category) {
             return shop;
     }
 }
-
+// TODO split up into smaller functions
 export async function DisplayPointOfInterests(map, selectedTrailId = null) { 
     try {
         const response = await fetch('/PointsOfInterests/GetAll');
@@ -182,6 +187,7 @@ async function getWeather(latitude, longitude) {
     }
 }
 
+// TODO check if it can be replaced by a similiar weatherfunction in weathersummary.js
 function getWeatherDescription(weathercode) {
     const weatherDescription = {
         0: "Klart väder ☀️",

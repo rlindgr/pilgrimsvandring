@@ -8,7 +8,6 @@ export let trailsInformation = [
 ];
 
 
-// Function to fetch & display user location
 export function addUserLocation(map) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -142,7 +141,6 @@ export function getDistance(coord1, coord2) {
     return R * c;
 }
 
-// Order nodes by proximity
 export function orderNodesByProximity(nodes, startCoordinates, endCoordinates) {
     if (nodes.length === 0) return [];
 

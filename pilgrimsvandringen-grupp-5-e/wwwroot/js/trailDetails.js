@@ -1,5 +1,4 @@
-﻿console.log("hej")
-
+﻿
 const forwardButton = document.getElementById("forward-button")
 const backButton = document.getElementById("back-button")
 const cards = document.querySelectorAll(".stage-item")

@@ -3,7 +3,9 @@
     setupTrailSelection();
 });
 
-//Dropdown over trails
+/**
+ * Dropdown over trails
+ */
 function setupDropdown() {
     const button = document.getElementById("myButton");
     const dropdown = document.getElementById("myDropdown");
@@ -17,7 +19,6 @@ function setupDropdown() {
     });
 }
 
-//Handle trail selection and updates dropdown text
 function setupTrailSelection() {
     document.querySelectorAll(".trail-link").forEach(link => {
         link.addEventListener("click", () => {
@@ -29,11 +30,12 @@ function setupTrailSelection() {
     });
 }
 
-/*Get right weather code and icon */
 
 const weatherCodeElements = document.querySelectorAll(".weather-code");
 
-// Weather descriptions and icons mapping
+/**
+ * Weather descriptions and icons mapping
+ */
 const wmoDescriptions = {
     "0": createWeatherEntry("Soligt", "Klart", "wsymbol_0001_sunny.png", "wsymbol_0008_clear_sky_night.png"),
     "1": createWeatherEntry("Mestadels soligt", "Mestadels klart", "wsymbol_0002_sunny_intervals.png", "wsymbol_0041_partly_cloudy_night.png"),
@@ -105,7 +107,6 @@ weatherCodeElements.forEach(element => {
 toggleWeatherDetails(0);
 
 
-/*Toggle for detailed weather forecast*/
 function toggleWeatherDetails(trailIndex) {
  
     let allTrails = document.querySelectorAll('.weather-start-end-container');

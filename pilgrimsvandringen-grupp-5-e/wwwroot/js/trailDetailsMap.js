@@ -3,14 +3,6 @@ import { fetchAndDisplayGPXRoute, fetchAndDisplayRoute } from "../js/Maps/MapRou
 import { DisplayPointOfInterests, addChekBoxes } from "../js/Maps/Poi.js";
 
 
-
-//let trailsInformation = [
-//    { id: 4, name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855] },
-//    { id: 2, name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407] },
-//    { id: 3, name: 'st-olovsleden', color: 'red', trailIcon: redFlag, startPoint: [62.386808961183199, 17.315430391312599], endPoint: [63.427208, 10.396927] },
-//    { id: 1, name: 'jamt-norge-leden' }
-//];
-
 let trailsInformation = [
     { id: 4, name: 'Indalsleden', color: 'blue', trailIcon: blueFlag, startPoint: [62.4855311, 17.3244924], endPoint: [63.3160351, 12.1017855], displayName: 'Indalsleden' },
     { id: 2, name: 'Karboleleden', color: 'yellow', trailIcon: yellowFlag, startPoint: [60.565463, 17.4374], endPoint: [62.80033, 13.056407], displayName: 'Kårböleleden' },
@@ -25,7 +17,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
-
 
 
 function initializeMap() {
